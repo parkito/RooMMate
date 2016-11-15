@@ -1,0 +1,56 @@
+package com.portal.entities;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+/**
+ * @author Artem Karnov 11.11.2016.
+ *         artem.karnov@t-systems.com
+ **/
+@Entity
+@Table(name = "Groups")
+public class Group implements Serializable {
+    private int idGroups;
+    private String title;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idGroups", nullable = false)
+    public int getIdGroups() {
+        return idGroups;
+    }
+
+    public void setIdGroups(int idGroups) {
+        this.idGroups = idGroups;
+    }
+
+    @Basic
+    @Column(name = "Title", nullable = false, length = 45)
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Group groups = (Group) o;
+
+        if (idGroups != groups.idGroups) return false;
+        if (title != null ? !title.equals(groups.title) : groups.title != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = idGroups;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
+    }
+}
