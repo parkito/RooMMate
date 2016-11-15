@@ -1,7 +1,6 @@
 package com.portal.dao.implementation;
 
 import com.portal.dao.api.UserDAO;
-import com.portal.entities.Group;
 import com.portal.entities.User;
 import com.portal.exceptions.UserNotFoundException;
 import org.springframework.stereotype.Repository;
@@ -29,15 +28,6 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         } catch (PersistenceException ex) {
             throw new UserNotFoundException("User with email " + eMail + " not found!", ex);
         }
-    }
-
-    //// TODO: 16.11.16 Трай катч для отлова исклюяений с группой 
-    @Override
-    public void addGroup(User user, Group group) {
-        if (!user.getGroups().contains(group)) {
-            user.getGroups().add(group);
-        }
-
     }
 
 }
