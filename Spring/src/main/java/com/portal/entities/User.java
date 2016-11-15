@@ -2,6 +2,8 @@ package com.portal.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Artem Karnov 11.11.2016.
@@ -26,6 +28,17 @@ public class User implements Serializable {
     @Basic
     @Column(name = "Password", length = 45)
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "UsersHasGroups",
+            joinColumns = @JoinColumn(name = "Users_idUsers"),
+            inverseJoinColumns = @JoinColumn(name = "Groups_idGroups"))
+    private List<Group> groups = new ArrayList();
+
+    public List<Group> getGroups() {
+        return groups;
+    }
 
     public User(String name, String secondName, String email, String password) {
         this.name = name;
