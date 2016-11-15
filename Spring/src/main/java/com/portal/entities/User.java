@@ -34,7 +34,7 @@ public class User implements Serializable {
             name = "UsersHasGroups",
             joinColumns = @JoinColumn(name = "Users_idUsers"),
             inverseJoinColumns = @JoinColumn(name = "Groups_idGroups"))
-    private List<Group> groups = new ArrayList();
+    private final List<Group> groups = new ArrayList();
 
     public List<Group> getGroups() {
         return groups;

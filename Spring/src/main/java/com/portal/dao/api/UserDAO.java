@@ -1,5 +1,6 @@
 package com.portal.dao.api;
 
+import com.portal.entities.Group;
 import com.portal.entities.User;
 
 /**
@@ -8,4 +9,5 @@ import com.portal.entities.User;
  **/
 public interface UserDAO extends GenericDAO<User, Integer> {
     public User getUserByEMAil(String eMail);
+    public void addGroup(User user,Group group);
 }
