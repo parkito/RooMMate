@@ -18,7 +18,7 @@ public class testController {
     private UserService userService;
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public String testOne(@RequestParam(value = "name") String name,
+    public String addUser(@RequestParam(value = "name") String name,
                           @RequestParam(value = "secondName") String secondName,
                           @RequestParam(value = "eMail") String eMail,
                           @RequestParam(value = "password") String password) {
@@ -29,9 +29,27 @@ public class testController {
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String testTwo(@RequestParam(value = "eMail") String eMail) {
+    public String deleteUser(@RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/deleteUser?email=email
         userService.deleteEntity(userService.getUserByEMAil(eMail));
         return "hello";
     }
+
+
+    @RequestMapping(value = "/addGroupToUser", method = RequestMethod.GET)
+    public String addGroupToUser(@RequestParam(value = "eMail") String eMail,
+                                 @RequestParam(value = "groupId") int groupId) {
+//        http://localhost:8099/deleteUser?email=email
+        userService.deleteEntity(userService.getUserByEMAil(eMail));
+        return "hello";
+    }
+
+    @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
+    public String addGroup(@RequestParam(value = "eMail") String eMail,
+                           @RequestParam(value = "groupId") int groupId) {
+//        http://localhost:8099/deleteUser?email=email
+        userService.deleteEntity(userService.getUserByEMAil(eMail));
+        return "hello";
+    }
+
 }
