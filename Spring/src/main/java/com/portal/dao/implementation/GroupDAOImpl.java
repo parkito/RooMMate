@@ -1,10 +1,8 @@
 package com.portal.dao.implementation;
 
 import com.portal.dao.api.GroupDAO;
-import com.portal.dao.api.UserDAO;
 import com.portal.entities.Group;
-import com.portal.entities.User;
-import com.portal.exceptions.UserNotFoundException;
+import com.portal.exceptions.GroupNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -23,13 +21,13 @@ public class GroupDAOImpl extends GenericDAOImpl<Group, Integer> implements Grou
     private EntityManager entityManager;
 
     @Override
-    public User getGroupByTitle(String title) {
+    public Group getGroupByTitle(String title) {
         try {
-            Query query = entityManager.createQuery("select u from Groups u where u.title=:title")
+            Query query = entityManager.createQuery("select g from Groups g where g.Title=:title")
                     .setParameter("title", title);
-            return (User) query.getSingleResult();
+            return (Group) query.getSingleResult();
         } catch (PersistenceException ex) {
-            throw new UserNotFoundException("Group " + title + " not found!", ex);
+            throw new GroupNotFoundException("Group " + title + " not found!", ex);
         }
     }
 }

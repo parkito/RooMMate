@@ -16,15 +16,19 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsers")
     private int idUsers;
+
     @Basic
     @Column(name = "Name", length = 45)
     private String name;
+
     @Basic
     @Column(name = "SecondName", length = 45)
     private String secondName;
+
     @Basic
     @Column(name = "Email", length = 45)
     private String email;
+
     @Basic
     @Column(name = "Password", length = 45)
     private String password;
@@ -36,8 +40,7 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "Groups_idGroups"))
     private final List<Group> groups = new ArrayList();
 
-    public List<Group> getGroups() {
-        return groups;
+    public User() {
     }
 
     public User(String name, String secondName, String email, String password) {
@@ -47,7 +50,8 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User() {
+    public List<Group> getGroups() {
+        return groups;
     }
 
     public int getIdUsers() {

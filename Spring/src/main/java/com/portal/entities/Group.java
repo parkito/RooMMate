@@ -10,12 +10,22 @@ import java.io.Serializable;
 @Entity
 @Table(name = "Groups")
 public class Group implements Serializable {
-    private int idGroups;
-    private String title;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idGroups", nullable = false)
+    @Column(name = "idGroups")
+    private int idGroups;
+
+    @Basic
+    @Column(name = "Title", nullable = false, length = 45)
+    private String title;
+
+    public Group() {
+    }
+
+    public Group(String title) {
+        this.title = title;
+    }
+
     public int getIdGroups() {
         return idGroups;
     }
@@ -24,8 +34,7 @@ public class Group implements Serializable {
         this.idGroups = idGroups;
     }
 
-    @Basic
-    @Column(name = "Title", nullable = false, length = 45)
+
     public String getTitle() {
         return title;
     }
