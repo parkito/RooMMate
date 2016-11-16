@@ -20,21 +20,6 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
     @PersistenceContext
     private EntityManager entityManager;
 
-    /**
-     * Getting user entity by number
-     *
-     * @param number entity for getting
-     * @return user with adjusted number
-     * @throws UserNotFoundException if user not found
-     */
-
-    /**
-     * Getting user entity by email
-     *
-     * @param eMail entity for getting
-     * @return user with adjusted number
-     * @throws UserNotFoundException if user not found
-     */
     @Override
     public User getUserByEMAil(String eMail) throws UserNotFoundException {
         try {
