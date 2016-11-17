@@ -2,6 +2,8 @@ package com.portal.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Artem Karnov 11.11.2016.
@@ -20,6 +22,36 @@ public class Group implements Serializable {
     private String title;
 
     public Group() {
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Groups_has_Rooms",
+            joinColumns = @JoinColumn(name = "GroupsIdGroups"),
+            inverseJoinColumns = @JoinColumn(name = "RoomsIdRooms"))
+    private List<Room> rooms = new ArrayList();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Users_has_Group",
+            joinColumns = @JoinColumn(name = "GroupsIdGroups"),
+            inverseJoinColumns = @JoinColumn(name = "UsersIdUsers"))
+    private List<User> users = new ArrayList();
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 
     public Group(String title) {

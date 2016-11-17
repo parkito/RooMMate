@@ -6,7 +6,7 @@ package com.portal.exceptions;
  **/
 public class GroupNotFoundException extends RuntimeException {
     /**
-     * Exception with message for situation when user wasn't found
+     * Exception with message for situation when group wasn't found
      *
      * @param message message for exception
      */
@@ -15,7 +15,7 @@ public class GroupNotFoundException extends RuntimeException {
     }
 
     /**
-     * exception with message and throwable for situation when user wasn't found
+     * exception with message and throwable for situation when group wasn't found
      *
      * @param message   message for exception
      * @param throwable object for exception

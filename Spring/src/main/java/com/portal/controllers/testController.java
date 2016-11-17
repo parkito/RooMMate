@@ -1,8 +1,10 @@
 package com.portal.controllers;
 
 import com.portal.entities.Group;
+import com.portal.entities.Room;
 import com.portal.entities.User;
 import com.portal.services.api.GroupService;
+import com.portal.services.api.RoomService;
 import com.portal.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class testController {
 
     @Autowired
     private GroupService groupService;
+
+    @Autowired
+    private RoomService roomService;
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public String addUser(@RequestParam(value = "name") String name,
@@ -57,6 +62,14 @@ public class testController {
 //        http://localhost:8099/addGroup?title=title
         Group group = new Group(title);
         groupService.createEntity(group);
+        return "hello";
+    }
+
+    @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
+    public String addRoom(@RequestParam(value = "title") String title) {
+//        http://localhost:8099/addRoom?title=title
+        Room room = new Room(title);
+        roomService.createEntity(room);
         return "hello";
     }
 

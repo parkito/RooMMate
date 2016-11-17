@@ -2,6 +2,8 @@ package com.portal.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Artem Karnov 11.11.2016.
@@ -9,13 +11,31 @@ import java.io.Serializable;
  **/
 @Entity
 public class Room implements Serializable {
-    private int idRooms;
-    private String title;
-    private Integer maxMembers;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idRooms", nullable = false)
+    @Column(name = "idRooms")
+    private int idRooms;
+    @Basic
+    @Column(name = "Title", length = 45)
+    private String title;
+    @Basic
+    @Column(name = "MaxMembers")
+    private Integer maxMembers;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Groups_has_Rooms",
+            joinColumns = @JoinColumn(name = "RoomsIdRooms"),
+            inverseJoinColumns = @JoinColumn(name = "GroupsIdGroups"))
+    private Group group;
+
+    public Room() {
+    }
+
+    public Room(String title) {
+        this.title = title;
+    }
+
     public int getIdRooms() {
         return idRooms;
     }
@@ -24,8 +44,7 @@ public class Room implements Serializable {
         this.idRooms = idRooms;
     }
 
-    @Basic
-    @Column(name = "Title", nullable = true, length = 45)
+
     public String getTitle() {
         return title;
     }
@@ -34,8 +53,7 @@ public class Room implements Serializable {
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "MaxMembers", nullable = true)
+
     public Integer getMaxMembers() {
         return maxMembers;
     }
