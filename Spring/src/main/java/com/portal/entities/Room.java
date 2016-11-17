@@ -32,8 +32,9 @@ public class Room implements Serializable {
     public Room() {
     }
 
-    public Room(String title) {
+    public Room(String title,int maxMembers) {
         this.title = title;
+        this.maxMembers=maxMembers;
     }
 
     public int getIdRooms() {
