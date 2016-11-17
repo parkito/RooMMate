@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //// TODO: 16.11.2016 логирование
-
+//// TODO: 17.11.2016 To solve dependisies betwean entities 
 /**
  * @author Artem Karnov @date 11.11.2016.
  *         artem.karnov@t-systems.com
