@@ -33,12 +33,12 @@ public class User implements Serializable {
     @Column(name = "Password", length = 45)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "UsersHasGroups",
-            joinColumns = @JoinColumn(name = "Users_idUsers"),
-            inverseJoinColumns = @JoinColumn(name = "Groups_idGroups"))
-    private List<Group> groups = new ArrayList();
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "UsersHasGroups",
+//            joinColumns = @JoinColumn(name = "Users_idUsers"),
+//            inverseJoinColumns = @JoinColumn(name = "Groups_idGroups"))
+//    private List<Group> groups = new ArrayList();
 
     public User() {
     }
@@ -50,9 +50,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Group> getGroups() {
-        return groups;
-    }
+//    public List<Group> getGroups() {
+//        return groups;
+//    }
 
     public int getIdUsers() {
         return idUsers;
