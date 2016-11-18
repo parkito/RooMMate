@@ -22,12 +22,12 @@ public class Room implements Serializable {
     @Column(name = "MaxMembers")
     private Integer maxMembers;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Groups_has_Rooms",
-            joinColumns = @JoinColumn(name = "RoomsIdRooms"),
-            inverseJoinColumns = @JoinColumn(name = "GroupsIdGroups"))
-    private Group group;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "Groups_has_Rooms",
+//            joinColumns = @JoinColumn(name = "RoomsIdRooms"),
+//            inverseJoinColumns = @JoinColumn(name = "GroupsIdGroups"))
+//    private Group group;
 
     public Room() {
     }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 //// TODO: 16.11.2016 логирование
 //// TODO: 17.11.2016 To solve dependisies betwean entities 
+
 /**
  * @author Artem Karnov @date 11.11.2016.
  *         artem.karnov@t-systems.com
@@ -42,7 +43,7 @@ public class testController {
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
     public String deleteUser(@RequestParam(value = "eMail") String eMail) {
-//        http://localhost:8099/deleteUser?email=email
+//        http://localhost:8099/deleteUser?eMail=email
         userService.deleteEntity(userService.getUserByEMAil(eMail));
         return "hello";
     }
@@ -50,9 +51,20 @@ public class testController {
 
     @RequestMapping(value = "/addGroupToUser", method = RequestMethod.GET)
     public String addGroupToUser(@RequestParam(value = "eMail") String eMail,
-                                 @RequestParam(value = "groupId") int groupId) {
-//        http://localhost:8099/deleteUser?email=email
-        userService.deleteEntity(userService.getUserByEMAil(eMail));
+                                 @RequestParam(value = "groupTitle") String groupTitle) {
+//        http://localhost:8099/addGroupToUser?eMail=email&groupTitle=title
+        User user = userService.getUserByEMAil(eMail);
+        Group group = groupService.getGroupByTitle(groupTitle);
+//        user.addGroup(group);
+        userService.updateEntity(user);
+        return "hello";
+    }
+
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    public String getUser(@RequestParam(value = "eMail") String eMail) {
+//        http://localhost:8099/getUser?eMail=eMail22
+        User user = userService.getUserByEMAil(eMail);
+        System.out.println(user);
         return "hello";
     }
 
@@ -65,13 +77,13 @@ public class testController {
         return "hello";
     }
 
-    @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
-    public String addRoom(@RequestParam(value = "title") String title,
-                          @RequestParam(value = "maxMembers") int maxMembers) {
-//        http://localhost:8099/addRoom?title=title&maxMembers=10
-        Room room = new Room(title, maxMembers);
-        roomService.createEntity(room);
-        return "hello";
-    }
+//    @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
+//    public String addRoom(@RequestParam(value = "title") String title,
+//                          @RequestParam(value = "maxMembers") int maxMembers) {
+////        http://localhost:8099/addRoom?title=title&maxMembers=10
+//        Room room = new Room(title, maxMembers);
+//        roomService.createEntity(room);
+//        return "hello";
+//    }
 
 }

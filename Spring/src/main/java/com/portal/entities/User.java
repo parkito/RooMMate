@@ -11,6 +11,7 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Users")
+//@NamedQuery(name = "User.getAll", query = "SELECT u FROM Users u")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +49,10 @@ public class User implements Serializable {
         this.secondName = secondName;
         this.email = email;
         this.password = password;
+    }
+
+    public void addGroup(Group group) {
+        groups.add(group);
     }
 
     public List<Group> getGroups() {

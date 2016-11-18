@@ -8,9 +8,7 @@
     <persistence-unit name="operator" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.portal.entities.User</class>
-        <class>com.portal.entities.UsersHasGroups</class>
-        <class>com.portal.entities.Groups</class>
-        <class>com.portal.entities.GroupsHasRooms</class>
+        <class>com.portal.entities.Group</class>
         <class>com.portal.entities.Room</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
