@@ -10,8 +10,8 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Entity
-@Table(name = "Users")
-//@NamedQuery(name = "User.getAll", query = "SELECT u FROM Users u")
+@Table(name = "User")
+@NamedQuery(name = "User.getAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +36,9 @@ public class User implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "UsersHasGroups",
-            joinColumns = @JoinColumn(name = "Users_idUsers"),
-            inverseJoinColumns = @JoinColumn(name = "Groups_idGroups"))
+            name = "User_Has_Group",
+            joinColumns = @JoinColumn(name = "idUsers"),
+            inverseJoinColumns = @JoinColumn(name = "Group_idGroups"))
     private List<Group> groups = new ArrayList();
 
     public User() {

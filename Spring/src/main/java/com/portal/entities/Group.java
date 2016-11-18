@@ -10,7 +10,7 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Entity
-@Table(name = "Groups")
+@Table(name = "Group")
 public class Group implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,35 +24,16 @@ public class Group implements Serializable {
     public Group() {
     }
 
-//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "Groups_has_Rooms",
-//            joinColumns = @JoinColumn(name = "GroupsIdGroups"),
-//            inverseJoinColumns = @JoinColumn(name = "RoomsIdRooms"))
-//    private List<Room> rooms = new ArrayList();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "User_Has_Group",
+            joinColumns = @JoinColumn(name = "idGroups"),
+            inverseJoinColumns = @JoinColumn(name = "User_idUsers"))
+    private List<User> users = new ArrayList();
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "Users_has_Group",
-//            joinColumns = @JoinColumn(name = "GroupsIdGroups"),
-//            inverseJoinColumns = @JoinColumn(name = "UsersIdUsers"))
-//    private List<User> users = new ArrayList();
-
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
-
-//    public List<Room> getRooms() {
-//        return rooms;
-//    }
-//
-//    public void setRooms(List<Room> rooms) {
-//        this.rooms = rooms;
-//    }
+    public List<User> getUsers() {
+        return users;
+    }
 
     public Group(String title) {
         this.title = title;

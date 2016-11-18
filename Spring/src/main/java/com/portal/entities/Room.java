@@ -10,6 +10,7 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Entity
+@Table(name = "Room")
 public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +33,9 @@ public class Room implements Serializable {
     public Room() {
     }
 
-    public Room(String title,int maxMembers) {
+    public Room(String title, int maxMembers) {
         this.title = title;
-        this.maxMembers=maxMembers;
+        this.maxMembers = maxMembers;
     }
 
     public int getIdRooms() {
