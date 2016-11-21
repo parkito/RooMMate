@@ -30,7 +30,7 @@ public class Room implements Serializable {
     @JoinTable(name = "Group_has_Room", joinColumns = {
             @JoinColumn(name = "idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Group_idGroups")})
-    List<Group> groups = new ArrayList<>();
+    List<Grup> grups = new ArrayList<>();
 
     public Room() {
     }
@@ -40,12 +40,12 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public List<Grup> getGrups() {
+        return grups;
     }
 
-    public void addGroup(Group group) {
-        groups.add(group);
+    public void addGroup(Grup grup) {
+        grups.add(grup);
     }
 
     public int getIdRooms() {
@@ -84,7 +84,7 @@ public class Room implements Serializable {
         if (idRooms != room.idRooms) return false;
         if (maxMembers != room.maxMembers) return false;
         if (title != null ? !title.equals(room.title) : room.title != null) return false;
-        if (groups != null ? !groups.equals(room.groups) : room.groups != null) return false;
+        if (grups != null ? !grups.equals(room.grups) : room.grups != null) return false;
 
         return true;
     }
@@ -94,7 +94,7 @@ public class Room implements Serializable {
         int result = idRooms;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + maxMembers;
-        result = 31 * result + (groups != null ? groups.hashCode() : 0);
+        result = 31 * result + (grups != null ? grups.hashCode() : 0);
         return result;
     }
 }

@@ -1,7 +1,7 @@
 package com.portal.services.implementation;
 
 import com.portal.dao.api.GroupDAO;
-import com.portal.entities.Group;
+import com.portal.entities.Grup;
 import com.portal.exceptions.CustomDAOException;
 import com.portal.exceptions.GroupNotFoundException;
 import com.portal.services.api.GroupService;
@@ -24,9 +24,9 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public void createEntity(Group group) throws CustomDAOException {
-        if (!isGroupExists(group)) {
-            groupDAO.create(group);
+    public void createEntity(Grup grup) throws CustomDAOException {
+        if (!isGroupExists(grup)) {
+            groupDAO.create(grup);
         }
     }
 
@@ -39,7 +39,7 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     @Transactional
-    public Group getEntityById(Integer id) throws CustomDAOException {
+    public Grup getEntityById(Integer id) throws CustomDAOException {
         return groupDAO.read(id);
     }
 
@@ -51,7 +51,7 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     @Transactional
-    public void updateEntity(Group entity) throws CustomDAOException {
+    public void updateEntity(Grup entity) throws CustomDAOException {
         groupDAO.update(entity);
     }
 
@@ -63,7 +63,7 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     @Transactional
-    public void deleteEntity(Group entity) throws CustomDAOException {
+    public void deleteEntity(Grup entity) throws CustomDAOException {
         groupDAO.delete(entity);
     }
 
@@ -75,7 +75,7 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     @Transactional
-    public List<Group> getAll() throws CustomDAOException {
+    public List<Grup> getAll() throws CustomDAOException {
         return groupDAO.getAll();
 
     }
@@ -89,19 +89,19 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     @Transactional
-    public Group getGroupByTitle(String title) throws GroupNotFoundException {
+    public Grup getGroupByTitle(String title) throws GroupNotFoundException {
         return groupDAO.getGroupByTitle(title);
     }
 
     /**
-     * Checking group existing in base
+     * Checking grup existing in base
      *
-     * @param group entity for checking
-     * @return true - if group exists, false if doesn't
+     * @param grup entity for checking
+     * @return true - if grup exists, false if doesn't
      */
-    public boolean isGroupExists(Group group) {
+    public boolean isGroupExists(Grup grup) {
         try {
-            return getGroupByTitle(group.getTitle()) != null ? true : false;
+            return getGroupByTitle(grup.getTitle()) != null ? true : false;
         } catch (GroupNotFoundException ex) {
             return false;
         }

@@ -10,9 +10,9 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Entity
-@Table(name = "Group")
-@NamedQuery(name = "Group.getAll", query = "SELECT g FROM Group g")
-public class Group implements Serializable {
+@Table(name = "Grup")
+@NamedQuery(name = "Grup.getAll", query = "SELECT g FROM Grup g")
+public class Grup implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idGroups")
@@ -34,10 +34,10 @@ public class Group implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
     private List<Room> rooms = new ArrayList<>();
 
-    public Group() {
+    public Grup() {
     }
 
-    public Group(String title) {
+    public Grup(String title) {
         this.title = title;
     }
 
@@ -74,7 +74,7 @@ public class Group implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Group groups = (Group) o;
+        Grup groups = (Grup) o;
 
         if (idGroups != groups.idGroups) return false;
         if (title != null ? !title.equals(groups.title) : groups.title != null) return false;
@@ -91,7 +91,7 @@ public class Group implements Serializable {
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "Grup{" +
                 "idGroups=" + idGroups +
                 ", title='" + title + '\'' +
                 '}';

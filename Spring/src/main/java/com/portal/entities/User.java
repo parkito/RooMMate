@@ -39,7 +39,7 @@ public class User implements Serializable {
     @JoinTable(name = "User_has_Group", joinColumns = {
             @JoinColumn(name = "idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Group_idGroups")})
-    private List<Group> groups = new ArrayList();
+    private List<Grup> grups = new ArrayList();
 
     public User() {
     }
@@ -51,12 +51,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void addGroup(Group group) {
-        groups.add(group);
+    public void addGroup(Grup grup) {
+        grups.add(grup);
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public List<Grup> getGrups() {
+        return grups;
     }
 
     public int getIdUsers() {

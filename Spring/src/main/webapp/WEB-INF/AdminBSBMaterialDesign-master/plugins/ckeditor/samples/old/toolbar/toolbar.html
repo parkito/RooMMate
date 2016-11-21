@@ -8,7 +8,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<meta charset="utf-8">
 	<title>Toolbar Configuration &mdash; CKEditor Sample</title>
 	<meta name="ckeditor-sample-name" content="Toolbar Configurations">
-	<meta name="ckeditor-sample-group" content="Advanced Samples">
+	<meta name="ckeditor-sample-grup" content="Advanced Samples">
 	<meta name="ckeditor-sample-description" content="Configuring CKEditor to display full or custom toolbar layout.">
 	<script src="../../../ckeditor.js"></script>
 	<link href="../../../samples/old/sample.css" rel="stylesheet">
@@ -41,9 +41,9 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 		<pre class="samples">
 CKEDITOR.replace( <em>'textarea_id'</em>, {
 	<strong>toolbar:</strong> [
-		{ name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
-		[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.
-		'/',																					// Line break - next group will be placed in new line.
+		{ name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar grup with name (used to create voice label) and items in 3 subgroups.
+		[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar grup without name.
+		'/',																					// Line break - next grup will be placed in new line.
 		{ name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
 	]
 });</pre>
@@ -63,9 +63,9 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 		<pre class="samples">
 CKEDITOR.replace( <em>'textarea_id'</em>, {
 	<strong>toolbarGroups:</strong> [
-		{ name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+		{ name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document grup with its two subgroups.
  		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
- 		'/',																// Line break - next group will be placed in new line.
+ 		'/',																// Line break - next grup will be placed in new line.
  		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
  		{ name: 'links' }
 	]
@@ -153,33 +153,33 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 			toolbar = editor.toolbar;
 
 		for ( var i = 0; i < toolbar.length; ++i ) {
-			var group = dumpToolbarGroup( toolbar[ i ], printGroups );
-			if ( group )
-				output.push( group );
+			var grup = dumpToolbarGroup( toolbar[ i ], printGroups );
+			if ( grup )
+				output.push( grup );
 		}
 
 		return 'config.toolbar' + ( printGroups ? 'Groups' : '' ) + ' = [\n\t' + output.join( ',\n\t' ) + '\n];';
 	}
 
-	function dumpToolbarGroup( group, printGroups ) {
+	function dumpToolbarGroup( grup, printGroups ) {
 		var output = [];
 
-		if ( typeof group == 'string' )
-			return '\'' + group + '\'';
-		if ( CKEDITOR.tools.isArray( group ) )
-			return dumpToolbarItems( group );
-		// Skip group when printing entire toolbar configuration and there are no items in this group.
-		if ( !printGroups && !group.items )
+		if ( typeof grup == 'string' )
+			return '\'' + grup + '\'';
+		if ( CKEDITOR.tools.isArray( grup ) )
+			return dumpToolbarItems( grup );
+		// Skip grup when printing entire toolbar configuration and there are no items in this grup.
+		if ( !printGroups && !grup.items )
 			return;
 
-		if ( group.name )
-			output.push( 'name: \'' + group.name + '\'' );
+		if ( grup.name )
+			output.push( 'name: \'' + grup.name + '\'' );
 
-		if ( group.groups )
-			output.push( 'groups: ' + dumpToolbarItems( group.groups ) );
+		if ( grup.groups )
+			output.push( 'groups: ' + dumpToolbarItems( grup.groups ) );
 
 		if ( !printGroups )
-			output.push( 'items: ' + dumpToolbarItems( group.items ) );
+			output.push( 'items: ' + dumpToolbarItems( grup.items ) );
 
 		return '{ ' + output.join( ', ' ) + ' }';
 	}

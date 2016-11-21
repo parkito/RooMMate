@@ -1,6 +1,6 @@
 package com.portal.controllers;
 
-import com.portal.entities.Group;
+import com.portal.entities.Grup;
 import com.portal.entities.Room;
 import com.portal.entities.User;
 import com.portal.services.api.GroupService;
@@ -54,8 +54,8 @@ public class testController {
                                  @RequestParam(value = "groupTitle") String groupTitle) {
 //        http://localhost:8099/addGroupToUser?eMail=email&groupTitle=title
         User user = userService.getUserByEMAil(eMail);
-        Group group = groupService.getGroupByTitle(groupTitle);
-//        user.addGroup(group);
+        Grup grup = groupService.getGroupByTitle(groupTitle);
+//        user.addGroup(grup);
         userService.updateEntity(user);
         return "hello";
     }
@@ -72,8 +72,8 @@ public class testController {
     @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
     public String addGroup(@RequestParam(value = "title") String title) {
 //        http://localhost:8099/addGroup?title=title
-        Group group = new Group(title);
-        groupService.createEntity(group);
+        Grup grup = new Grup(title);
+        groupService.createEntity(grup);
         return "hello";
     }
 
