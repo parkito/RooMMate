@@ -2,7 +2,7 @@ package com.portal.dao.implementation;
 
 import com.portal.dao.api.RoomDAO;
 import com.portal.entities.Room;
-import com.portal.exceptions.GroupNotFoundException;
+import com.portal.exceptions.RoomNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -27,7 +27,7 @@ public class RoomDAOImpl extends GenericDAOImpl<Room, Integer> implements RoomDA
                     .setParameter("title", title);
             return (Room) query.getSingleResult();
         } catch (PersistenceException ex) {
-            throw new GroupNotFoundException("Group " + title + " not found!", ex);
+            throw new RoomNotFoundException("Group " + title + " not found!", ex);
         }
     }
 }

@@ -11,14 +11,17 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Room")
+@NamedQuery(name = "Room.getAll", query = "SELECT g FROM Room g")
 public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idRooms")
     private int idRooms;
+
     @Basic
     @Column(name = "Title", length = 45)
     private String title;
+
     @Basic
     @Column(name = "MaxMembers")
     private int maxMembers;

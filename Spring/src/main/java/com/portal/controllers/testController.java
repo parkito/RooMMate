@@ -77,13 +77,13 @@ public class testController {
         return "hello";
     }
 
-//    @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
-//    public String addRoom(@RequestParam(value = "title") String title,
-//                          @RequestParam(value = "maxMembers") int maxMembers) {
-////        http://localhost:8099/addRoom?title=title&maxMembers=10
-//        Room room = new Room(title, maxMembers);
-//        roomService.createEntity(room);
-//        return "hello";
-//    }
+    @RequestMapping(value = "/addRoom", method = RequestMethod.GET)
+    public String addRoom(@RequestParam(value = "title") String title,
+                          @RequestParam(value = "maxMembers") int maxMembers) {
+//        http://localhost:8099/addRoom?title=title&maxMembers=10
+        Room room = new Room(title, maxMembers);
+        roomService.createEntity(room);
+        return "hello";
+    }
 
 }
