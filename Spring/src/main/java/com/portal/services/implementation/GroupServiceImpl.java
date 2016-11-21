@@ -1,12 +1,9 @@
 package com.portal.services.implementation;
 
 import com.portal.dao.api.GroupDAO;
-import com.portal.dao.api.UserDAO;
 import com.portal.entities.Group;
-import com.portal.entities.User;
 import com.portal.exceptions.CustomDAOException;
 import com.portal.exceptions.GroupNotFoundException;
-import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

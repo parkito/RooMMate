@@ -11,6 +11,7 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Group")
+@NamedQuery(name = "Group.getAll", query = "SELECT g FROM Group g")
 public class Group implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,35 +19,47 @@ public class Group implements Serializable {
     private int idGroups;
 
     @Basic
-    @Column(name = "Title", nullable = false, length = 45)
+    @Column(name = "Title", length = 45)
     private String title;
 
-    public Group() {
-    }
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "User_Has_Group",
-            joinColumns = @JoinColumn(name = "idGroups"),
-            inverseJoinColumns = @JoinColumn(name = "User_idUsers"))
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "User_has_Group", joinColumns = {
+            @JoinColumn(name = "idGroups")},
+            inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
     private List<User> users = new ArrayList();
 
-    public List<User> getUsers() {
-        return users;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "Group_has_Room", joinColumns = {
+            @JoinColumn(name = "idRooms")},
+            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
+    private List<Room> rooms = new ArrayList<>();
+
+    public Group() {
     }
 
     public Group(String title) {
         this.title = title;
     }
 
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
     public int getIdGroups() {
         return idGroups;
     }
-
-    public void setIdGroups(int idGroups) {
-        this.idGroups = idGroups;
-    }
-
 
     public String getTitle() {
         return title;

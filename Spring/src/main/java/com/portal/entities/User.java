@@ -34,11 +34,11 @@ public class User implements Serializable {
     @Column(name = "Password", length = 45)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "User_Has_Group",
-            joinColumns = @JoinColumn(name = "idUsers"),
-            inverseJoinColumns = @JoinColumn(name = "Group_idGroups"))
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "User_has_Group", joinColumns = {
+            @JoinColumn(name = "idUsers")},
+            inverseJoinColumns = {@JoinColumn(name = "Group_idGroups")})
     private List<Group> groups = new ArrayList();
 
     public User() {
@@ -63,11 +63,6 @@ public class User implements Serializable {
         return idUsers;
     }
 
-    public void setIdUsers(int idUsers) {
-        this.idUsers = idUsers;
-    }
-
-
     public String getName() {
         return name;
     }
@@ -84,7 +79,6 @@ public class User implements Serializable {
     public void setSecondName(String secondName) {
         this.secondName = secondName;
     }
-
 
     public String getEmail() {
         return email;

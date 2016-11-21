@@ -21,14 +21,13 @@ public class Room implements Serializable {
     private String title;
     @Basic
     @Column(name = "MaxMembers")
-    private Integer maxMembers;
+    private int maxMembers;
 
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "Groups_has_Rooms",
-//            joinColumns = @JoinColumn(name = "RoomsIdRooms"),
-//            inverseJoinColumns = @JoinColumn(name = "GroupsIdGroups"))
-//    private Group group;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "Group_has_Room", joinColumns = {
+            @JoinColumn(name = "idRooms")},
+            inverseJoinColumns = {@JoinColumn(name = "Group_idGroups")})
+    List<Group> groups = new ArrayList<>();
 
     public Room() {
     }
@@ -36,6 +35,14 @@ public class Room implements Serializable {
     public Room(String title, int maxMembers) {
         this.title = title;
         this.maxMembers = maxMembers;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void addGroup(Group group) {
+        groups.add(group);
     }
 
     public int getIdRooms() {
@@ -69,12 +76,12 @@ public class Room implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Room rooms = (Room) o;
+        Room room = (Room) o;
 
-        if (idRooms != rooms.idRooms) return false;
-        if (title != null ? !title.equals(rooms.title) : rooms.title != null) return false;
-        if (maxMembers != null ? !maxMembers.equals(rooms.maxMembers) : rooms.maxMembers != null)
-            return false;
+        if (idRooms != room.idRooms) return false;
+        if (maxMembers != room.maxMembers) return false;
+        if (title != null ? !title.equals(room.title) : room.title != null) return false;
+        if (groups != null ? !groups.equals(room.groups) : room.groups != null) return false;
 
         return true;
     }
@@ -83,7 +90,8 @@ public class Room implements Serializable {
     public int hashCode() {
         int result = idRooms;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (maxMembers != null ? maxMembers.hashCode() : 0);
+        result = 31 * result + maxMembers;
+        result = 31 * result + (groups != null ? groups.hashCode() : 0);
         return result;
     }
 }

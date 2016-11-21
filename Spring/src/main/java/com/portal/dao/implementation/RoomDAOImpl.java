@@ -23,7 +23,7 @@ public class RoomDAOImpl extends GenericDAOImpl<Room, Integer> implements RoomDA
     @Override
     public Room getRoomByTitle(String title) {
         try {
-            Query query = entityManager.createQuery("select r from Room r where r.Title=:title")
+            Query query = entityManager.createQuery("select r from Room r where r.title=:title")
                     .setParameter("title", title);
             return (Room) query.getSingleResult();
         } catch (PersistenceException ex) {
