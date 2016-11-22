@@ -86,4 +86,12 @@ public class WebController {
         return "hello";
     }
 
+    @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
+    public String getGroup(@RequestParam(value = "title") String title) {
+//        http://localhost:8099/getGroup?title=title
+        Grup grup = groupService.getGroupByTitle(title);
+        System.out.println(grup);
+        return "hello";
+    }
+
 }

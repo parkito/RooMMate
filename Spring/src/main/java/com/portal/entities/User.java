@@ -36,7 +36,7 @@ public class User implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "User_has_Grup", joinColumns = {
-            @JoinColumn(name = "idUsers")},
+            @JoinColumn(name = "User_idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
     private List<Grup> grups = new ArrayList();
 
@@ -50,13 +50,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void addGroup(Grup grup) {
-        grups.add(grup);
-    }
-
-    public List<Grup> getGrups() {
-        return grups;
-    }
+//    public void addGroup(Grup grup) {
+//        grups.add(grup);
+//    }
+//
+//    public List<Grup> getGrups() {
+//        return grups;
+//    }
 
     public int getIdUsers() {
         return idUsers;
