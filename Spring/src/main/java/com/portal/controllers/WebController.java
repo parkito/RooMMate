@@ -94,4 +94,12 @@ public class WebController {
         return "hello";
     }
 
+    @RequestMapping(value = "/getRoom", method = RequestMethod.GET)
+    public String getRoom(@RequestParam(value = "title") String title) {
+//        http://localhost:8099/getRoom?title=title
+        Room room = roomService.getRoomByTitle(title);
+        System.out.println(room);
+        return "hello";
+    }
+
 }

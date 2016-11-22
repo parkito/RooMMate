@@ -26,11 +26,9 @@ public class Room implements Serializable {
     @Column(name = "MaxMembers")
     private int maxMembers;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "Room_has_Grup", joinColumns = {
-            @JoinColumn(name = "idRooms")},
-            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    List<Grup> grups = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "rooms")
+    private  List<Grup> grups = new ArrayList();
+
 
     public Room() {
     }

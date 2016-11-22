@@ -29,11 +29,11 @@ public class Grup implements Serializable {
         return users;
     }
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "Room_has_Grup", joinColumns = {
-//            @JoinColumn(name = "idGroups")},
-//            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
-//    private List<Room> rooms = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "Room_has_Grup", joinColumns = {
+            @JoinColumn(name = "Room_idRooms")},
+            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
+    private List<Room> rooms = new ArrayList<>();
 
     public Grup() {
     }
@@ -42,13 +42,13 @@ public class Grup implements Serializable {
         this.title = title;
     }
 
-//    public List<Room> getRooms() {
-//        return rooms;
-//    }
-//
-//    public void addRoom(Room room) {
-//        rooms.add(room);
-//    }
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
 
     public int getIdGroups() {
         return idGroups;

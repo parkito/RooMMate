@@ -50,13 +50,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-//    public void addGroup(Grup grup) {
-//        grups.add(grup);
-//    }
-//
-//    public List<Grup> getGrups() {
-//        return grups;
-//    }
+    public void addGroup(Grup grup) {
+        grups.add(grup);
+    }
+
+    public List<Grup> getGrups() {
+        return grups;
+    }
 
     public int getIdUsers() {
         return idUsers;
