@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Artem Karnov @date 11.11.2016.
  *         artem.karnov@t-systems.com
  **/
-@Controller("TestController")
+@Controller("WebController")
 public class WebController {
     @Autowired
     private UserService userService;

@@ -22,15 +22,9 @@ public class Grup implements Serializable {
     @Column(name = "Title", length = 45)
     private String title;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "User_has_Group", joinColumns = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "Room_has_Grup", joinColumns = {
             @JoinColumn(name = "idGroups")},
-            inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
-    private List<User> users = new ArrayList();
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "Group_has_Room", joinColumns = {
-            @JoinColumn(name = "idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
     private List<Room> rooms = new ArrayList<>();
 
@@ -47,14 +41,6 @@ public class Grup implements Serializable {
 
     public void addRoom(Room room) {
         rooms.add(room);
-    }
-
-    public void addUser(User user) {
-        users.add(user);
-    }
-
-    public List<User> getUsers() {
-        return users;
     }
 
     public int getIdGroups() {

@@ -35,10 +35,10 @@ public class User implements Serializable {
     private String password;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "User_has_Group", joinColumns = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "idUsers")},
-            inverseJoinColumns = {@JoinColumn(name = "Group_idGroups")})
+            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
     private List<Grup> grups = new ArrayList();
 
     public User() {
