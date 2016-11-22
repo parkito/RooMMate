@@ -3,6 +3,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Success!!!</h1>
+<h1>Something goes wrong</h1>
 </body>
 </html>

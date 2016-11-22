@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 //// TODO: 16.11.2016 логирование
 //// TODO: 17.11.2016 To solve dependisies betwean entities 
+//// TODO: 23.11.16 exception message on take out on a page
 
 /**
  * @author Artem Karnov @date 11.11.2016.
@@ -79,16 +80,24 @@ public class WebController {
                           @RequestParam(value = "eMail") String eMail,
                           @RequestParam(value = "password") String password) {
         //http://localhost:8099/addUser?name=name1&secondName=secondName2&eMail=eMail2&password=password3
-        User user = new User(name, secondName, eMail, password);
-        userService.createEntity(user);
+        try {
+            User user = new User(name, secondName, eMail, password);
+            userService.createEntity(user);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
     @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
     public String addGroup(@RequestParam(value = "title") String title) {
 //        http://localhost:8099/addGroup?title=title
-        Grup grup = new Grup(title);
-        groupService.createEntity(grup);
+        try {
+            Grup grup = new Grup(title);
+            groupService.createEntity(grup);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
@@ -96,32 +105,49 @@ public class WebController {
     public String addRoom(@RequestParam(value = "title") String title,
                           @RequestParam(value = "maxMembers") int maxMembers) {
 //        http://localhost:8099/addRoom?title=title&maxMembers=10
-        Room room = new Room(title, maxMembers);
-        roomService.createEntity(room);
+        try {
+            Room room = new Room(title, maxMembers);
+            roomService.createEntity(room);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public String getUser(@RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/getUser?eMail=eMail22
-        User user = userService.getUserByEMAil(eMail);
-        System.out.println(user);
+        try {
+            User user = userService.getUserByEMAil(eMail);
+            System.out.println(user);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
+
         return "hello";
     }
 
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
     public String getGroup(@RequestParam(value = "title") String title) {
 //        http://localhost:8099/getGroup?title=title
-        Grup grup = groupService.getGroupByTitle(title);
-        System.out.println(grup);
+        try {
+            Grup grup = groupService.getGroupByTitle(title);
+            System.out.println(grup);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
     @RequestMapping(value = "/getRoom", method = RequestMethod.GET)
     public String getRoom(@RequestParam(value = "title") String title) {
 //        http://localhost:8099/getRoom?title=title
-        Room room = roomService.getRoomByTitle(title);
-        System.out.println(room);
+        try {
+            Room room = roomService.getRoomByTitle(title);
+            System.out.println(room);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
@@ -129,10 +155,14 @@ public class WebController {
     public String addUserToGroup(@RequestParam(value = "eMail") String eMail,
                                  @RequestParam(value = "groupTitle") String groupTitle) {
 //        http://localhost:8099/addUserToGroup?eMail=email&groupTitle=title
-        User user = userService.getUserByEMAil(eMail);
-        Grup grup = groupService.getGroupByTitle(groupTitle);
-        user.addGroup(grup);
-        userService.updateEntity(user);
+        try {
+            User user = userService.getUserByEMAil(eMail);
+            Grup grup = groupService.getGroupByTitle(groupTitle);
+            user.addGroup(grup);
+            userService.updateEntity(user);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
@@ -140,22 +170,47 @@ public class WebController {
     public String addGroupToRoom(@RequestParam(value = "roomTitle") String roomTitle,
                                  @RequestParam(value = "groupTitle") String groupTitle) {
 //        http://localhost:8099/addGroupToRoom?roomTitle=room&groupTitle=title
-        Room room = roomService.getRoomByTitle(roomTitle);
-        Grup grup = groupService.getGroupByTitle(groupTitle);
-        grup.addRoom(room);
-        groupService.updateEntity(grup);
+        try {
+            Room room = roomService.getRoomByTitle(roomTitle);
+            Grup grup = groupService.getGroupByTitle(groupTitle);
+            grup.addRoom(room);
+            groupService.updateEntity(grup);
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
     public String deleteUser(@RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/deleteUser?eMail=email
-        userService.deleteEntity(userService.getUserByEMAil(eMail));
+        try {
+            userService.deleteEntity(userService.getUserByEMAil(eMail));
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
         return "hello";
     }
 
+    @RequestMapping(value = "/deleteGroup", method = RequestMethod.GET)
+    public String deleteGroup(@RequestParam(value = "title") String title) {
+//        http://localhost:8099/deleteGroup?title=title
+        try {
+            groupService.deleteEntity(groupService.getGroupByTitle(title));
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
+        return "hello";
+    }
 
-    //// TODO: 16.11.2016 обработка эксепшенов
-
-
+    @RequestMapping(value = "/deleteRoom", method = RequestMethod.GET)
+    public String deleteRoom(@RequestParam(value = "title") String title) {
+//        http://localhost:8099/deleteRoom?title=title
+        try {
+            roomService.deleteEntity(roomService.getRoomByTitle(title));
+        } catch (RuntimeException ex) {
+            return "exception";
+        }
+        return "hello";
+    }
 }
