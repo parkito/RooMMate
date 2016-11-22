@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *         artem.karnov@t-systems.com
  **/
 @Controller("TestController")
-public class testController {
+public class WebController {
     @Autowired
     private UserService userService;
 
