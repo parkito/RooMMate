@@ -30,6 +30,49 @@ public class WebController {
     @Autowired
     private RoomService roomService;
 
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    public String initialization() {
+        //add users
+        User user = new User("name1", "secondName1", "email1", "password1");
+        User user1 = new User("name2", "secondName2", "email2", "password2");
+        User user2 = new User("name3", "secondName3", "email3", "password3");
+        User user3 = new User("name4", "secondName4", "email4", "password4");
+        User user4 = new User("name5", "secondName5", "email5", "password5");
+        User user5 = new User("name6", "secondName6", "email6", "password6");
+        userService.createEntity(user);
+        userService.createEntity(user1);
+        userService.createEntity(user2);
+        userService.createEntity(user3);
+        userService.createEntity(user4);
+        userService.createEntity(user5);
+
+        //add grups
+        Grup grup = new Grup("title");
+        Grup grup1 = new Grup("title1");
+        Grup grup2 = new Grup("title2");
+        Grup grup3 = new Grup("title3");
+        groupService.createEntity(grup);
+        groupService.createEntity(grup1);
+        groupService.createEntity(grup2);
+        groupService.createEntity(grup3);
+
+        //add rooms
+        Room room = new Room("room1", 10);
+        Room room1 = new Room("room2", 10);
+        Room room2 = new Room("room3", 10);
+        Room room3 = new Room("room4", 10);
+        Room room4 = new Room("room5", 10);
+        Room room5 = new Room("room6", 10);
+        roomService.createEntity(room);
+        roomService.createEntity(room1);
+        roomService.createEntity(room2);
+        roomService.createEntity(room3);
+        roomService.createEntity(room4);
+        roomService.createEntity(room5);
+
+        return "hello";
+    }
+
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public String addUser(@RequestParam(value = "name") String name,
                           @RequestParam(value = "secondName") String secondName,
@@ -41,34 +84,6 @@ public class WebController {
         return "hello";
     }
 
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String deleteUser(@RequestParam(value = "eMail") String eMail) {
-//        http://localhost:8099/deleteUser?eMail=email
-        userService.deleteEntity(userService.getUserByEMAil(eMail));
-        return "hello";
-    }
-
-
-    @RequestMapping(value = "/addGroupToUser", method = RequestMethod.GET)
-    public String addGroupToUser(@RequestParam(value = "eMail") String eMail,
-                                 @RequestParam(value = "groupTitle") String groupTitle) {
-//        http://localhost:8099/addGroupToUser?eMail=email&groupTitle=title
-        User user = userService.getUserByEMAil(eMail);
-        Grup grup = groupService.getGroupByTitle(groupTitle);
-//        user.addGroup(grup);
-        userService.updateEntity(user);
-        return "hello";
-    }
-
-    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    public String getUser(@RequestParam(value = "eMail") String eMail) {
-//        http://localhost:8099/getUser?eMail=eMail22
-        User user = userService.getUserByEMAil(eMail);
-        System.out.println(user);
-        return "hello";
-    }
-
-    //// TODO: 16.11.2016 обработка эксепшенов 
     @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
     public String addGroup(@RequestParam(value = "title") String title) {
 //        http://localhost:8099/addGroup?title=title
@@ -83,6 +98,14 @@ public class WebController {
 //        http://localhost:8099/addRoom?title=title&maxMembers=10
         Room room = new Room(title, maxMembers);
         roomService.createEntity(room);
+        return "hello";
+    }
+
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    public String getUser(@RequestParam(value = "eMail") String eMail) {
+//        http://localhost:8099/getUser?eMail=eMail22
+        User user = userService.getUserByEMAil(eMail);
+        System.out.println(user);
         return "hello";
     }
 
@@ -101,5 +124,38 @@ public class WebController {
         System.out.println(room);
         return "hello";
     }
+
+    @RequestMapping(value = "/addUserToGroup", method = RequestMethod.GET)
+    public String addUserToGroup(@RequestParam(value = "eMail") String eMail,
+                                 @RequestParam(value = "groupTitle") String groupTitle) {
+//        http://localhost:8099/addUserToGroup?eMail=email&groupTitle=title
+        User user = userService.getUserByEMAil(eMail);
+        Grup grup = groupService.getGroupByTitle(groupTitle);
+        user.addGroup(grup);
+        userService.updateEntity(user);
+        return "hello";
+    }
+
+    @RequestMapping(value = "/addGroupToRoom", method = RequestMethod.GET)
+    public String addGroupToRoom(@RequestParam(value = "roomTitle") String roomTitle,
+                                 @RequestParam(value = "groupTitle") String groupTitle) {
+//        http://localhost:8099/addGroupToRoom?roomTitle=room&groupTitle=title
+        Room room = roomService.getRoomByTitle(roomTitle);
+        Grup grup = groupService.getGroupByTitle(groupTitle);
+        grup.addRoom(room);
+        groupService.updateEntity(grup);
+        return "hello";
+    }
+
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+    public String deleteUser(@RequestParam(value = "eMail") String eMail) {
+//        http://localhost:8099/deleteUser?eMail=email
+        userService.deleteEntity(userService.getUserByEMAil(eMail));
+        return "hello";
+    }
+
+
+    //// TODO: 16.11.2016 обработка эксепшенов
+
 
 }
