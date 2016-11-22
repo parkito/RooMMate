@@ -24,6 +24,8 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
         try {
             Query query = entityManager.createQuery("select u from User u where u.email=:eMail").
                     setParameter("eMail", eMail);
+            User user = (User) query.getSingleResult();
+            System.out.println(user);
             return (User) query.getSingleResult();
         } catch (PersistenceException ex) {
             throw new UserNotFoundException("User with email " + eMail + " not found!", ex);

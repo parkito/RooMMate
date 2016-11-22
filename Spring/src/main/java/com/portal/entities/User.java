@@ -34,7 +34,6 @@ public class User implements Serializable {
     @Column(name = "Password", length = 45)
     private String password;
 
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "idUsers")},
