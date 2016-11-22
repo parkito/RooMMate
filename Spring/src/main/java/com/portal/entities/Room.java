@@ -1,5 +1,7 @@
 package com.portal.entities;
 
+import com.portal.exceptions.CustomDAOException;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class Room implements Serializable {
     private int maxMembers;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "rooms")
-    private  List<Grup> grups = new ArrayList();
+    private List<Grup> grups = new ArrayList();
 
 
     public Room() {
@@ -43,7 +45,9 @@ public class Room implements Serializable {
     }
 
     public void addGroup(Grup grup) {
-        grups.add(grup);
+        if (!grups.contains(grup)) {
+            grups.add(grup);
+        } else throw new CustomDAOException(grup.getTitle() + " already in " + title);
     }
 
     public int getIdRooms() {

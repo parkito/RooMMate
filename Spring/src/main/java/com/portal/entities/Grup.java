@@ -1,5 +1,7 @@
 package com.portal.entities;
 
+import com.portal.exceptions.CustomDAOException;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,11 +25,8 @@ public class Grup implements Serializable {
     private String title;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "grups")
-    private  List<User> users = new ArrayList();
+    private List<User> users = new ArrayList();
 
-    public List<User> getUsers() {
-        return users;
-    }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Room_has_Grup", joinColumns = {
@@ -40,6 +39,16 @@ public class Grup implements Serializable {
 
     public Grup(String title) {
         this.title = title;
+    }
+
+    public void addUser(User user) {
+        if (!users.contains(user)) {
+            users.add(user);
+        } else throw new CustomDAOException(user.getEmail() + " already in " + title);
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
 
     public List<Room> getRooms() {

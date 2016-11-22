@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 //// TODO: 16.11.2016 логирование
 //// TODO: 17.11.2016 To solve dependisies betwean entities 
 //// TODO: 23.11.16 exception message on take out on a page
+//// TODO: 23.11.16 Fix problem with adding users to groups and groups to rooms 
 
 /**
  * @author Artem Karnov @date 11.11.2016.
@@ -70,6 +71,23 @@ public class WebController {
         roomService.createEntity(room3);
         roomService.createEntity(room4);
         roomService.createEntity(room5);
+
+        //users to groups
+        grup.addUser(user);
+        grup.addUser(user1);
+        grup.addUser(user2);
+        grup.addUser(user3);
+        grup1.addUser(user3);
+        grup1.addUser(user4);
+        grup1.addUser(user5);
+        groupService.updateEntity(grup);
+        groupService.updateEntity(grup1);
+
+        //group to room
+        room.addGroup(grup);
+        room1.addGroup(grup1);
+        roomService.updateEntity(room);
+        roomService.updateEntity(room1);
 
         return "hello";
     }
