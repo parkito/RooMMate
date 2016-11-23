@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 //// TODO: 16.11.2016 логирование
 //// TODO: 17.11.2016 To solve dependisies betwean entities 
 //// TODO: 23.11.16 exception message on take out on a page
@@ -34,7 +36,7 @@ public class WebController {
     private RoomService roomService;
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
-    public String initialization() {
+    public String initialization(HttpServletRequest req) {
         try {
             //add users
             User user = new User("name1", "secondName1", "email1", "password1");
@@ -86,11 +88,16 @@ public class WebController {
             groupService.updateEntity(grup1);
 
             //group to room
-            room.addGroup(grup);
-            room1.addGroup(grup1);
-            roomService.updateEntity(room);
-            roomService.updateEntity(room1);
+            Room chRoom1 = roomService.getRoomByTitle(room.getTitle());
+            Room chRoom2 = roomService.getRoomByTitle(room1.getTitle());
+            chRoom1.addGroup(grup);
+            chRoom2.addGroup(grup1);
+            roomService.updateEntity(chRoom1);
+            roomService.updateEntity(chRoom2);
+
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
 

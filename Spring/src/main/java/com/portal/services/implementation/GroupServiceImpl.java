@@ -22,7 +22,6 @@ public class GroupServiceImpl implements GroupService {
     @Autowired
     private GroupDAO groupDAO;
 
-
     @Override
     @Transactional
     public void createEntity(Grup grup) throws DAOException {

@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         if (!isUserExists(user)) {
             userDAO.create(user);
         } else {
-            throw new EntityAlreadyExistsException("User with email" + user.getEmail() + " already exists");
+            throw new EntityAlreadyExistsException("User with email " + user.getEmail() + " already exists");
         }
     }
 
