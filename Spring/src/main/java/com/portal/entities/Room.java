@@ -1,6 +1,6 @@
 package com.portal.entities;
 
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -47,7 +47,7 @@ public class Room implements Serializable {
     public void addGroup(Grup grup) {
         if (!grups.contains(grup)) {
             grups.add(grup);
-        } else throw new CustomDAOException(grup.getTitle() + " already in " + title);
+        } else throw new DAOException(grup.getTitle() + " already in " + title);
     }
 
     public int getIdRooms() {

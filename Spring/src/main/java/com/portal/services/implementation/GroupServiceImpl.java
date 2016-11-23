@@ -2,7 +2,8 @@ package com.portal.services.implementation;
 
 import com.portal.dao.api.GroupDAO;
 import com.portal.entities.Grup;
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
+import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.GroupNotFoundException;
 import com.portal.services.api.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,11 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public void createEntity(Grup grup) throws CustomDAOException {
+    public void createEntity(Grup grup) throws DAOException {
         if (!isGroupExists(grup)) {
             groupDAO.create(grup);
+        } else {
+            throw new EntityAlreadyExistsException("Group " + grup.getTitle() + " already exists");
         }
     }
 
@@ -35,11 +38,11 @@ public class GroupServiceImpl implements GroupService {
      *
      * @param id id for getting
      * @return group with adjusted id
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public Grup getEntityById(Integer id) throws CustomDAOException {
+    public Grup getEntityById(Integer id) throws DAOException {
         return groupDAO.read(id);
     }
 
@@ -47,11 +50,11 @@ public class GroupServiceImpl implements GroupService {
      * Update group entity in base
      *
      * @param entity entity for updating
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void updateEntity(Grup entity) throws CustomDAOException {
+    public void updateEntity(Grup entity) throws DAOException {
         groupDAO.update(entity);
     }
 
@@ -59,11 +62,11 @@ public class GroupServiceImpl implements GroupService {
      * Delete group entity from base
      *
      * @param entity entity for deleting
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void deleteEntity(Grup entity) throws CustomDAOException {
+    public void deleteEntity(Grup entity) throws DAOException {
         groupDAO.delete(entity);
     }
 
@@ -71,11 +74,11 @@ public class GroupServiceImpl implements GroupService {
      * Getting all group entities from base
      *
      * @return list of all groups
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public List<Grup> getAll() throws CustomDAOException {
+    public List<Grup> getAll() throws DAOException {
         return groupDAO.getAll();
 
     }

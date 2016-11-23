@@ -2,7 +2,8 @@ package com.portal.services.implementation;
 
 import com.portal.dao.api.UserDAO;
 import com.portal.entities.User;
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
+import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,15 @@ public class UserServiceImpl implements UserService {
      * Creating contract user in base
      *
      * @param user entity for creating
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void createEntity(User user) throws CustomDAOException {
+    public void createEntity(User user) throws DAOException {
         if (!isUserExists(user)) {
             userDAO.create(user);
+        } else {
+            throw new EntityAlreadyExistsException("User with email" + user.getEmail() + " already exists");
         }
     }
 
@@ -40,11 +43,11 @@ public class UserServiceImpl implements UserService {
      *
      * @param id id for getting
      * @return user with adjusted id
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public User getEntityById(Integer id) throws CustomDAOException {
+    public User getEntityById(Integer id) throws DAOException {
         return userDAO.read(id);
     }
 
@@ -52,11 +55,11 @@ public class UserServiceImpl implements UserService {
      * Update user entity in base
      *
      * @param entity entity for updating
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void updateEntity(User entity) throws CustomDAOException {
+    public void updateEntity(User entity) throws DAOException {
         userDAO.update(entity);
     }
 
@@ -64,11 +67,11 @@ public class UserServiceImpl implements UserService {
      * Delete user entity from base
      *
      * @param entity entity for deleting
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void deleteEntity(User entity) throws CustomDAOException {
+    public void deleteEntity(User entity) throws DAOException {
         userDAO.delete(entity);
     }
 
@@ -76,11 +79,11 @@ public class UserServiceImpl implements UserService {
      * Getting all user entities from base
      *
      * @return list of all users
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public List<User> getAll() throws CustomDAOException {
+    public List<User> getAll() throws DAOException {
         return userDAO.getAll();
 
     }

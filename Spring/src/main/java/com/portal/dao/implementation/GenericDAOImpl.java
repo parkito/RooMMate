@@ -1,7 +1,7 @@
 package com.portal.dao.implementation;
 
 import com.portal.dao.api.GenericDAO;
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,14 +32,14 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
      * Creating entity in base
      *
      * @param entity entity for creating
-     * @throws CustomDAOException if connect with base goes wrong
+     * @throws DAOException if connect with base goes wrong
      */
     @Override
-    public void create(E entity) throws CustomDAOException {
+    public void create(E entity) throws DAOException {
         try {
             entityManager.persist(entity);
         } catch (PersistenceException e) {
-            throw new CustomDAOException("Entity wasn't created: " + entity, e);
+            throw new DAOException("Entity wasn't created: " + entity, e);
         }
     }
 
@@ -48,14 +48,14 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
      *
      * @param id id for reading
      * @return E-entity if it exists
-     * @throws CustomDAOException if connect with base goes wrong
+     * @throws DAOException if connect with base goes wrong
      */
     @Override
-    public E read(K id) throws CustomDAOException {
+    public E read(K id) throws DAOException {
         try {
             return (E) this.entityManager.find(daoType, id);
         } catch (PersistenceException e) {
-            throw new CustomDAOException("Entity " + id + " wasn't found", e);
+            throw new DAOException("Entity " + id + " wasn't found", e);
         }
     }
 
@@ -63,16 +63,16 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
      * Refreshing entity in base
      *
      * @param entity entity for upgrade
-     * @throws CustomDAOException if connect with base goes wrong
+     * @throws DAOException if connect with base goes wrong
      */
     @Override
-    public void update(E entity) throws CustomDAOException {
+    public void update(E entity) throws DAOException {
         try {
             entityManager.merge(entity);
         } catch (PersistenceException e) {
-            throw new CustomDAOException("Entity wasn't updated: " + entity, e);
+            throw new DAOException("Entity wasn't updated: " + entity, e);
         } catch (IllegalStateException e) {
-            throw new CustomDAOException("Entity wasn't updated: " + entity, e);
+            throw new DAOException("Entity wasn't updated: " + entity, e);
         }
 
     }
@@ -81,14 +81,14 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
      * Deleting entity from base
      *
      * @param entity entity for deleting
-     * @throws CustomDAOException if connect with base goes wrong
+     * @throws DAOException if connect with base goes wrong
      */
     @Override
-    public void delete(E entity) throws CustomDAOException {
+    public void delete(E entity) throws DAOException {
         try {
             entityManager.remove(entityManager.merge(entity));
         } catch (PersistenceException e) {
-            throw new CustomDAOException("Entity wasn't deleted: " + entity, e);
+            throw new DAOException("Entity wasn't deleted: " + entity, e);
         }
 
     }
@@ -97,14 +97,14 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
      * Getting all same-type entities from base
      *
      * @return list of all entities
-     * @throws CustomDAOException if connect with base goes wrong
+     * @throws DAOException if connect with base goes wrong
      */
     @Override
-    public List<E> getAll() throws CustomDAOException {
+    public List<E> getAll() throws DAOException {
         try {
             return entityManager.createNamedQuery(daoType.getSimpleName() + ".getAll", daoType).getResultList();
         } catch (PersistenceException ex) {
-            throw new CustomDAOException("Unable to get all entities of class " + daoType.getSimpleName(), ex);
+            throw new DAOException("Unable to get all entities of class " + daoType.getSimpleName(), ex);
         }
     }
 

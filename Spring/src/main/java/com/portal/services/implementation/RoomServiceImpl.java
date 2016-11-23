@@ -2,9 +2,9 @@ package com.portal.services.implementation;
 
 import com.portal.dao.api.RoomDAO;
 import com.portal.entities.Room;
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
+import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.RoomNotFoundException;
-import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +25,11 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public void createEntity(Room room) throws CustomDAOException {
+    public void createEntity(Room room) throws DAOException {
         if (!isRoomExists(room)) {
             roomDAO.create(room);
+        } else {
+            throw new EntityAlreadyExistsException("Room " + room.getTitle() + " already exists");
         }
     }
 
@@ -36,11 +38,11 @@ public class RoomServiceImpl implements RoomService {
      *
      * @param id id for getting
      * @return room with adjusted id
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public Room getEntityById(Integer id) throws CustomDAOException {
+    public Room getEntityById(Integer id) throws DAOException {
         return roomDAO.read(id);
     }
 
@@ -48,11 +50,11 @@ public class RoomServiceImpl implements RoomService {
      * Update room entity in base
      *
      * @param entity entity for updating
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void updateEntity(Room entity) throws CustomDAOException {
+    public void updateEntity(Room entity) throws DAOException {
         roomDAO.update(entity);
     }
 
@@ -60,11 +62,11 @@ public class RoomServiceImpl implements RoomService {
      * Delete room entity from base
      *
      * @param entity entity for deleting
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public void deleteEntity(Room entity) throws CustomDAOException {
+    public void deleteEntity(Room entity) throws DAOException {
         roomDAO.delete(entity);
     }
 
@@ -72,11 +74,11 @@ public class RoomServiceImpl implements RoomService {
      * Getting all room entities from base
      *
      * @return list of all rooms
-     * @throws CustomDAOException if connect with DAO goes wrong
+     * @throws DAOException if connect with DAO goes wrong
      */
     @Override
     @Transactional
-    public List<Room> getAll() throws CustomDAOException {
+    public List<Room> getAll() throws DAOException {
         return roomDAO.getAll();
 
     }

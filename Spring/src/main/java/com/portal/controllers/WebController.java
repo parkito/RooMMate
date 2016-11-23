@@ -3,6 +3,7 @@ package com.portal.controllers;
 import com.portal.entities.Grup;
 import com.portal.entities.Room;
 import com.portal.entities.User;
+import com.portal.exceptions.DAOException;
 import com.portal.services.api.GroupService;
 import com.portal.services.api.RoomService;
 import com.portal.services.api.UserService;
@@ -34,60 +35,64 @@ public class WebController {
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public String initialization() {
-        //add users
-        User user = new User("name1", "secondName1", "email1", "password1");
-        User user1 = new User("name2", "secondName2", "email2", "password2");
-        User user2 = new User("name3", "secondName3", "email3", "password3");
-        User user3 = new User("name4", "secondName4", "email4", "password4");
-        User user4 = new User("name5", "secondName5", "email5", "password5");
-        User user5 = new User("name6", "secondName6", "email6", "password6");
-        userService.createEntity(user);
-        userService.createEntity(user1);
-        userService.createEntity(user2);
-        userService.createEntity(user3);
-        userService.createEntity(user4);
-        userService.createEntity(user5);
+        try {
+            //add users
+            User user = new User("name1", "secondName1", "email1", "password1");
+            User user1 = new User("name2", "secondName2", "email2", "password2");
+            User user2 = new User("name3", "secondName3", "email3", "password3");
+            User user3 = new User("name4", "secondName4", "email4", "password4");
+            User user4 = new User("name5", "secondName5", "email5", "password5");
+            User user5 = new User("name6", "secondName6", "email6", "password6");
+            userService.createEntity(user);
+            userService.createEntity(user1);
+            userService.createEntity(user2);
+            userService.createEntity(user3);
+            userService.createEntity(user4);
+            userService.createEntity(user5);
 
-        //add grups
-        Grup grup = new Grup("title");
-        Grup grup1 = new Grup("title1");
-        Grup grup2 = new Grup("title2");
-        Grup grup3 = new Grup("title3");
-        groupService.createEntity(grup);
-        groupService.createEntity(grup1);
-        groupService.createEntity(grup2);
-        groupService.createEntity(grup3);
+            //add grups
+            Grup grup = new Grup("title");
+            Grup grup1 = new Grup("title1");
+            Grup grup2 = new Grup("title2");
+            Grup grup3 = new Grup("title3");
+            groupService.createEntity(grup);
+            groupService.createEntity(grup1);
+            groupService.createEntity(grup2);
+            groupService.createEntity(grup3);
 
-        //add rooms
-        Room room = new Room("room1", 10);
-        Room room1 = new Room("room2", 10);
-        Room room2 = new Room("room3", 10);
-        Room room3 = new Room("room4", 10);
-        Room room4 = new Room("room5", 10);
-        Room room5 = new Room("room6", 10);
-        roomService.createEntity(room);
-        roomService.createEntity(room1);
-        roomService.createEntity(room2);
-        roomService.createEntity(room3);
-        roomService.createEntity(room4);
-        roomService.createEntity(room5);
+            //add rooms
+            Room room = new Room("room1", 10);
+            Room room1 = new Room("room2", 10);
+            Room room2 = new Room("room3", 10);
+            Room room3 = new Room("room4", 10);
+            Room room4 = new Room("room5", 10);
+            Room room5 = new Room("room6", 10);
+            roomService.createEntity(room);
+            roomService.createEntity(room1);
+            roomService.createEntity(room2);
+            roomService.createEntity(room3);
+            roomService.createEntity(room4);
+            roomService.createEntity(room5);
 
-        //users to groups
-        grup.addUser(user);
-        grup.addUser(user1);
-        grup.addUser(user2);
-        grup.addUser(user3);
-        grup1.addUser(user3);
-        grup1.addUser(user4);
-        grup1.addUser(user5);
-        groupService.updateEntity(grup);
-        groupService.updateEntity(grup1);
+            //users to groups
+            grup.addUser(user);
+            grup.addUser(user1);
+            grup.addUser(user2);
+            grup.addUser(user3);
+            grup1.addUser(user3);
+            grup1.addUser(user4);
+            grup1.addUser(user5);
+            groupService.updateEntity(grup);
+            groupService.updateEntity(grup1);
 
-        //group to room
-        room.addGroup(grup);
-        room1.addGroup(grup1);
-        roomService.updateEntity(room);
-        roomService.updateEntity(room1);
+            //group to room
+            room.addGroup(grup);
+            room1.addGroup(grup1);
+            roomService.updateEntity(room);
+            roomService.updateEntity(room1);
+        } catch (DAOException ex) {
+            return "exception";
+        }
 
         return "hello";
     }
@@ -101,7 +106,7 @@ public class WebController {
         try {
             User user = new User(name, secondName, eMail, password);
             userService.createEntity(user);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -113,7 +118,7 @@ public class WebController {
         try {
             Grup grup = new Grup(title);
             groupService.createEntity(grup);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -126,7 +131,7 @@ public class WebController {
         try {
             Room room = new Room(title, maxMembers);
             roomService.createEntity(room);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -138,7 +143,7 @@ public class WebController {
         try {
             User user = userService.getUserByEMAil(eMail);
             System.out.println(user);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
 
@@ -151,7 +156,7 @@ public class WebController {
         try {
             Grup grup = groupService.getGroupByTitle(title);
             System.out.println(grup);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -163,7 +168,7 @@ public class WebController {
         try {
             Room room = roomService.getRoomByTitle(title);
             System.out.println(room);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -178,7 +183,7 @@ public class WebController {
             Grup grup = groupService.getGroupByTitle(groupTitle);
             user.addGroup(grup);
             userService.updateEntity(user);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -193,7 +198,7 @@ public class WebController {
             Grup grup = groupService.getGroupByTitle(groupTitle);
             grup.addRoom(room);
             groupService.updateEntity(grup);
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -204,7 +209,7 @@ public class WebController {
 //        http://localhost:8099/deleteUser?eMail=email
         try {
             userService.deleteEntity(userService.getUserByEMAil(eMail));
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -215,7 +220,7 @@ public class WebController {
 //        http://localhost:8099/deleteGroup?title=title
         try {
             groupService.deleteEntity(groupService.getGroupByTitle(title));
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";
@@ -226,7 +231,7 @@ public class WebController {
 //        http://localhost:8099/deleteRoom?title=title
         try {
             roomService.deleteEntity(roomService.getRoomByTitle(title));
-        } catch (RuntimeException ex) {
+        } catch (DAOException ex) {
             return "exception";
         }
         return "hello";

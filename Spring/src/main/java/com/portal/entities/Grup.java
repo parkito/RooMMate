@@ -1,6 +1,6 @@
 package com.portal.entities;
 
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -44,7 +44,7 @@ public class Grup implements Serializable {
     public void addUser(User user) {
         if (!users.contains(user)) {
             users.add(user);
-        } else throw new CustomDAOException(user.getEmail() + " already in " + title);
+        } else throw new DAOException(user.getEmail() + " already in " + title);
     }
 
     public List<User> getUsers() {

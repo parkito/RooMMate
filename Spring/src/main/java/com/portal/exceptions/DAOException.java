@@ -4,13 +4,13 @@ package com.portal.exceptions;
  * @author Artem Karnov 11.11.2016.
  *         artem.karnov@t-systems.com
  **/
-public class CustomDAOException extends RuntimeException {
+public class DAOException extends RuntimeException {
     /**
      * Exception with message for situation when something goes wrong on DAO
      *
      * @param message message for exception
      */
-    public CustomDAOException(String message) {
+    public DAOException(String message) {
         super(message);
     }
 
@@ -20,7 +20,7 @@ public class CustomDAOException extends RuntimeException {
      * @param message   message for exception
      * @param throwable object for exception
      */
-    public CustomDAOException(String message, Throwable throwable) {
+    public DAOException(String message, Throwable throwable) {
         super(message, throwable);
     }
 }

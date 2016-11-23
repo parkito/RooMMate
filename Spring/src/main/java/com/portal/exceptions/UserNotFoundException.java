@@ -4,7 +4,7 @@ package com.portal.exceptions;
  * @author Artem Karnov @date 11.11.2016.
  *         artem.karnov@t-systems.com
  **/
-public class UserNotFoundException extends CustomDAOException {
+public class UserNotFoundException extends DAOException {
     /**
      * Exception with message for situation when user wasn't found
      *

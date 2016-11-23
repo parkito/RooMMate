@@ -1,6 +1,6 @@
 package com.portal.dao.api;
 
-import com.portal.exceptions.CustomDAOException;
+import com.portal.exceptions.DAOException;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import java.util.List;
 public interface GenericDAO<E, K> {
 
 
-    public void create(E entity) throws CustomDAOException;
+    public void create(E entity) throws DAOException;
 
-    public E read(K id) throws CustomDAOException;
+    public E read(K id) throws DAOException;
 
-    public void update(E entity) throws CustomDAOException;
+    public void update(E entity) throws DAOException;
 
-    public void delete(E entity) throws CustomDAOException;
+    public void delete(E entity) throws DAOException;
 
-    public List<E> getAll() throws CustomDAOException;
+    public List<E> getAll() throws DAOException;
 
 }
