@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 //// TODO: 17.11.2016 To solve dependisies betwean entities 
 //// TODO: 23.11.16 exception message on take out on a page
 //// TODO: 23.11.16 Fix problem with adding users to groups and groups to rooms 
+//// TODO: 24.11.2016 Deleting all from bd 
+//// TODO: 24.11.2016 problem with adding rooms to group 
 
 /**
  * @author Artem Karnov @date 11.11.2016.
@@ -45,22 +47,22 @@ public class WebController {
             User user3 = new User("name4", "secondName4", "email4", "password4");
             User user4 = new User("name5", "secondName5", "email5", "password5");
             User user5 = new User("name6", "secondName6", "email6", "password6");
-//            userService.createEntity(user);
-//            userService.createEntity(user1);
-//            userService.createEntity(user2);
-//            userService.createEntity(user3);
-//            userService.createEntity(user4);
-//            userService.createEntity(user5);
-//
+            userService.createEntity(user);
+            userService.createEntity(user1);
+            userService.createEntity(user2);
+            userService.createEntity(user3);
+            userService.createEntity(user4);
+            userService.createEntity(user5);
+
             //add grups
             Grup grup = new Grup("title");
             Grup grup1 = new Grup("title1");
             Grup grup2 = new Grup("title2");
             Grup grup3 = new Grup("title3");
-//            groupService.createEntity(grup);
-//            groupService.createEntity(grup1);
-//            groupService.createEntity(grup2);
-//            groupService.createEntity(grup3);
+            groupService.createEntity(grup);
+            groupService.createEntity(grup1);
+            groupService.createEntity(grup2);
+            groupService.createEntity(grup3);
 
             //add rooms
             Room room = new Room("room1", 10);
@@ -69,12 +71,12 @@ public class WebController {
             Room room3 = new Room("room4", 10);
             Room room4 = new Room("room5", 10);
             Room room5 = new Room("room6", 10);
-//            roomService.createEntity(room);
-//            roomService.createEntity(room1);
-//            roomService.createEntity(room2);
-//            roomService.createEntity(room3);
-//            roomService.createEntity(room4);
-//            roomService.createEntity(room5);
+            roomService.createEntity(room);
+            roomService.createEntity(room1);
+            roomService.createEntity(room2);
+            roomService.createEntity(room3);
+            roomService.createEntity(room4);
+            roomService.createEntity(room5);
 
             //getting data from bd
             Room chRoom1 = roomService.getRoomByTitle(room.getTitle());
@@ -84,18 +86,23 @@ public class WebController {
             User chUser1 = userService.getUserByEMAil(user.getEmail());
             User chUser2 = userService.getUserByEMAil(user2.getEmail());
 
-//            //group to room
+            //group to room
+            chGrup1.addRoom(chRoom1);
+            chGrup2.addRoom(chRoom2);
+            groupService.updateEntity(chGrup1);
+            groupService.updateEntity(chGrup2);
+
 //            chRoom1.addGroup(chGrup1);
 //            chRoom2.addGroup(chGrup2);
 //            roomService.updateEntity(chRoom1);
 //            roomService.updateEntity(chRoom2);
-//            //user to group
-//
-//            chUser1.addGroup(chGrup1);
-//            chUser1.addGroup(chGrup2);
-//            chUser2.addGroup(chGrup1);
-//            userService.updateEntity(chUser1);
-//            userService.updateEntity(chUser2);
+
+            //user to group
+            chUser1.addGroup(chGrup1);
+            chUser1.addGroup(chGrup2);
+            chUser2.addGroup(chGrup1);
+            userService.updateEntity(chUser1);
+            userService.updateEntity(chUser2);
 
 
         } catch (DAOException ex) {

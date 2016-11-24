@@ -27,7 +27,7 @@ public class GroupDAOImpl extends GenericDAOImpl<Grup, Integer> implements Group
                     .setParameter("title", title);
             return (Grup) query.getSingleResult();
         } catch (PersistenceException ex) {
-            throw new GroupNotFoundException("Grup " + title + " not found!", ex);
+            throw new GroupNotFoundException("Grup " + title + " wasn't found!", ex);
         }
     }
 }

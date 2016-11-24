@@ -28,7 +28,7 @@ public class Room implements Serializable {
     @Column(name = "MaxMembers")
     private int maxMembers;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "rooms")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "rooms")
     private List<Grup> grups = new ArrayList();
 
 

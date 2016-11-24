@@ -28,7 +28,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
             System.out.println(user);
             return (User) query.getSingleResult();
         } catch (PersistenceException ex) {
-            throw new UserNotFoundException("User with email " + eMail + " not found!", ex);
+            throw new UserNotFoundException("User with email " + eMail + " wasn't found!", ex);
         }
     }
 
