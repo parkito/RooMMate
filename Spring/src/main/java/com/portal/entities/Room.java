@@ -13,7 +13,7 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Room")
-@NamedQuery(name = "Room.getAll", query = "SELECT g FROM Room g")
+@NamedQuery(name = "Room.getAll", query = "SELECT r FROM Room r")
 public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

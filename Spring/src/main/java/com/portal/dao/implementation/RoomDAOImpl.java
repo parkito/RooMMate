@@ -27,7 +27,7 @@ public class RoomDAOImpl extends GenericDAOImpl<Room, Integer> implements RoomDA
                     .setParameter("title", title);
             return (Room) query.getSingleResult();
         } catch (PersistenceException ex) {
-            throw new RoomNotFoundException("Grup " + title + " not found!", ex);
+            throw new RoomNotFoundException("Room " + title + " not found!", ex);
         }
     }
 }

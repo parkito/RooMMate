@@ -79,7 +79,6 @@ public class GroupServiceImpl implements GroupService {
     @Transactional
     public List<Grup> getAll() throws DAOException {
         return groupDAO.getAll();
-
     }
 
     /**

@@ -30,8 +30,8 @@ public class Grup implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Room_has_Grup", joinColumns = {
-            @JoinColumn(name = "Room_idRooms")},
-            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
+            @JoinColumn(name = "idGroups")},
+            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
     private List<Room> rooms = new ArrayList<>();
 
     public Grup() {
