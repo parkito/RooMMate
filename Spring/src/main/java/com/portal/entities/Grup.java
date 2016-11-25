@@ -24,8 +24,8 @@ public class Grup implements Serializable {
     @Column(name = "title", length = 45)
     private String title;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "grups")
-    private List<User> users = new ArrayList();
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "grups")
+//    private List<User> users = new ArrayList();
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -41,15 +41,15 @@ public class Grup implements Serializable {
         this.title = title;
     }
 
-    public void addUser(User user) {
-        if (!users.contains(user)) {
-            users.add(user);
-        } else throw new DAOException(user.getEmail() + " already in " + title);
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
+//    public void addUser(User user) {
+//        if (!users.contains(user)) {
+//            users.add(user);
+//        } else throw new DAOException(user.getEmail() + " already in " + title);
+//    }
+//
+//    public List<User> getUsers() {
+//        return users;
+//    }
 
     public List<Room> getRooms() {
         return rooms;

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 //// TODO: 16.11.2016 логирование
 //// TODO: 17.11.2016 To solve dependisies betwean entities 
@@ -86,6 +87,13 @@ public class WebController {
             User chUser1 = userService.getUserByEMAil(user.getEmail());
             User chUser2 = userService.getUserByEMAil(user2.getEmail());
 
+            //user to group
+//            chUser1.addGroup(chGrup2);
+//            chUser1.addGroup(chGrup2);
+//            chUser2.addGroup(chGrup1);
+//            userService.updateEntity(chUser1);
+//            userService.updateEntity(chUser2);
+
             //group to room
             chGrup1.addRoom(chRoom1);
             chGrup2.addRoom(chRoom2);
@@ -97,12 +105,6 @@ public class WebController {
 //            roomService.updateEntity(chRoom1);
 //            roomService.updateEntity(chRoom2);
 
-            //user to group
-            chUser1.addGroup(chGrup1);
-            chUser1.addGroup(chGrup2);
-            chUser2.addGroup(chGrup1);
-            userService.updateEntity(chUser1);
-            userService.updateEntity(chUser2);
 
 
         } catch (DAOException ex) {
@@ -110,6 +112,32 @@ public class WebController {
             req.setAttribute("Ex", ex);
             return "exception";
         }
+
+        return "hello";
+    }
+
+    @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
+    public String deleteAll(HttpServletRequest req) {
+        try {
+            List<User> users = userService.getAll();
+            for (User usr : users) {
+                userService.deleteEntity(usr);
+            }
+            List<Grup> grups = groupService.getAll();
+            for (Grup grps : grups) {
+                groupService.deleteEntity(grps);
+            }
+
+            List<Room> rooms = roomService.getAll();
+            for (Room rms : rooms) {
+                roomService.deleteEntity(rms);
+            }
+        } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
+            return "exception";
+        }
+
 
         return "hello";
     }
