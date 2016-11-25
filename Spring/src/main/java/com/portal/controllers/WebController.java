@@ -88,11 +88,11 @@ public class WebController {
             User chUser2 = userService.getUserByEMAil(user2.getEmail());
 
             //user to group
-//            chUser1.addGroup(chGrup2);
-//            chUser1.addGroup(chGrup2);
-//            chUser2.addGroup(chGrup1);
-//            userService.updateEntity(chUser1);
-//            userService.updateEntity(chUser2);
+            chUser1.addGroup(chGrup2);
+            chUser1.addGroup(chGrup1);
+            chUser2.addGroup(chGrup1);
+            userService.updateEntity(chUser1);
+            userService.updateEntity(chUser2);
 
             //group to room
             chGrup1.addRoom(chRoom1);
