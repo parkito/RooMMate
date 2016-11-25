@@ -17,11 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 //// TODO: 16.11.2016 логирование
-//// TODO: 17.11.2016 To solve dependisies betwean entities 
-//// TODO: 23.11.16 exception message on take out on a page
-//// TODO: 23.11.16 Fix problem with adding users to groups and groups to rooms 
-//// TODO: 24.11.2016 Deleting all from bd 
-//// TODO: 24.11.2016 problem with adding rooms to group 
+//// TODO: 25.11.2016 better exception handler 
 
 /**
  * @author Artem Karnov @date 11.11.2016.
@@ -104,7 +100,6 @@ public class WebController {
 //            chRoom2.addGroup(chGrup2);
 //            roomService.updateEntity(chRoom1);
 //            roomService.updateEntity(chRoom2);
-
 
 
         } catch (DAOException ex) {
