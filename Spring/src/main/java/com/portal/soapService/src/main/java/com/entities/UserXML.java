@@ -28,7 +28,7 @@ public class UserXML {
     protected String secondName;
     @XmlElement(name = "email", required = true)
     protected String email;
-    @XmlElement(name = "password", required = true)
+    @XmlElement(name = "password")
     protected String password;
     @XmlElement(name = "groups")
     protected List<GroupXML> groups = new ArrayList();
