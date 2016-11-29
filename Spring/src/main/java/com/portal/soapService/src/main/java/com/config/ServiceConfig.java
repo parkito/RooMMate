@@ -18,7 +18,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 @EnableWs
 @ComponentScan("com.config")
-public class serviceConfig extends WsConfigurerAdapter {
+public class ServiceConfig extends WsConfigurerAdapter {
 
     @Bean(name = "users")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema studentsSchema) {
