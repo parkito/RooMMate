@@ -38,6 +38,10 @@ public class UserXML {
         groups.add(grup);
     }
 
+    public void setIdUsers(int idUsers) {
+        this.idUsers = idUsers;
+    }
+
     public List<GroupXML> getGroups() {
         return groups;
     }

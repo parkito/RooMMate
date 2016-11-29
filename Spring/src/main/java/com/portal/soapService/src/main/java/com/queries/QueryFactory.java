@@ -22,7 +22,7 @@ public class QueryFactory {
     public GetUserResponse createGetUserResponse() {
         return new GetUserResponse();
     }
-    
+
     public UserXML createUser() {
         return new UserXML();
     }
