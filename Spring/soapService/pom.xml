@@ -5,9 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>ChatRoom</groupId>
+        <groupId>com.ChatRoom</groupId>
         <artifactId>ChatRoom</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.SOAP</groupId>
@@ -70,26 +71,26 @@
     </build>
 
     <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>jaxb2-maven-plugin</artifactId>-->
-                <!--<version>1.6</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>xjc</id>-->
-                        <!--<goals>-->
-                            <!--<goal>xjc</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>-->
-                    <!--<outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
-                    <!--<clearOutputDir>false</clearOutputDir>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.codehaus.mojo</groupId>-->
+    <!--<artifactId>jaxb2-maven-plugin</artifactId>-->
+    <!--<version>1.6</version>-->
+    <!--<executions>-->
+    <!--<execution>-->
+    <!--<id>xjc</id>-->
+    <!--<goals>-->
+    <!--<goal>xjc</goal>-->
+    <!--</goals>-->
+    <!--</execution>-->
+    <!--</executions>-->
+    <!--<configuration>-->
+    <!--<schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>-->
+    <!--<outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
+    <!--<clearOutputDir>false</clearOutputDir>-->
+    <!--</configuration>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
     <!--</build>-->
 
 
