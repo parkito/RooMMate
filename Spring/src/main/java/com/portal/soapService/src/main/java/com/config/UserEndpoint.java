@@ -19,7 +19,7 @@ public class UserEndpoint {
     @Autowired
     private UserUtility userUtility;
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getStudentRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getUserRequest")
     @ResponsePayload
     public GetUserResponse getCountry(@RequestPayload GetUserRequest request) {
         GetUserResponse response = new GetUserResponse();

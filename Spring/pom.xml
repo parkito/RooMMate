@@ -2,6 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>ChatRoom</groupId>
     <artifactId>ChatRoom</artifactId>
     <packaging>war</packaging>
@@ -24,7 +25,6 @@
 
 
     <dependencies>
-
 
 
         <!-- Spring MVC -->
@@ -213,7 +213,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.40</version>
         </dependency>
-        
+
     </dependencies>
 
     <properties>
@@ -253,7 +253,7 @@
         <spring-security.version>4.0.4.RELEASE</spring-security.version>
 
     </properties>
-        <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -278,4 +278,8 @@
             </testResource>
         </testResources>
     </build>
+
+    <modules>
+        <module>SOAP</module>
+    </modules>
 </project>
