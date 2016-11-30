@@ -9,9 +9,25 @@
     <version>1.0</version>
     <name>ChatRoom Maven Webapp</name>
     <url>http://maven.apache.org</url>
-    
+
     <modules>
         <module>soapService</module>
         <module>portalService</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.9.Final</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>
