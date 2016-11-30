@@ -5,7 +5,7 @@
 
     <groupId>com.ChatRoom</groupId>
     <artifactId>ChatRoom</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0</version>
     <name>ChatRoom Maven Webapp</name>
     <url>http://maven.apache.org</url>
