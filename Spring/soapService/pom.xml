@@ -6,7 +6,7 @@
 
     <groupId>com.SOAP</groupId>
     <artifactId>SOAP</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>SOAP</name>
     <description>SOAP service</description>
