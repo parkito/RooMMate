@@ -7,7 +7,7 @@
     <groupId>com.MVC</groupId>
     <artifactId>MVC</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>MVC</name>
     <description>MVC service</description>
 
