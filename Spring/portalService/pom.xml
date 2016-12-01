@@ -11,12 +11,12 @@
     <name>MVC</name>
     <description>MVC service</description>
 
-    <parent>
-        <groupId>com.ChatRoom</groupId>
-        <artifactId>ChatRoom</artifactId>
-        <version>1.0</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+    <!--<parent>-->
+        <!--<groupId>com.ChatRoom</groupId>-->
+        <!--<artifactId>ChatRoom</artifactId>-->
+        <!--<version>1.0</version>-->
+        <!--<relativePath>../pom.xml</relativePath>-->
+    <!--</parent>-->
 
     <dependencyManagement>
         <!--all spring dependencies -->
