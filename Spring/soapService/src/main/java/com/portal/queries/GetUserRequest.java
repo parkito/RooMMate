@@ -11,17 +11,17 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "userId"
+        "email"
 })
 @XmlRootElement(name = "getUserXMLRequest")
 public class GetUserRequest {
-    protected int userId;
+    protected String email;
 
-    public int getUserId() {
-        return userId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
