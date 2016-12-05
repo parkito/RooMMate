@@ -1,4 +1,4 @@
-package com.config;
+package com.portal.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,7 +17,7 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @Configuration
 @EnableWs
-@ComponentScan("com.config")
+@ComponentScan("com.portal")
 public class ServiceConfig extends WsConfigurerAdapter {
 
     @Bean(name = "users")

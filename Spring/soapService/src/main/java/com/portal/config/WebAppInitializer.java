@@ -1,4 +1,4 @@
-package com.config;
+package com.portal.config;
 
 
 import org.springframework.web.WebApplicationInitializer;

@@ -1,4 +1,4 @@
-package com.entities;
+package com.portal.entities;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

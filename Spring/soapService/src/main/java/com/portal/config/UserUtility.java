@@ -1,6 +1,6 @@
-package com.config;
+package com.portal.config;
 
-import com.entities.UserXML;
+import com.portal.entities.UserXML;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

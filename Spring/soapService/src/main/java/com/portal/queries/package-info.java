@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://localhost:8080", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.queries.soap;
+package com.portal.queries.soap;

@@ -1,7 +1,7 @@
-package com.config;
+package com.portal.config;
 
-import com.queries.GetUserRequest;
-import com.queries.GetUserResponse;
+import com.portal.queries.GetUserRequest;
+import com.portal.queries.GetUserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;

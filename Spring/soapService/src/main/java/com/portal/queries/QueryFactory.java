@@ -1,6 +1,6 @@
-package com.queries;
+package com.portal.queries;
 
-import com.entities.UserXML;
+import com.portal.entities.UserXML;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
