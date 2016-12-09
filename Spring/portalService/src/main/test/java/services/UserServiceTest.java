@@ -10,19 +10,25 @@ import org.dbunit.operation.DatabaseOperation;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import java.config.DBUnitConfig;
+import java.services.contexsts.UserServiceTestContext;
 import java.util.List;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {UserServiceTestContext.class})
+//@DatabaseSetup(type = DatabaseOperation.REFRESH, value = {"User.xml"})
 public class UserServiceTest extends DBUnitConfig {
 
     @Autowired
-    UserService userService;
-    
     private UserService userService;
+
     private EntityManager em = Persistence.createEntityManagerFactory("operator")
             .createEntityManager();
 
@@ -43,14 +49,14 @@ public class UserServiceTest extends DBUnitConfig {
 
     @Test
     public void testGetAll() throws Exception {
-        List<User> persons = service.getAll();
+        List<User> persons = userService.getAll();
 
         IDataSet expectedData = new FlatXmlDataSetBuilder().build(Thread.currentThread()
                 .getContextClassLoader()
                 .getResourceAsStream("DB/User.xml"));
         IDataSet actualData = tester.getConnection().createDataSet();
         Assertion.assertEquals(expectedData, actualData);
-        Assert.assertEquals(expectedData.getTable("person").getRowCount(), persons.size());
+        Assert.assertEquals(expectedData.getTable("User").getRowCount(), persons.size());
     }
 
 //    @Test
