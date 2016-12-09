@@ -1,4 +1,4 @@
-package java.services;
+package dataBaseUnit.services;
 
 
 import com.portal.entities.User;
@@ -6,7 +6,6 @@ import com.portal.services.api.UserService;
 import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
-import org.dbunit.operation.DatabaseOperation;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import java.config.DBUnitConfig;
-import java.services.contexsts.UserServiceTestContext;
+import dataBaseUnit.config.DBUnitConfig;
+import dataBaseUnit.services.contexsts.UserServiceTestContext;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,11 +23,13 @@ import java.util.List;
 //@DatabaseSetup(type = DatabaseOperation.REFRESH, value = {"User.xml"})
 public class UserServiceTest extends DBUnitConfig {
 
+
     @Autowired
     private UserService userService;
 
-    private EntityManager em = Persistence.createEntityManagerFactory("operator")
-            .createEntityManager();
+    public UserServiceTest() {
+        
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -43,9 +42,6 @@ public class UserServiceTest extends DBUnitConfig {
         tester.onSetup();
     }
 
-    public UserServiceTest(String name) {
-        super(name);
-    }
 
     @Test
     public void testGetAll() throws Exception {

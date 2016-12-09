@@ -1,4 +1,4 @@
-package java.config;
+package dataBaseUnit.config;
 
 import org.dbunit.*;
 import org.dbunit.dataset.IDataSet;
@@ -23,8 +23,7 @@ public class DBUnitConfig extends DBTestCase {
                 prop.getProperty("db.password"));
     }
 
-    public DBUnitConfig(String name) {
-        super(name);
+    public DBUnitConfig() {
         prop = new Properties();
         try {
             prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db.config.properties"));
