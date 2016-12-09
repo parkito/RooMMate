@@ -29,7 +29,7 @@ public class TestDataBaseConfig {
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "org.hibernate.dialect.MySQLDialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "true";
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "com.portal.entities";
-    private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "create-drop";
+//    private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "create";
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -67,7 +67,7 @@ public class TestDataBaseConfig {
         Properties properties = new Properties();
         properties.put("hibernate.dialect",	PROPERTY_NAME_HIBERNATE_DIALECT);
         properties.put("hibernate.show_sql", PROPERTY_NAME_HIBERNATE_SHOW_SQL);
-        properties.put("hibernate.hbm2ddl.auto", PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO);
+//        properties.put("hibernate.hbm2ddl.auto", PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO);
         return properties;
     }
 

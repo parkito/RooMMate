@@ -3,6 +3,7 @@ package dataBaseUnit.services;
 import com.portal.entities.User;
 import com.portal.services.api.UserService;
 import dataBaseUnit.services.contexsts.TestDataBaseConfig;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,6 +41,12 @@ public class SimpleUserServiceTest {
     @Test
     public void testSaveBank() throws Exception {
         User user = new User("NameUnic", "SecondName", "EmailUnic", "Password");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         userService.createEntity(user);
+        System.out.println(userService.getUserByEMAil(user.getEmail()));
+        Assert.assertNotEquals(userService.getUserByEMAil(user.getEmail()), null);
     }
 }
