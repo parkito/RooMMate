@@ -4,7 +4,7 @@ package dataBaseUnit.services;
 import com.portal.entities.User;
 import com.portal.services.api.UserService;
 import dataBaseUnit.config.DBUnitConfig;
-import dataBaseUnit.services.contexsts.TestDataBaseConfig;
+import dataBaseUnit.services.contexsts.UserServiceTestContext;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +18,7 @@ import java.util.List;
 
 @DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestDataBaseConfig.class})
-//@DatabaseSetup(type = DatabaseOperation.REFRESH, value = {"User.xml"})
+@ContextConfiguration(classes = {UserServiceTestContext.class})
 public class UserServiceTest extends DBUnitConfig {
 
     @Resource
