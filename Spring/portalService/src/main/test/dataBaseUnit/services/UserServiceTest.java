@@ -3,6 +3,8 @@ package dataBaseUnit.services;
 
 import com.portal.entities.User;
 import com.portal.services.api.UserService;
+import dataBaseUnit.config.DBUnitConfig;
+import dataBaseUnit.services.contexsts.UserServiceTestContext;
 import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
@@ -11,24 +13,24 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import dataBaseUnit.config.DBUnitConfig;
-import dataBaseUnit.services.contexsts.UserServiceTestContext;
+import javax.annotation.Resource;
 import java.util.List;
 
+@DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {UserServiceTestContext.class})
 //@DatabaseSetup(type = DatabaseOperation.REFRESH, value = {"User.xml"})
 public class UserServiceTest extends DBUnitConfig {
 
-
-    @Autowired
+    @Resource
     private UserService userService;
 
     public UserServiceTest() {
-        
+
     }
 
     @Before
