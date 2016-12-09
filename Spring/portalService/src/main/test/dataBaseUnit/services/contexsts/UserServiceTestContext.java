@@ -13,9 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class UserServiceTestContext {
-    @Bean
-    public UserService getUserService() {
-        return new UserServiceImpl();
-    }
+
 
 }
