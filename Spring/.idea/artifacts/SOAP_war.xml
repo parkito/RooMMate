@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="SOAP:war">
+    <output-path>$PROJECT_DIR$/soapService/target</output-path>
+    <root id="archive" name="SOAP_war.war">
+      <element id="artifact" artifact-name="SOAP:war exploded" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/soapService/src/main/resources/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

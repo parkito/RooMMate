@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ChatRoom.iml" filepath="$PROJECT_DIR$/ChatRoom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/portalService/MVC.iml" filepath="$PROJECT_DIR$/portalService/MVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soapService/SOAP.iml" filepath="$PROJECT_DIR$/soapService/SOAP.iml" />
+    </modules>
+  </component>
+</project>

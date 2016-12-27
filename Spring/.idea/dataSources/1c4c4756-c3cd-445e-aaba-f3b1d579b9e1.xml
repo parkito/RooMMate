@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - mydb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="mydb">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="mysql"/>
+    <schema id="4" name="performance_schema"/>
+    <schema id="5" name="sys"/>
+    <schema id="6" name="test"/>
+    <table id="7" parent="1" name="Groups"/>
+    <table id="8" parent="1" name="Groups_has_Rooms"/>
+    <table id="9" parent="1" name="Rooms"/>
+    <table id="10" parent="1" name="Users"/>
+    <table id="11" parent="1" name="Users_has_Groups"/>
+    <column id="12" parent="7" name="idGroups">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="13" parent="7" name="Title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <key id="14" parent="7" name="PRIMARY">
+      <columns>idGroups</columns>
+      <primary>1</primary>
+    </key>
+    <column id="15" parent="8" name="Groups_idGroups">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="16" parent="8" name="Rooms_idRooms">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="17" parent="8" name="fk_Groups_has_Rooms_Groups1_idx">
+      <columns>Groups_idGroups</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="18" parent="8" name="fk_Groups_has_Rooms_Rooms1_idx">
+      <columns>Rooms_idRooms</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="19" parent="8" name="PRIMARY">
+      <columns>Groups_idGroups
+Rooms_idRooms</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="20" parent="8" name="fk_Groups_has_Rooms_Groups1">
+      <columns>Groups_idGroups</columns>
+      <ref-key>~.Groups.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="21" parent="8" name="fk_Groups_has_Rooms_Rooms1">
+      <columns>Rooms_idRooms</columns>
+      <ref-key>~.Rooms.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="22" parent="9" name="idRooms">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="23" parent="9" name="Title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="24" parent="9" name="MaxMembers">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="25" parent="9" name="PRIMARY">
+      <columns>idRooms</columns>
+      <primary>1</primary>
+    </key>
+    <column id="26" parent="10" name="idUsers">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="27" parent="10" name="Name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="28" parent="10" name="SecondName">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="29" parent="10" name="Email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="30" parent="10" name="Password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <key id="31" parent="10" name="PRIMARY">
+      <columns>idUsers</columns>
+      <primary>1</primary>
+    </key>
+    <column id="32" parent="11" name="Users_idUsers">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="33" parent="11" name="Groups_idGroups">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="34" parent="11" name="fk_Users_has_Groups_Groups1_idx">
+      <columns>Groups_idGroups</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="35" parent="11" name="fk_Users_has_Groups_Users_idx">
+      <columns>Users_idUsers</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="36" parent="11" name="PRIMARY">
+      <columns>Users_idUsers
+Groups_idGroups</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="37" parent="11" name="fk_Users_has_Groups_Users">
+      <columns>Users_idUsers</columns>
+      <ref-key>~.Users.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="38" parent="11" name="fk_Users_has_Groups_Groups1">
+      <columns>Groups_idGroups</columns>
+      <ref-key>~.Groups.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>
