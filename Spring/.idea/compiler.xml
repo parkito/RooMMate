@@ -12,15 +12,14 @@
         <module name="MVC" />
         <module name="SOAP" />
         <module name="soapService" />
+        <module name="spring4soap" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="ChatRoom" target="1.5" />
       <module name="MVC" target="1.8" />
-      <module name="portalService" target="1.8" />
-      <module name="SOAP" target="1.8" />
-      <module name="soapService" target="1.5" />
-      <module name="Spring" target="1.5" />
+      <module name="SOAP" target="1.5" />
+      <module name="spring4soap" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
