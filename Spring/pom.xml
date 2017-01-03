@@ -10,22 +10,6 @@
     <name>ChatRoom Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>com.MVC</groupId>
-            <artifactId>MVC</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.SOAP</groupId>
-            <artifactId>SOAP</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-    </dependencies>
-
     <modules>
         <module>soapService</module>
         <module>portalService</module>
