@@ -35,28 +35,7 @@ public class ObjectFactory {
      */
     public ObjectFactory() {
     }
-
-    /**
-     * Create an instance of {@link GetStudentRequest }
-     */
-    public GetStudentRequest createGetStudentRequest() {
-        return new GetStudentRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetStudentResponse }
-     */
-    public GetStudentResponse createGetStudentResponse() {
-        return new GetStudentResponse();
-    }
-
-    /**
-     * Create an instance of {@link Student }
-     */
-    public Student createStudent() {
-        return new Student();
-    }
-
+    
     public GetUserRequest createGetUserRequest() {
         return new GetUserRequest();
     }

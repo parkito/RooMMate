@@ -1,6 +1,7 @@
 package com.concretepage;
 
 import com.concretepage.entities.UserXML;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
