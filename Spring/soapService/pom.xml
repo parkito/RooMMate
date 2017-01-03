@@ -13,7 +13,7 @@
     <groupId>com.SOAP</groupId>
     <artifactId>SOAP</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>SOAP</name>
     <description>SOAP service</description>
 
