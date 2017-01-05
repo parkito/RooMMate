@@ -15,15 +15,6 @@ import org.springframework.xml.xsd.XsdSchema;
 @ComponentScan("com.concretepage") 
 public class AppConfig extends WsConfigurerAdapter {
 
-//	@Bean(name = "students")
-//	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema studentsSchema) {
-//		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-//		wsdl11Definition.setPortTypeName("StudentsPort");
-//		wsdl11Definition.setLocationUri("/soapws");
-//		wsdl11Definition.setTargetNamespace("http://localhost:8080");
-//		wsdl11Definition.setSchema(studentsSchema);
-//		return wsdl11Definition;
-//	}
 	@Bean(name = "users")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema studentsSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();

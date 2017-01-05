@@ -35,7 +35,7 @@ public class ObjectFactory {
      */
     public ObjectFactory() {
     }
-    
+
     public GetUserRequest createGetUserRequest() {
         return new GetUserRequest();
     }
