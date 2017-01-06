@@ -1,4 +1,4 @@
-package soapResolver.controllers;
+package resolvers.soapResolver.controllers;
 
 import com.concretepage.AppConfig;
 import org.springframework.stereotype.Controller;
@@ -17,8 +17,7 @@ public class SoapController {
 
     @RequestMapping(value = "/soapws", method = RequestMethod.GET)
     public String soapService(HttpServletRequest req) {
-        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(AppConfig.class);
+        System.out.println("here");
         return "hello";
     }
 }
