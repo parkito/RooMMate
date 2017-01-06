@@ -11,6 +11,7 @@
 
     <!--<aop:aspectj-autoproxy/>-->
     <context:annotation-config/>
+    <context:component-scan base-package="resolvers"/>
     <context:component-scan base-package="com.portal"/>
     <!--<mvc:resources mapping="/assets/**" location="/assets/"/>-->
     <mvc:annotation-driven/>
