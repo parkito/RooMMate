@@ -13,6 +13,7 @@
     <modules>
         <module>soapService</module>
         <module>portalService</module>
+        <module>WebResolver</module>
     </modules>
 
     <properties>

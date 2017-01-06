@@ -1,4 +1,4 @@
-package com.portal.controllers;
+package webPagesResolver.controllers;
 
 import com.portal.entities.Grup;
 import com.portal.entities.Room;
