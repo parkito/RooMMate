@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller("SoapController")
 public class SoapController {
 
-    @RequestMapping(value = "/soapws", method = RequestMethod.GET)
+    @RequestMapping(value = "/soap/*", method = RequestMethod.GET)
     public String soapService(HttpServletRequest req) {
         System.out.println("here");
         return "hello";

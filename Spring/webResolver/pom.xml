@@ -33,6 +33,7 @@
             <artifactId>SOAP</artifactId>
             <version>1.0</version>
         </dependency>
+
     </dependencies>
     <build>
         <finalName>Web-Resolver</finalName>
@@ -41,5 +42,7 @@
         <java-version>1.8</java-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <cxf.version>3.0.2</cxf.version>
+        <cxf.scope>compile</cxf.scope>
     </properties>
 </project>
