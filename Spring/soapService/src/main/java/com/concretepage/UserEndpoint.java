@@ -23,7 +23,7 @@ public class UserEndpoint {
     @ResponsePayload
     public GetUserResponse getCountry(@RequestPayload GetUserRequest request) {
         GetUserResponse response = new GetUserResponse();
-        response.setUserXML(userUtility.getUserXML("a@b.ru"));
+        response.setUserXML(userUtility.getUserXML(request.getEmail()));
         return response;
     }
 }
