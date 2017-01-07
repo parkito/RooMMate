@@ -96,11 +96,6 @@ public class WebController {
             groupService.updateEntity(chGrup1);
             groupService.updateEntity(chGrup2);
 
-//            chRoom1.addGroup(chGrup1);
-//            chRoom2.addGroup(chGrup2);
-//            roomService.updateEntity(chRoom1);
-//            roomService.updateEntity(chRoom2);
-
 
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
@@ -138,7 +133,8 @@ public class WebController {
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
-    public String addUser(@RequestParam(value = "name") String name,
+    public String addUser(HttpServletRequest req,
+                          @RequestParam(value = "name") String name,
                           @RequestParam(value = "secondName") String secondName,
                           @RequestParam(value = "eMail") String eMail,
                           @RequestParam(value = "password") String password) {
@@ -147,43 +143,54 @@ public class WebController {
             User user = new User(name, secondName, eMail, password);
             userService.createEntity(user);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/addGroup", method = RequestMethod.GET)
-    public String addGroup(@RequestParam(value = "title") String title) {
+    public String addGroup(HttpServletRequest req,
+                           @RequestParam(value = "title") String title) {
 //        http://localhost:8099/addGroup?title=title
         try {
             Grup grup = new Grup(title);
             groupService.createEntity(grup);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/addRoom", method = RequestMethod.GET)
-    public String addRoom(@RequestParam(value = "title") String title,
+    public String addRoom(HttpServletRequest req,
+                          @RequestParam(value = "title") String title,
                           @RequestParam(value = "maxMembers") int maxMembers) {
 //        http://localhost:8099/addRoom?title=title&maxMembers=10
         try {
             Room room = new Room(title, maxMembers);
             roomService.createEntity(room);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    public String getUser(@RequestParam(value = "eMail") String eMail) {
+    public String getUser(HttpServletRequest req,
+                          @RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/getUser?eMail=eMail22
         try {
             User user = userService.getUserByEMAil(eMail);
             System.out.println(user);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
 
@@ -191,31 +198,38 @@ public class WebController {
     }
 
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
-    public String getGroup(@RequestParam(value = "title") String title) {
+    public String getGroup(HttpServletRequest req,
+                           @RequestParam(value = "title") String title) {
 //        http://localhost:8099/getGroup?title=title
         try {
             Grup grup = groupService.getGroupByTitle(title);
             System.out.println(grup);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/getRoom", method = RequestMethod.GET)
-    public String getRoom(@RequestParam(value = "title") String title) {
+    public String getRoom(HttpServletRequest req,
+                          @RequestParam(value = "title") String title) {
 //        http://localhost:8099/getRoom?title=title
         try {
             Room room = roomService.getRoomByTitle(title);
             System.out.println(room);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/addUserToGroup", method = RequestMethod.GET)
-    public String addUserToGroup(@RequestParam(value = "eMail") String eMail,
+    public String addUserToGroup(HttpServletRequest req,
+                                 @RequestParam(value = "eMail") String eMail,
                                  @RequestParam(value = "groupTitle") String groupTitle) {
 //        http://localhost:8099/addUserToGroup?eMail=email&groupTitle=title
         try {
@@ -224,13 +238,16 @@ public class WebController {
             user.addGroup(grup);
             userService.updateEntity(user);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/addGroupToRoom", method = RequestMethod.GET)
-    public String addGroupToRoom(@RequestParam(value = "roomTitle") String roomTitle,
+    public String addGroupToRoom(HttpServletRequest req,
+                                 @RequestParam(value = "roomTitle") String roomTitle,
                                  @RequestParam(value = "groupTitle") String groupTitle) {
 //        http://localhost:8099/addGroupToRoom?roomTitle=room&groupTitle=title
         try {
@@ -239,39 +256,50 @@ public class WebController {
             grup.addRoom(room);
             groupService.updateEntity(grup);
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String deleteUser(@RequestParam(value = "eMail") String eMail) {
+    public String deleteUser(HttpServletRequest req,
+                             @RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/deleteUser?eMail=email
         try {
             userService.deleteEntity(userService.getUserByEMAil(eMail));
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/deleteGroup", method = RequestMethod.GET)
-    public String deleteGroup(@RequestParam(value = "title") String title) {
+    public String deleteGroup(HttpServletRequest req,
+                              @RequestParam(value = "title") String title) {
 //        http://localhost:8099/deleteGroup?title=title
         try {
             groupService.deleteEntity(groupService.getGroupByTitle(title));
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
     }
 
     @RequestMapping(value = "/deleteRoom", method = RequestMethod.GET)
-    public String deleteRoom(@RequestParam(value = "title") String title) {
+    public String deleteRoom(HttpServletRequest req,
+                             @RequestParam(value = "title") String title) {
 //        http://localhost:8099/deleteRoom?title=title
         try {
             roomService.deleteEntity(roomService.getRoomByTitle(title));
         } catch (DAOException ex) {
+            req.setAttribute("Message", ex.getStackTrace());
+            req.setAttribute("Ex", ex);
             return "exception";
         }
         return "hello";
