@@ -24,6 +24,7 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Controller("WebController")
+@RequestMapping("/web")
 public class WebController {
     @Autowired
     private UserService userService;
@@ -33,6 +34,11 @@ public class WebController {
 
     @Autowired
     private RoomService roomService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homePage() {
+        return "hello";
+    }
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public String initialization(HttpServletRequest req) {
