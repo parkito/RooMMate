@@ -24,7 +24,6 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Controller("WebController")
-@RequestMapping("/web")
 public class WebController {
     @Autowired
     private UserService userService;
