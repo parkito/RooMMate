@@ -7,8 +7,9 @@
     <parent>
         <groupId>com.ChatRoom</groupId>
         <artifactId>ChatRoom</artifactId>
-        <version>1.0</version>
-    </parent>
+	<version>1.0</version>
+	<relativePath>../pom.xml</relativePath>
+  </parent>
 
     <groupId>com.SOAP</groupId>
     <artifactId>SOAP</artifactId>
