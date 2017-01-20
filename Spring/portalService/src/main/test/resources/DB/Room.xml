@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<dataset>
-  <Room idRooms="158" Title="room1" MaxMembers="10"/>
-  <Room idRooms="159" Title="room2" MaxMembers="10"/>
-  <Room idRooms="160" Title="room3" MaxMembers="10"/>
-  <Room idRooms="161" Title="room4" MaxMembers="10"/>
-  <Room idRooms="162" Title="room5" MaxMembers="10"/>
-  <Room idRooms="163" Title="room6" MaxMembers="10"/>
-</dataset>
