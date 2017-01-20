@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  *         artem.karnov@t-systems.com
  **/
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.portal, resolver,com.concretepage"})
+@ComponentScan(basePackages = {"com.portal, resolvers, com.concretepage"})
 @EntityScan("com.portal")
 @EnableJpaRepositories("com.portal")
 public class Application extends SpringBootServletInitializer {
