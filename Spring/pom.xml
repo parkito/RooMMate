@@ -68,44 +68,14 @@
 
     </dependencies>
 
-    <build>
+   <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                        <compress>true</compress>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>resolvers.Application</mainClass>
-                        </manifest>
-                    </archive>
+                    <mainClass>resolvers.Application</mainClass>
                 </configuration>
-                <version>3.0.2</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-                <version>2.10</version>
             </plugin>
         </plugins>
     </build>
@@ -114,7 +84,6 @@
         <java-version>1.8</java-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <start-class>resolvers.Application</start-class>
     </properties>
 
 </project>
