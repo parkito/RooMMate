@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>ChatRoom</artifactId>
+        <groupId>com.ChatRoom</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Web-Resolver</artifactId>
+    <packaging>war</packaging>
+    <name>Web-Resolver module</name>
+    <url>http://maven.apache.org</url>
+
+    <modules>
+        <!--<module>soapService</module>-->
+        <!--<module>portalService</module>-->
+        <module>webResolver</module>
+    </modules>
+
+    <dependencies>
+
+        <!--<dependency>-->
+            <!--<groupId>com.MVC</groupId>-->
+            <!--<artifactId>MVC</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>com.SOAP</groupId>-->
+            <!--<artifactId>SOAP</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>resolvers.Application</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <java-version>1.8</java-version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <cxf.version>3.0.2</cxf.version>
+        <cxf.scope>compile</cxf.scope>
+        <jackson.databind-version>2.8.5</jackson.databind-version>
+    </properties>
+
+</project>
+
