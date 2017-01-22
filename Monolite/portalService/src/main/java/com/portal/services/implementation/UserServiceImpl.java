@@ -6,7 +6,8 @@ import com.portal.exceptions.DAOException;
 import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.UserService;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import java.util.List;
  **/
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    private static final Logger log = Logger.getLogger(UserServiceImpl.class);
+    private static Logger log = LogManager.getLogger();
 
     @Autowired
     private UserDAO userDAO;
