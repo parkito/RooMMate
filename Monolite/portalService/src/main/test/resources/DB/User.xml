@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <User idUsers="162" Name="name1" SecondName="secondName1" Email="email1" Password="password1"/>
+  <User idUsers="163" Name="name2" SecondName="secondName2" Email="email2" Password="password2"/>
+  <User idUsers="164" Name="name3" SecondName="secondName3" Email="email3" Password="password3"/>
+  <User idUsers="165" Name="name4" SecondName="secondName4" Email="email4" Password="password4"/>
+  <User idUsers="166" Name="name5" SecondName="secondName5" Email="email5" Password="password5"/>
+  <User idUsers="167" Name="name6" SecondName="secondName6" Email="email6" Password="password6"/>
+</dataset>
