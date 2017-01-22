@@ -6,6 +6,7 @@ import com.portal.exceptions.DAOException;
 import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,7 @@ import java.util.List;
  **/
 @Service("userService")
 public class UserServiceImpl implements UserService {
+    private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDAO userDAO;
@@ -32,6 +34,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void createEntity(User user) throws DAOException {
         if (!isUserExists(user)) {
+            log.info("User " + user + " already exists");
             userDAO.create(user);
         } else {
             throw new EntityAlreadyExistsException("User with email " + user.getEmail() + " already exists");
