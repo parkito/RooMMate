@@ -1,4 +1,4 @@
-package resolvers.webPagesResolver.controllers;
+package com.portal.controllers;
 
 import com.portal.entities.Grup;
 import com.portal.entities.Room;
@@ -27,7 +27,7 @@ import java.util.List;
  **/
 @Controller("WebController")
 public class WebController {
-    static final Logger logger = LogManager.getLogger(WebController.class.getName());
+    static final Logger log = LogManager.getLogger(WebController.class);
 
     @Autowired
     private UserService userService;
@@ -40,10 +40,10 @@ public class WebController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage() {
-        logger.error("Message logged at ERROR level");
-        logger.warn("Message logged at WARN level");
-        logger.info("Message logged at INFO level");
-        logger.debug("Message logged at DEBUG level");
+        log.error("Message logged at ERROR level");
+        log.warn("Message logged at WARN level");
+        log.info("Message logged at INFO level");
+        log.debug("Message logged at DEBUG level");
         return "hello";
     }
 
@@ -51,10 +51,10 @@ public class WebController {
     public String initialization(HttpServletRequest req) {
         try {
             //add users
-            logger.error("Message logged at ERROR level");
-            logger.warn("Message logged at WARN level");
-            logger.info("Message logged at INFO level");
-            logger.debug("Message logged at DEBUG level");
+            log.error("Message logged at ERROR level");
+            log.warn("Message logged at WARN level");
+            log.info("Message logged at INFO level");
+            log.debug("Message logged at DEBUG level");
             User user = new User("name1", "secondName1", "email1", "password1");
             User user1 = new User("name2", "secondName2", "email2", "password2");
             User user2 = new User("name3", "secondName3", "email3", "password3");

@@ -1,13 +1,14 @@
 package com.portal.exceptions;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @author Artem Karnov @date 23.11.2016.
  *         artem.karnov@t-systems.com
  **/
 public class EntityAlreadyExistsException extends DAOException {
-    private static final Logger log = Logger.getLogger(EntityAlreadyExistsException.class);
+    private static Logger log = LogManager.getLogger();
 
     /**
      * Exception with message for situation when group entity already exists
