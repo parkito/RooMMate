@@ -7,6 +7,8 @@ import com.portal.exceptions.DAOException;
 import com.portal.services.api.GroupService;
 import com.portal.services.api.RoomService;
 import com.portal.services.api.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,8 @@ import java.util.List;
  **/
 @Controller("WebController")
 public class WebController {
+    private static Logger logger = LogManager.getLogger(WebController.class);
+
     @Autowired
     private UserService userService;
 
@@ -36,6 +40,11 @@ public class WebController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage() {
+        logger.debug("This is a debug message");
+        logger.info("This is an info message");
+        logger.warn("This is a warn message");
+        logger.error("This is an error message");
+        logger.fatal("This is a fatal message");
         return "hello";
     }
 
