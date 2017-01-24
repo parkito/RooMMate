@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
  *         artem.karnov@t-systems.com
  **/
 public class EntityAlreadyExistsException extends DAOException {
-    private static Logger log = LogManager.getLogger(EntityAlreadyExistsException.class);
+    private static Logger logger = LogManager.getLogger(EntityAlreadyExistsException.class);
 
     /**
      * Exception with message for situation when group entity already exists
@@ -17,7 +17,7 @@ public class EntityAlreadyExistsException extends DAOException {
      */
     public EntityAlreadyExistsException(String message) {
         super(message);
-        log.warn(message);
+        logger.warn(message);
     }
 
     /**
@@ -28,6 +28,6 @@ public class EntityAlreadyExistsException extends DAOException {
      */
     public EntityAlreadyExistsException(String message, Throwable throwable) {
         super(message, throwable);
-        log.warn(message, throwable);
+        logger.warn(message, throwable);
     }
 }

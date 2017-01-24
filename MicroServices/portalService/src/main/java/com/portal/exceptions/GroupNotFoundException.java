@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
  *         artem.karnov@t-systems.com
  **/
 public class GroupNotFoundException extends DAOException {
-    private static Logger log = LogManager.getLogger(GroupNotFoundException.class);
+    private static Logger logger = LogManager.getLogger(GroupNotFoundException.class);
     /**
      * Exception with message for situation when group wasn't found
      *
@@ -17,7 +17,7 @@ public class GroupNotFoundException extends DAOException {
      */
     public GroupNotFoundException(String message) {
         super(message);
-        log.warn(message);
+        logger.warn(message);
     }
 
     /**
@@ -28,6 +28,6 @@ public class GroupNotFoundException extends DAOException {
      */
     public GroupNotFoundException(String message, Throwable throwable) {
         super(message, throwable);
-        log.warn(message, throwable);
+        logger.warn(message, throwable);
     }
 }

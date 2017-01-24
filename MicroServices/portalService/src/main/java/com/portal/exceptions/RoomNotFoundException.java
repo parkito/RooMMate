@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
  *         artem.karnov@t-systems.com
  **/
 public class RoomNotFoundException extends DAOException {
-    private static Logger log = LogManager.getLogger(RoomNotFoundException.class);
+    private static Logger logger = LogManager.getLogger(RoomNotFoundException.class);
 
     /**
      * Exception with message for situation when room wasn't found
@@ -17,7 +17,7 @@ public class RoomNotFoundException extends DAOException {
      */
     public RoomNotFoundException(String message) {
         super(message);
-        log.warn(message);
+        logger.warn(message);
     }
 
     /**
@@ -28,7 +28,7 @@ public class RoomNotFoundException extends DAOException {
      */
     public RoomNotFoundException(String message, Throwable throwable) {
         super(message, throwable);
-        log.warn(message, throwable);
+        logger.warn(message, throwable);
 
     }
 }

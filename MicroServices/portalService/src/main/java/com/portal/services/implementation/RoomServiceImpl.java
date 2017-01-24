@@ -6,6 +6,8 @@ import com.portal.exceptions.DAOException;
 import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.RoomNotFoundException;
 import com.portal.services.api.RoomService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,7 @@ import java.util.List;
  **/
 @Service("roomService")
 public class RoomServiceImpl implements RoomService {
+    private static Logger logger = LogManager.getLogger(RoomServiceImpl.class);
 
     @Autowired
     private RoomDAO roomDAO;
@@ -27,6 +30,7 @@ public class RoomServiceImpl implements RoomService {
     @Transactional
     public void createEntity(Room room) throws DAOException {
         if (!isRoomExists(room)) {
+            logger.info("Room " + room + "was successfully created");
             roomDAO.create(room);
         } else {
             throw new EntityAlreadyExistsException("Room " + room.getTitle() + " already exists");
@@ -106,6 +110,7 @@ public class RoomServiceImpl implements RoomService {
         try {
             return getRoomByTitle(room.getTitle()) != null ? true : false;
         } catch (RoomNotFoundException ex) {
+            logger.warn("Room " + room + "isn't exist");
             return false;
         }
     }

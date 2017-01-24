@@ -5,7 +5,10 @@ import com.portal.entities.Grup;
 import com.portal.exceptions.DAOException;
 import com.portal.exceptions.EntityAlreadyExistsException;
 import com.portal.exceptions.GroupNotFoundException;
+import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.GroupService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +21,7 @@ import java.util.List;
  **/
 @Service("groupService")
 public class GroupServiceImpl implements GroupService {
+    private static Logger logger = LogManager.getLogger(GroupServiceImpl.class);
 
     @Autowired
     private GroupDAO groupDAO;
@@ -27,6 +31,7 @@ public class GroupServiceImpl implements GroupService {
     public void createEntity(Grup grup) throws DAOException {
         if (!isGroupExists(grup)) {
             groupDAO.create(grup);
+            logger.info("Group " + grup + "was successfully created");
         } else {
             throw new EntityAlreadyExistsException("Group " + grup.getTitle() + " already exists");
         }
@@ -104,6 +109,7 @@ public class GroupServiceImpl implements GroupService {
         try {
             return getGroupByTitle(grup.getTitle()) != null ? true : false;
         } catch (GroupNotFoundException ex) {
+            logger.warn("Group " + grup + "isn't exist");
             return false;
         }
     }
