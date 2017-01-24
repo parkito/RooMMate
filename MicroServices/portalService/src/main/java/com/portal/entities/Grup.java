@@ -26,14 +26,13 @@ public class Grup implements Serializable {
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "Grup_idGroups")},
             inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
-    List<User> users;
+    private List<User> users;
 
 
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(name = "Room_has_Grup", joinColumns = {
 //            @JoinColumn(name = "Grup_idGroups")},
 //            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
-//    @OneToMany(mappedBy = "grup", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Room> rooms = new ArrayList<>();
 
     public Grup() {

@@ -30,7 +30,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
                     setParameter("eMail", eMail);
             User user = (User) query.getSingleResult();
             logger.info("User with email = " + eMail + " was successfully read");
-            return (User) query.getSingleResult();
+            return user;
         } catch (PersistenceException ex) {
             throw new UserNotFoundException("User with email " + eMail + " wasn't found!", ex);
         }

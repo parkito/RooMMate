@@ -201,6 +201,7 @@ public class RestController {
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
+            return null;
         }
         return user;
     }
@@ -216,6 +217,7 @@ public class RestController {
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
+            return null;
         }
         return grup;
     }
@@ -228,10 +230,10 @@ public class RestController {
         Room room = new Room();
         try {
             room = roomService.getRoomByTitle(title);
-            System.out.println(room);
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
+            return null;
         }
         return room;
     }

@@ -1,7 +1,5 @@
 package com.portal.entities;
 
-import com.portal.exceptions.DAOException;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,9 +26,13 @@ public class Room implements Serializable {
     @Column(name = "MaxMembers")
     private int maxMembers;
 
-//    @ManyToOne
-//    @JoinColumn(name = "rooms")
-//    private Grup grup;
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "Room_has_Grup", joinColumns = {
+            @JoinColumn(name = "Room_idRooms")},
+            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
+    private List<Grup> grups = new ArrayList<>();
 
 
     public Room() {
