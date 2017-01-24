@@ -27,13 +27,19 @@ public class Room implements Serializable {
     private int maxMembers;
 
 
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Room_has_Grup", joinColumns = {
             @JoinColumn(name = "Room_idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
     private List<Grup> grups = new ArrayList<>();
 
+    public List<Grup> getGrups() {
+        return grups;
+    }
+
+    public void setGrups(List<Grup> grups) {
+        this.grups = grups;
+    }
 
     public Room() {
     }
