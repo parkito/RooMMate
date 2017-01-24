@@ -28,8 +28,9 @@ public class Room implements Serializable {
     @Column(name = "MaxMembers")
     private int maxMembers;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "rooms")
-    private List<Grup> grups = new ArrayList();
+//    @ManyToOne
+//    @JoinColumn(name = "rooms")
+//    private Grup grup;
 
 
     public Room() {
@@ -40,15 +41,23 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
-    public List<Grup> getGrups() {
-        return grups;
-    }
+//    public Grup getGrup() {
+//        return grup;
+//    }
+//
+//    public void setGrup(Grup grup) {
+//        this.grup = grup;
+//    }
 
-    public void addGroup(Grup grup) {
-        if (!grups.contains(grup)) {
-            grups.add(grup);
-        } else throw new DAOException(grup.getTitle() + " already in " + title);
-    }
+    //    public List<Grup> getGrup() {
+//        return grup;
+//    }
+//
+//    public void addGroup(Grup grup) {
+//        if (!grup.contains(grup)) {
+//            grup.add(grup);
+//        } else throw new DAOException(grup.getTitle() + " already in " + title);
+//    }
 
     public int getIdRooms() {
         return idRooms;
@@ -86,7 +95,6 @@ public class Room implements Serializable {
         if (idRooms != room.idRooms) return false;
         if (maxMembers != room.maxMembers) return false;
         if (title != null ? !title.equals(room.title) : room.title != null) return false;
-        if (grups != null ? !grups.equals(room.grups) : room.grups != null) return false;
 
         return true;
     }
@@ -96,7 +104,6 @@ public class Room implements Serializable {
         int result = idRooms;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + maxMembers;
-        result = 31 * result + (grups != null ? grups.hashCode() : 0);
         return result;
     }
 }

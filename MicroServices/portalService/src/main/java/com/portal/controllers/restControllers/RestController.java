@@ -99,8 +99,8 @@ public class RestController {
             userService.updateEntity(chUser2);
 
             //group to room
-            chGrup1.addRoom(chRoom1);
-            chGrup2.addRoom(chRoom2);
+//            chGrup1.addRoom(chRoom1);
+//            chGrup2.addRoom(chRoom2);
             groupService.updateEntity(chGrup1);
             groupService.updateEntity(chGrup2);
 
@@ -262,7 +262,7 @@ public class RestController {
         try {
             Room room = roomService.getRoomByTitle(roomTitle);
             Grup grup = groupService.getGroupByTitle(groupTitle);
-            grup.addRoom(room);
+//            grup.addRoom(room);
             groupService.updateEntity(grup);
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());

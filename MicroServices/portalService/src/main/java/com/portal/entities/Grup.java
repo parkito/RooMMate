@@ -22,15 +22,19 @@ public class Grup implements Serializable {
     @Column(name = "title", length = 45)
     private String title;
 
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "grups")
-//    private List<User> users = new ArrayList();
-
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "Room_has_Grup", joinColumns = {
+    @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "Grup_idGroups")},
-            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
-    private List<Room> rooms = new ArrayList<>();
+            inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
+    List<User> users;
+
+
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "Room_has_Grup", joinColumns = {
+//            @JoinColumn(name = "Grup_idGroups")},
+//            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
+//    @OneToMany(mappedBy = "grup", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Room> rooms = new ArrayList<>();
 
     public Grup() {
     }
@@ -49,13 +53,13 @@ public class Grup implements Serializable {
 //        return users;
 //    }
 
-    public List<Room> getRooms() {
-        return rooms;
-    }
+//    public List<Room> getRooms() {
+//        return rooms;
+//    }
 
-    public void addRoom(Room room) {
-        rooms.add(room);
-    }
+//    public void addRoom(Room room) {
+//        rooms.add(room);
+//    }
 
     public int getIdGroups() {
         return idGroups;
