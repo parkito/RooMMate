@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
  **/
 public class GroupNotFoundException extends DAOException {
     private static Logger logger = LogManager.getLogger(GroupNotFoundException.class);
+
     /**
      * Exception with message for situation when group wasn't found
      *

@@ -1,7 +1,5 @@
 package com.portal.entities;
 
-import com.portal.exceptions.DAOException;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;

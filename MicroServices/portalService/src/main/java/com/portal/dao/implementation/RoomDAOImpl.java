@@ -3,6 +3,8 @@ package com.portal.dao.implementation;
 import com.portal.dao.api.RoomDAO;
 import com.portal.entities.Room;
 import com.portal.exceptions.RoomNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -16,15 +18,21 @@ import javax.persistence.Query;
  **/
 @Repository("roomDAO")
 public class RoomDAOImpl extends GenericDAOImpl<Room, Integer> implements RoomDAO {
+    private static Logger logger = LogManager.getLogger(RoomDAOImpl.class);
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * @param title title of room for getting
+     * @return room that was gotten
+     */
     @Override
     public Room getRoomByTitle(String title) {
         try {
             Query query = entityManager.createQuery("select r from Room r where r.title=:title")
                     .setParameter("title", title);
+            logger.info("Room " + title + "was successfully read");
             return (Room) query.getSingleResult();
         } catch (PersistenceException ex) {
             throw new RoomNotFoundException("Room " + title + " wasn't found!", ex);
