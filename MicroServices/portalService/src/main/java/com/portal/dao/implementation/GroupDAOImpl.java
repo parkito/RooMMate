@@ -32,7 +32,7 @@ public class GroupDAOImpl extends GenericDAOImpl<Grup, Integer> implements Group
         try {
             Query query = entityManager.createQuery("select g from Grup g where g.title=:title")
                     .setParameter("title", title);
-            logger.info("Group " + title + "was successfully read");
+            logger.info("Group " + title + " was successfully read");
             return (Grup) query.getSingleResult();
         } catch (PersistenceException ex) {
             throw new GroupNotFoundException("Grup " + title + " wasn't found!", ex);

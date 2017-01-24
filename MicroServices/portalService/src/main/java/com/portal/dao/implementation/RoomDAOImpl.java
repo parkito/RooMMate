@@ -33,7 +33,7 @@ public class RoomDAOImpl extends GenericDAOImpl<Room, Integer> implements RoomDA
             Query query = entityManager.createQuery("select r from Room r where r.title=:title")
                     .setParameter("title", title);
             Room room = (Room) query.getSingleResult();
-            logger.info("Room " + title + "was successfully read");
+            logger.info("Room " + title + " was successfully read");
             return room;
         } catch (PersistenceException ex) {
             throw new RoomNotFoundException("Room " + title + " wasn't found!", ex);

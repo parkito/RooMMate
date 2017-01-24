@@ -31,7 +31,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/");
         viewResolver.setSuffix(".jsp");
         registry.viewResolver(viewResolver);
-        logger.info("Resolving paths for web-pages in com.portal.conf.AppConfig.class");
+        logger.info("Resolving paths for web-pages");
     }
 
     /**
@@ -40,7 +40,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-        logger.info("Resolving resources for pages in com.portal.conf.AppConfig.class");
+        logger.info("Resolving resources for pages");
     }
 
     /**
@@ -52,7 +52,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
-        logger.info("Configuring path matches for pages in com.portal.conf.AppConfig.class");
+        logger.info("Configuring path matches for pages");
 
     }
 }

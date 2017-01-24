@@ -39,7 +39,7 @@ public class JpaConfiguration {
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
-        logger.info("Configuring data source in com.portal.conf.JpaConfiguration.class");
+        logger.info("Configuring data source");
         return dataSource;
     }
 
@@ -50,7 +50,7 @@ public class JpaConfiguration {
         factoryBean.setPackagesToScan(new String[]{"com.portal"});
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
         factoryBean.setJpaProperties(jpaProperties());
-        logger.info("Configuring entity manager in com.portal.conf.JpaConfiguration.class");
+        logger.info("Configuring entity manager");
         return factoryBean;
     }
 
@@ -60,7 +60,7 @@ public class JpaConfiguration {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        logger.info("Configuring jpaAdapter in com.portal.conf.JpaConfiguration.class");
+        logger.info("Configuring jpaAdapter");
         return hibernateJpaVendorAdapter;
     }
 
@@ -73,7 +73,7 @@ public class JpaConfiguration {
         // properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-        logger.info("Configuring jpa properties in com.portal.conf.JpaConfiguration.class");
+        logger.info("Configuring jpa properties");
         return properties;
     }
 
@@ -82,7 +82,7 @@ public class JpaConfiguration {
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager txManager = new JpaTransactionManager();
         txManager.setEntityManagerFactory(emf);
-        logger.info("Configuring platform transaction manager  in com.portal.conf.JpaConfiguration.class");
+        logger.info("Configuring platform transaction manager");
         return txManager;
     }
 }
