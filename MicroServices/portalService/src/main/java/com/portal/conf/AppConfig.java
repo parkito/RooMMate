@@ -39,7 +39,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
         logger.info("Resolving resources for pages in com.portal.conf.AppConfig.class");
     }
 
