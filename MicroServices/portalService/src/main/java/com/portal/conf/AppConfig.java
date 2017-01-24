@@ -1,5 +1,8 @@
 package com.portal.conf;
 
+import com.portal.dao.implementation.UserDAOImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.portal")
 public class AppConfig extends WebMvcConfigurerAdapter {
+    private static Logger logger = LogManager.getLogger(AppConfig.class);
 
     /**
      * Configure ViewResolvers to deliver preferred views.
@@ -27,6 +31,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/");
         viewResolver.setSuffix(".jsp");
         registry.viewResolver(viewResolver);
+        logger.info("Resolving paths for web-pages in com.portal.conf.AppConfig.class");
     }
 
     /**
@@ -35,6 +40,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        logger.info("Resolving resources for pages in com.portal.conf.AppConfig.class");
     }
 
     /**
@@ -46,5 +52,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
+        logger.info("Configuring path matches for pages in com.portal.conf.AppConfig.class");
+
     }
 }
