@@ -26,6 +26,7 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 @Controller("WebController")
+@RequestMapping(value = "/web")
 public class WebController {
     static final Logger log = LogManager.getLogger(WebController.class);
 
@@ -40,21 +41,13 @@ public class WebController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage() {
-        log.error("Message logged at ERROR level");
-        log.warn("Message logged at WARN level");
-        log.info("Message logged at INFO level");
-        log.debug("Message logged at DEBUG level");
-        return "hello";
+        return "index";
     }
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public String initialization(HttpServletRequest req) {
         try {
             //add users
-            log.error("Message logged at ERROR level");
-            log.warn("Message logged at WARN level");
-            log.info("Message logged at INFO level");
-            log.debug("Message logged at DEBUG level");
             User user = new User("name1", "secondName1", "email1", "password1");
             User user1 = new User("name2", "secondName2", "email2", "password2");
             User user2 = new User("name3", "secondName3", "email3", "password3");
