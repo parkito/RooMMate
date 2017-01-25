@@ -84,7 +84,6 @@ public class RoomServiceImpl implements RoomService {
     @Transactional
     public List<Room> getAll() throws DAOException {
         return roomDAO.getAll();
-
     }
 
     /**

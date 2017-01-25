@@ -315,4 +315,11 @@ public class RestController {
         }
         return "hello";
     }
+
+    @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+    @ResponseBody
+    public List<User> getAllUsers(HttpServletRequest req) {
+        return userService.getAll();
+    }
+
 }

@@ -89,7 +89,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public List<User> getAll() throws DAOException {
         return userDAO.getAll();
-
     }
 
     /**
