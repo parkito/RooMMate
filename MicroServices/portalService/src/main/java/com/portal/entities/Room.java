@@ -31,14 +31,14 @@ public class Room implements Serializable {
     @JoinTable(name = "Room_has_Grup", joinColumns = {
             @JoinColumn(name = "Room_idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Grup> grups = new ArrayList<>();
+    private List<Group> groups = new ArrayList<>();
 
-    public List<Grup> getGrups() {
-        return grups;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setGrups(List<Grup> grups) {
-        this.grups = grups;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public Room() {
@@ -49,19 +49,19 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
-//    public Grup getGrup() {
+//    public Group getGrup() {
 //        return grup;
 //    }
 //
-//    public void setGrup(Grup grup) {
+//    public void setGrup(Group grup) {
 //        this.grup = grup;
 //    }
 
-    //    public List<Grup> getGrup() {
+    //    public List<Group> getGrup() {
 //        return grup;
 //    }
 //
-//    public void addGroup(Grup grup) {
+//    public void addGroup(Group grup) {
 //        if (!grup.contains(grup)) {
 //            grup.add(grup);
 //        } else throw new DAOException(grup.getTitle() + " already in " + title);
