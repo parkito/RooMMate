@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 public class DTOtoEntityConvertException extends DAOException {
 
-    private static Logger logger = LogManager.getLogger(com.portal.exceptions.EntityToDTOConvertException.class);
+    private static Logger logger = LogManager.getLogger(DTOtoEntityConvertException.class);
 
     /**
      * Exception with message for situation when there is error in DTOtoEntityConverter

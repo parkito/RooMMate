@@ -62,6 +62,7 @@ public class WebController {
             userService.createEntity(user5);
 
             //add grups
+<<<<<<< HEAD
             Group group = new Group("title");
             Group group1 = new Group("title1");
             Group group2 = new Group("title2");
@@ -70,6 +71,16 @@ public class WebController {
             groupService.createEntity(group1);
             groupService.createEntity(group2);
             groupService.createEntity(group3);
+=======
+            Group grup = new Group("title");
+            Group grup1 = new Group("title1");
+            Group grup2 = new Group("title2");
+            Group grup3 = new Group("title3");
+            groupService.createEntity(grup);
+            groupService.createEntity(grup1);
+            groupService.createEntity(grup2);
+            groupService.createEntity(grup3);
+>>>>>>> Sprint2
 
             //add rooms
             Room room = new Room("room1", 10);
@@ -88,8 +99,13 @@ public class WebController {
             //getting data from bd
             Room chRoom1 = roomService.getRoomByTitle(room.getTitle());
             Room chRoom2 = roomService.getRoomByTitle(room1.getTitle());
+<<<<<<< HEAD
             Group chGroup1 = groupService.getGroupByTitle(group.getTitle());
             Group chGroup2 = groupService.getGroupByTitle(group2.getTitle());
+=======
+            Group chGrup1 = groupService.getGroupByTitle(grup.getTitle());
+            Group chGrup2 = groupService.getGroupByTitle(grup2.getTitle());
+>>>>>>> Sprint2
             User chUser1 = userService.getUserByEMAil(user.getEmail());
             User chUser2 = userService.getUserByEMAil(user2.getEmail());
 
@@ -123,8 +139,13 @@ public class WebController {
             for (User usr : users) {
                 userService.deleteEntity(usr);
             }
+<<<<<<< HEAD
             List<Group> groups = groupService.getAll();
             for (Group grps : groups) {
+=======
+            List<Group> grups = groupService.getAll();
+            for (Group grps : grups) {
+>>>>>>> Sprint2
                 groupService.deleteEntity(grps);
             }
 
@@ -165,8 +186,13 @@ public class WebController {
                            @RequestParam(value = "title") String title) {
 //        http://localhost:8099/addGroup?title=title
         try {
+<<<<<<< HEAD
             Group group = new Group(title);
             groupService.createEntity(group);
+=======
+            Group grup = new Group(title);
+            groupService.createEntity(grup);
+>>>>>>> Sprint2
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
@@ -212,8 +238,13 @@ public class WebController {
                            @RequestParam(value = "title") String title) {
 //        http://localhost:8099/getGroup?title=title
         try {
+<<<<<<< HEAD
             Group group = groupService.getGroupByTitle(title);
             System.out.println(group);
+=======
+            Group grup = groupService.getGroupByTitle(title);
+            System.out.println(grup);
+>>>>>>> Sprint2
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
@@ -244,8 +275,13 @@ public class WebController {
 //        http://localhost:8099/addUserToGroup?eMail=email&groupTitle=title
         try {
             User user = userService.getUserByEMAil(eMail);
+<<<<<<< HEAD
             Group group = groupService.getGroupByTitle(groupTitle);
             user.addGroup(group);
+=======
+            Group grup = groupService.getGroupByTitle(groupTitle);
+            user.addGroup(grup);
+>>>>>>> Sprint2
             userService.updateEntity(user);
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
@@ -262,9 +298,15 @@ public class WebController {
 //        http://localhost:8099/addGroupToRoom?roomTitle=room&groupTitle=title
         try {
             Room room = roomService.getRoomByTitle(roomTitle);
+<<<<<<< HEAD
             Group group = groupService.getGroupByTitle(groupTitle);
 //            group.addRoom(room);
             groupService.updateEntity(group);
+=======
+            Group grup = groupService.getGroupByTitle(groupTitle);
+//            grup.addRoom(room);
+            groupService.updateEntity(grup);
+>>>>>>> Sprint2
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);

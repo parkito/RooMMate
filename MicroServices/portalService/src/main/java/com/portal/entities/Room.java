@@ -31,6 +31,7 @@ public class Room implements Serializable {
     @JoinTable(name = "Room_has_Grup", joinColumns = {
             @JoinColumn(name = "Room_idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
+
     private List<Group> groups = new ArrayList<>();
 
     public List<Group> getGroups() {

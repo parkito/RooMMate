@@ -42,6 +42,8 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
     private List<Group> groups = new ArrayList();
 
+
+
     public User() {
     }
 
@@ -52,13 +54,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void addGroup(Group group) {
-        if (!groups.contains(group))
-            groups.add(group);
-        else throw new DAOException(group.getTitle() + " already in " + email);
+
+    public void addGroup(Group grup) {
+        if (!groups.contains(grup))
+            groups.add(grup);
+        else throw new DAOException(grup.getTitle() + " already in " + email);
     }
 
-    public List<Group> getGroups() {
+    public List<Group> getGrups() {
         return groups;
     }
 
@@ -124,5 +127,15 @@ public class User implements Serializable {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUsers=" + idUsers +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

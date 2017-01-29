@@ -28,12 +28,13 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public void createEntity(Group group) throws DAOException {
-        if (!isGroupExists(group)) {
-            groupDAO.create(group);
-            logger.info("Group " + group + "was successfully created");
+
+    public void createEntity(Group grup) throws DAOException {
+        if (!isGroupExists(grup)) {
+            groupDAO.create(grup);
+            logger.info("Group " + grup + "was successfully created");
         } else {
-            throw new EntityAlreadyExistsException("Group " + group.getTitle() + " already exists");
+            throw new EntityAlreadyExistsException("Group " + grup.getTitle() + " already exists");
         }
     }
 
@@ -105,6 +106,7 @@ public class GroupServiceImpl implements GroupService {
      * @param group entity for checking
      * @return true - if group exists, false if doesn't
      */
+
     public boolean isGroupExists(Group group) {
         try {
             return getGroupByTitle(group.getTitle()) != null ? true : false;

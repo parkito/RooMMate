@@ -2,6 +2,7 @@ package com.portal.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Grup")
-@NamedQuery(name = "Grup.getAll", query = "SELECT g FROM Grup g")
+@NamedQuery(name = "Group.getAll", query = "SELECT g FROM Group g")
 public class Group implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,13 @@ public class Group implements Serializable {
             @JoinColumn(name = "Grup_idGroups")},
             inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
     private List<User> users;
+
+
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "Room_has_Grup", joinColumns = {
+//            @JoinColumn(name = "Grup_idGroups")},
+//            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
+//    private List<Room> rooms = new ArrayList<>();
 
     public Group() {
     }
@@ -86,7 +94,7 @@ public class Group implements Serializable {
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "Grup{" +
                 "idGroups=" + idGroups +
                 ", title='" + title + '\'' +
                 '}';

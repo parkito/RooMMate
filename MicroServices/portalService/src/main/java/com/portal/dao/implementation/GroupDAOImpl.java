@@ -30,7 +30,7 @@ public class GroupDAOImpl extends GenericDAOImpl<Group, Integer> implements Grou
     @Override
     public Group getGroupByTitle(String title) {
         try {
-            Query query = entityManager.createQuery("select g from Grup g where g.title=:title")
+            Query query = entityManager.createQuery("select g from Group g where g.title=:title")
                     .setParameter("title", title);
             logger.info("Group " + title + " was successfully read");
             return (Group) query.getSingleResult();
