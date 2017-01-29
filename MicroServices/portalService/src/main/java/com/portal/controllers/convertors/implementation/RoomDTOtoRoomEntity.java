@@ -8,10 +8,5 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class RoomDTOtoRoomEntity {
-    public void funk() {
-        int a = 0;
-        a++;
-        a += 500;
-        System.out.println(a);
-    }
+
 }
