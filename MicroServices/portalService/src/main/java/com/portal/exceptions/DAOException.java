@@ -22,7 +22,7 @@ public class DAOException extends RuntimeException {
     }
 
     /**
-     * exception with message and throwable for situation when something goes wrong on DAO
+     * Exception with message and throwable for situation when something goes wrong on DAO
      *
      * @param message   message for exception
      * @param throwable object for exception

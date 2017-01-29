@@ -21,7 +21,7 @@ public class EntityAlreadyExistsException extends DAOException {
     }
 
     /**
-     * exception with message and throwable for situation when entity already exists
+     * Exception with message and throwable for situation when entity already exists
      *
      * @param message   message for exception
      * @param throwable object for exception

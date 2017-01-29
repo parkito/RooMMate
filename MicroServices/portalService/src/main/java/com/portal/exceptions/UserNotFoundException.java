@@ -21,7 +21,7 @@ public class UserNotFoundException extends DAOException {
     }
 
     /**
-     * exception with message and throwable for situation when user wasn't found
+     * Exception with message and throwable for situation when user wasn't found
      *
      * @param message   message for exception
      * @param throwable object for exception
