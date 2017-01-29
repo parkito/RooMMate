@@ -3,6 +3,7 @@ package com.portal.controllers.convertors.implementation;
 import com.portal.controllers.convertors.api.DTOtoEntityConverter;
 import com.portal.dto.UserDTO;
 import com.portal.entities.User;
+import com.portal.exceptions.EntityToDTOConvertException;
 import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UserDTOtoUserEntity implements DTOtoEntityConverter<UserDTO, User> 
         try {
             user = userService.getUserByEMAil(dto.getEmail());
         } catch (UserNotFoundException ex) {
-            throw new
+            throw new EntityToDTOConvertException("User " + dto.getEmail() + " wasn't found", ex);
         }
         return user;
     }
