@@ -1,5 +1,7 @@
 package com.portal.entities;
 
+import com.portal.exceptions.DAOException;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class User implements Serializable {
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "User_idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Grup> grups = new ArrayList();
+    private List<Group> groups = new ArrayList();
 
     public User() {
     }
@@ -50,12 +52,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void addGroup(Grup grup) {
-        grups.add(grup);
+    public void addGroup(Group group) {
+        if (!groups.contains(group))
+            groups.add(group);
+        else throw new DAOException(group.getTitle() + " already in " + email);
     }
 
-    public List<Grup> getGrups() {
-        return grups;
+    public List<Group> getGroups() {
+        return groups;
     }
 
     public int getIdUsers() {

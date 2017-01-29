@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
  *         artem.karnov@t-systems.com
  **/
 public class DAOException extends RuntimeException {
-    private static Logger log = LogManager.getLogger(DAOException.class);
+    private static Logger logger = LogManager.getLogger(DAOException.class);
 
     /**
      * Exception with message for situation when something goes wrong on DAO
@@ -18,7 +18,7 @@ public class DAOException extends RuntimeException {
      */
     public DAOException(String message) {
         super(message);
-        log.warn(message);
+        logger.error(message);
     }
 
     /**
@@ -29,6 +29,6 @@ public class DAOException extends RuntimeException {
      */
     public DAOException(String message, Throwable throwable) {
         super(message, throwable);
-        log.warn(message, throwable);
+        logger.error(message, throwable);
     }
 }

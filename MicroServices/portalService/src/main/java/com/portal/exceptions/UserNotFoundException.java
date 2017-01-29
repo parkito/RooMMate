@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
  *         artem.karnov@t-systems.com
  **/
 public class UserNotFoundException extends DAOException {
-    private static Logger log = LogManager.getLogger(UserNotFoundException.class);
+    private static Logger logger = LogManager.getLogger(UserNotFoundException.class);
 
     /**
      * Exception with message for situation when user wasn't found
@@ -17,7 +17,7 @@ public class UserNotFoundException extends DAOException {
      */
     public UserNotFoundException(String message) {
         super(message);
-        log.warn(message);
+        logger.warn(message);
     }
 
     /**
@@ -28,6 +28,6 @@ public class UserNotFoundException extends DAOException {
      */
     public UserNotFoundException(String message, Throwable throwable) {
         super(message, throwable);
-        log.warn(message, throwable);
+        logger.warn(message, throwable);
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
  **/
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    private static Logger log = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDAO userDAO;
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void createEntity(User user) throws DAOException {
         if (!isUserExists(user)) {
-            log.info("User " + user + " already exists");
+            logger.info("User " + user + "was successfully created");
             userDAO.create(user);
         } else {
             throw new EntityAlreadyExistsException("User with email " + user.getEmail() + " already exists");
@@ -89,7 +89,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public List<User> getAll() throws DAOException {
         return userDAO.getAll();
-
     }
 
     /**
@@ -115,6 +114,7 @@ public class UserServiceImpl implements UserService {
         try {
             return getUserByEMAil(user.getEmail()) != null ? true : false;
         } catch (UserNotFoundException ex) {
+            logger.warn("User " + user + "isn't exist");
             return false;
         }
     }

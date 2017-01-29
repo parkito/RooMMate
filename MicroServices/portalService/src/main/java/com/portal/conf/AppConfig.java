@@ -1,6 +1,8 @@
 package com.portal.conf;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.portal.dao.implementation.UserDAOImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.portal")
 public class AppConfig extends WebMvcConfigurerAdapter {
+    private static Logger logger = LogManager.getLogger(AppConfig.class);
 
     /**
      * Configure ViewResolvers to deliver preferred views.
@@ -28,6 +31,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/");
         viewResolver.setSuffix(".jsp");
         registry.viewResolver(viewResolver);
+        logger.info("Resolving paths for web-pages");
     }
 
     /**
@@ -35,28 +39,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        logger.info("Resolving resources for pages");
     }
-
-    /**
-     * Configure Converter to be used.
-     * In our example, we need a converter to convert string values[Roles] to UserProfiles in newUser.jsp
-     */
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(roleToUserProfileConverter);
-//    }
-
-
-    /**
-     * Configure MessageSource to lookup any validation/error message in internationalized property files
-     */
-//    @Bean
-//    public MessageSource messageSource() {
-//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-//        messageSource.setBasename("messages");
-//        return messageSource;
-//    }
 
     /**
      * Optional. It's only required when handling '.' in @PathVariables which otherwise ignore everything after last '.' in @PathVaidables argument.
@@ -67,5 +52,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
         matcher.setUseRegisteredSuffixPatternMatch(true);
+        logger.info("Configuring path matches for pages");
+
     }
 }

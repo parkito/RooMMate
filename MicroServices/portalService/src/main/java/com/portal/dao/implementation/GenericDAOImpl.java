@@ -2,6 +2,8 @@ package com.portal.dao.implementation;
 
 import com.portal.dao.api.GenericDAO;
 import com.portal.exceptions.DAOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,6 +17,7 @@ import java.util.List;
  **/
 
 public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
+    private static Logger logger = LogManager.getLogger(GenericDAOImpl.class);
     protected Class<E> daoType;
 
     @PersistenceContext
@@ -41,6 +44,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         } catch (PersistenceException e) {
             throw new DAOException("Entity wasn't created: " + entity, e);
         }
+        logger.info("Entity " + entity + "was successfully created");
     }
 
     /**
@@ -74,6 +78,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         } catch (IllegalStateException e) {
             throw new DAOException("Entity wasn't updated: " + entity, e);
         }
+        logger.info("Entity " + entity + "was successfully updated");
 
     }
 
@@ -90,7 +95,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         } catch (PersistenceException e) {
             throw new DAOException("Entity wasn't deleted: " + entity, e);
         }
-
+        logger.info("Entity " + entity + "was successfully deleted");
     }
 
     /**
@@ -107,5 +112,4 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
             throw new DAOException("Unable to get all entities of class " + daoType.getSimpleName(), ex);
         }
     }
-
 }
