@@ -11,8 +11,8 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "Grup")
-@NamedQuery(name = "Grup.getAll", query = "SELECT g FROM Grup g")
-public class Grup implements Serializable {
+@NamedQuery(name = "Group.getAll", query = "SELECT g FROM Group g")
+public class Group implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idGroups")
@@ -35,10 +35,10 @@ public class Grup implements Serializable {
 //            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
 //    private List<Room> rooms = new ArrayList<>();
 
-    public Grup() {
+    public Group() {
     }
 
-    public Grup(String title) {
+    public Group(String title) {
         this.title = title;
     }
 
@@ -77,7 +77,7 @@ public class Grup implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Grup groups = (Grup) o;
+        Group groups = (Group) o;
 
         if (idGroups != groups.idGroups) return false;
         if (title != null ? !title.equals(groups.title) : groups.title != null) return false;

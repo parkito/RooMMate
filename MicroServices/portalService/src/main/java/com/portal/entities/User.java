@@ -40,7 +40,7 @@ public class User implements Serializable {
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "User_idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Grup> grups = new ArrayList();
+    private List<Group> grups = new ArrayList();
 
     public User() {
     }
@@ -52,13 +52,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public void addGroup(Grup grup) {
+    public void addGroup(Group grup) {
         if (!grups.contains(grup))
             grups.add(grup);
         else throw new DAOException(grup.getTitle() + " already in " + email);
     }
 
-    public List<Grup> getGrups() {
+    public List<Group> getGrups() {
         return grups;
     }
 

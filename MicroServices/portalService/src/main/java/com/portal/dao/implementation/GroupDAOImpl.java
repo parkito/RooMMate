@@ -1,7 +1,7 @@
 package com.portal.dao.implementation;
 
 import com.portal.dao.api.GroupDAO;
-import com.portal.entities.Grup;
+import com.portal.entities.Group;
 import com.portal.exceptions.GroupNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +17,7 @@ import javax.persistence.Query;
  *         artem.karnov@t-systems.com
  **/
 @Repository("groupDAO")
-public class GroupDAOImpl extends GenericDAOImpl<Grup, Integer> implements GroupDAO {
+public class GroupDAOImpl extends GenericDAOImpl<Group, Integer> implements GroupDAO {
     private static Logger logger = LogManager.getLogger(GroupDAOImpl.class);
 
     @PersistenceContext
@@ -28,12 +28,12 @@ public class GroupDAOImpl extends GenericDAOImpl<Grup, Integer> implements Group
      * @return group that was gotten
      */
     @Override
-    public Grup getGroupByTitle(String title) {
+    public Group getGroupByTitle(String title) {
         try {
-            Query query = entityManager.createQuery("select g from Grup g where g.title=:title")
+            Query query = entityManager.createQuery("select g from Group g where g.title=:title")
                     .setParameter("title", title);
             logger.info("Group " + title + " was successfully read");
-            return (Grup) query.getSingleResult();
+            return (Group) query.getSingleResult();
         } catch (PersistenceException ex) {
             throw new GroupNotFoundException("Grup " + title + " wasn't found!", ex);
         }

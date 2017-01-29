@@ -31,13 +31,13 @@ public class Room implements Serializable {
     @JoinTable(name = "Room_has_Grup", joinColumns = {
             @JoinColumn(name = "Room_idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Grup> grups = new ArrayList<>();
+    private List<Group> grups = new ArrayList<>();
 
-    public List<Grup> getGrups() {
+    public List<Group> getGrups() {
         return grups;
     }
 
-    public void setGrups(List<Grup> grups) {
+    public void setGrups(List<Group> grups) {
         this.grups = grups;
     }
 
