@@ -42,7 +42,15 @@ public class Group implements Serializable {
         this.title = title;
     }
 
-//    public void addUser(User user) {
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    //    public void addUser(User user) {
 //        if (!users.contains(user)) {
 //            users.add(user);
 //        } else throw new DAOException(user.getEmail() + " already in " + title);

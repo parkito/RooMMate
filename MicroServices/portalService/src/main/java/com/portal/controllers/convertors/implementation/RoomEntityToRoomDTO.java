@@ -11,6 +11,10 @@ import com.portal.entities.Room;
 public class RoomEntityToRoomDTO implements EntityToDTOConverter<Room, RoomDTO> {
     @Override
     public RoomDTO convert(Room entity) {
-        return null;
+        RoomDTO roomDTO = new RoomDTO();
+        roomDTO.setTitle(entity.getTitle());
+        roomDTO.setMaxMembers(entity.getMaxMembers());
+        roomDTO.setGroups(entity.getGrups());
+        return roomDTO;
     }
 }

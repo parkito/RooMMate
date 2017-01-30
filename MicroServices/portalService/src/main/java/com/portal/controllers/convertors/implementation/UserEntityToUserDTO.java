@@ -17,6 +17,7 @@ public class UserEntityToUserDTO implements EntityToDTOConverter<User, UserDTO> 
         userDTO.setEmail(entity.getEmail());
         userDTO.setName(entity.getName());
         userDTO.setSecondName(entity.getSecondName());
+        userDTO.setGroups(entity.getGrups());
         return userDTO;
     }
 }
