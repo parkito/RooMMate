@@ -14,7 +14,7 @@ public class RoomEntityToRoomDTO implements EntityToDTOConverter<Room, RoomDTO> 
         RoomDTO roomDTO = new RoomDTO();
         roomDTO.setTitle(entity.getTitle());
         roomDTO.setMaxMembers(entity.getMaxMembers());
-        roomDTO.setGroups(entity.getGrups());
+        roomDTO.setGroups(entity.getGroups());
         return roomDTO;
     }
 }

@@ -1,5 +1,7 @@
 package com.portal.entities;
 
+import com.portal.exceptions.DAOException;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,14 +33,14 @@ public class Room implements Serializable {
     @JoinTable(name = "Room_has_Grup", joinColumns = {
             @JoinColumn(name = "Room_idRooms")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Group> grups = new ArrayList<>();
+    private List<Group> groups = new ArrayList<>();
 
-    public List<Group> getGrups() {
-        return grups;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setGrups(List<Group> grups) {
-        this.grups = grups;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
     public Room() {
@@ -49,23 +51,12 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
-//    public Grup getGrup() {
-//        return grup;
-//    }
-//
-//    public void setGrup(Grup grup) {
-//        this.grup = grup;
-//    }
 
-    //    public List<Grup> getGrup() {
-//        return grup;
-//    }
-//
-//    public void addGroup(Grup grup) {
-//        if (!grup.contains(grup)) {
-//            grup.add(grup);
-//        } else throw new DAOException(grup.getTitle() + " already in " + title);
-//    }
+    public void addGroup(Group group) {
+        if (!groups.contains(group)) {
+            groups.add(group);
+        } else throw new DAOException(group.getTitle() + " already in " + title);
+    }
 
     public int getIdRooms() {
         return idRooms;
@@ -113,5 +104,15 @@ public class Room implements Serializable {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + maxMembers;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "idRooms=" + idRooms +
+                ", title='" + title + '\'' +
+                ", maxMembers=" + maxMembers +
+                ", groups=" + groups +
+                '}';
     }
 }
