@@ -1,10 +1,10 @@
 package com.portal.entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.portal.exceptions.DAOException;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,11 +36,11 @@ public class User implements Serializable {
     @Column(name = "Password", length = 45)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "User_idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Group> grups = new ArrayList();
+    private List<Group> groups;
 
     public User() {
     }
@@ -53,13 +53,13 @@ public class User implements Serializable {
     }
 
     public void addGroup(Group grup) {
-        if (!grups.contains(grup))
-            grups.add(grup);
+        if (!groups.contains(grup))
+            groups.add(grup);
         else throw new DAOException(grup.getTitle() + " already in " + email);
     }
 
-    public List<Group> getGrups() {
-        return grups;
+    public List<Group> getGroups() {
+        return groups;
     }
 
     public int getIdUsers() {

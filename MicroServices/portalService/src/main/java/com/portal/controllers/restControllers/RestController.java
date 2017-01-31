@@ -1,5 +1,7 @@
 package com.portal.controllers.restControllers;
 
+import com.portal.controllers.convertors.implementation.UserEntityToUserDTO;
+import com.portal.dto.UserDTO;
 import com.portal.entities.Group;
 import com.portal.entities.Room;
 import com.portal.entities.User;
@@ -36,6 +38,9 @@ public class RestController {
 
     @Autowired
     private RoomService roomService;
+
+    @Autowired
+    private UserEntityToUserDTO userEntityToUserDTO;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage() {
@@ -209,7 +214,7 @@ public class RestController {
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
     @ResponseBody
     public Group getGroup(HttpServletRequest req,
-                         @RequestParam(value = "title") String title) {
+                          @RequestParam(value = "title") String title) {
 //        http://localhost:8099/getGroup?title=title
         Group grup = null;
         try {
@@ -318,8 +323,8 @@ public class RestController {
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> getAllUsers(HttpServletRequest req) {
-        return userService.getAll();
+    public List<UserDTO> getAllUsers(HttpServletRequest req) {
+        return userEntityToUserDTO.convertList(userService.getAll());
     }
 
 }

@@ -112,7 +112,6 @@ public class Room implements Serializable {
                 "idRooms=" + idRooms +
                 ", title='" + title + '\'' +
                 ", maxMembers=" + maxMembers +
-                ", groups=" + groups +
                 '}';
     }
 }

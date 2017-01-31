@@ -1,5 +1,6 @@
 package com.portal.entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.portal.exceptions.DAOException;
 
 import javax.persistence.*;
@@ -23,10 +24,7 @@ public class Group implements Serializable {
     @Column(name = "title", length = 45)
     private String title;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "User_has_Grup", joinColumns = {
-            @JoinColumn(name = "Grup_idGroups")},
-            inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
     private List<User> users;
 
 
