@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -312,7 +313,8 @@ public class RestController {
                              @RequestParam(value = "title") String title) {
 //        http://localhost:8099/deleteRoom?title=title
         try {
-            roomService.deleteEntity(roomService.getRoomByTitle(title));
+            RoomService roomService = this.roomService;
+            roomService.deleteEntity(this.roomService.getRoomByTitle(title));
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
@@ -322,9 +324,26 @@ public class RestController {
     }
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
-    @ResponseBody 
+    @ResponseBody
     public List<UserDTO> getAllUsers(HttpServletRequest req) {
         return userEntityToUserDTO.convertList(userService.getAll());
+    }
+
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    @ResponseBody
+    public String getCurrentUser(HttpServletRequest req,
+                        @RequestParam(value = "eMail") String eMail) {
+        RestTemplate restTemplate = new RestTemplate();
+        UserDTO userDTO = restTemplate.getForObject("http://localhost8080/rest/getUser",UserDTO.class);
+        return "hello";
+    }
+
+    public void funk() {
+        int b = 0;
+        int a = 0;
+        int superLongVariableTitle;
+
+
     }
 
 }
