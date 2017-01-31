@@ -322,7 +322,7 @@ public class RestController {
     }
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
-    @ResponseBody
+    @ResponseBody 
     public List<UserDTO> getAllUsers(HttpServletRequest req) {
         return userEntityToUserDTO.convertList(userService.getAll());
     }
