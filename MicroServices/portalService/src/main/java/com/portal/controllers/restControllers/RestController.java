@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -322,9 +323,20 @@ public class RestController {
     }
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
-    @ResponseBody 
+    @ResponseBody
     public List<UserDTO> getAllUsers(HttpServletRequest req) {
         return userEntityToUserDTO.convertList(userService.getAll());
+    }
+
+    @RequestMapping(value = "/getAllUsers", method = RequestMethod.POST)
+    public String savePerson() {
+        RestTemplate restTemplate = new RestTemplate();
+        UserDTO[] emps = restTemplate.getForObject("http://localhost:8081/rest/getAllUsers", UserDTO[].class);
+        System.out.println("!!!!!!!!!!!!!" + emps);
+        for (UserDTO user : emps)
+            System.out.println("111" + (UserDTO)user);
+//        System.out.println("!!!!!!!"+userDTO.getGroups());
+        return "hello";
     }
 
 }

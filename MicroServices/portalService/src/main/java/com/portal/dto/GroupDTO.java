@@ -1,5 +1,6 @@
 package com.portal.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.portal.entities.User;
 
