@@ -14,17 +14,31 @@
  * limitations under the License.
  */
 
-package sample.data.rest.service;
+package com.portal.service;
 
-import sample.data.rest.domain.City;
-import sample.data.rest.domain.Hotel;
+import org.springframework.util.Assert;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import java.io.Serializable;
 
-@RepositoryRestResource(collectionResourceRel = "hotels", path = "hotels")
-interface HotelRepository extends PagingAndSortingRepository<Hotel, Long> {
+public class CitySearchCriteria implements Serializable {
 
-	Hotel findByCityAndName(City city, String name);
+	private static final long serialVersionUID = 1L;
 
+	private String name;
+
+	public CitySearchCriteria() {
+	}
+
+	public CitySearchCriteria(String name) {
+		Assert.notNull(name, "Name must not be null");
+		this.name = name;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

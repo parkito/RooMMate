@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package sample.data.rest.service;
+package com.portal.service;
 
+import com.portal.domain.City;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import sample.data.rest.domain.City;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

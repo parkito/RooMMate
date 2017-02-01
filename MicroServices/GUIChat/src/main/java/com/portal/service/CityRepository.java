@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package sample.data.rest.service;
+package com.portal.service;
 
-import sample.data.rest.domain.City;
+import com.portal.domain.City;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -14,31 +14,61 @@
  * limitations under the License.
  */
 
-package sample.data.rest.service;
+package com.portal.domain;
 
+import org.hibernate.annotations.NaturalId;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
-import org.springframework.util.Assert;
-
-public class CitySearchCriteria implements Serializable {
+@Entity
+public class Hotel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@ManyToOne(optional = false)
+	@NaturalId
+	private City city;
+
+	@Column(nullable = false)
+	@NaturalId
 	private String name;
 
-	public CitySearchCriteria() {
+	@Column(nullable = false)
+	private String address;
+
+	@Column(nullable = false)
+	private String zip;
+
+	protected Hotel() {
 	}
 
-	public CitySearchCriteria(String name) {
-		Assert.notNull(name, "Name must not be null");
+	public Hotel(City city, String name) {
+		this.city = city;
 		this.name = name;
+	}
+
+	public City getCity() {
+		return this.city;
 	}
 
 	public String getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getAddress() {
+		return this.address;
+	}
+
+	public String getZip() {
+		return this.zip;
 	}
 }

@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package sample.data.rest.domain;
-
-import java.io.Serializable;
+package com.portal.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
 public class City implements Serializable {

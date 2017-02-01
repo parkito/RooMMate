@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.data.rest;
+package com.portal;
 
 import org.junit.Before;
 import org.junit.Test;

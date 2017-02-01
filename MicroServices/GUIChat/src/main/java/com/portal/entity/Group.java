@@ -1,18 +1,24 @@
-package com.portal.dto;
+package com.portal.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.portal.entities.User;
-
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Artem Karnov @date 30.01.17.
+ * @author Artem Karnov @date 01.02.2017.
  *         artem.karnov@t-systems.com
  */
-public class GroupDTO {
+
+public class Group implements Serializable {
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column
     private String title;
-//    @JsonManagedReference("groups")
+    // TODO: 01.02.2017 Many to many
+    @Column
     private List<User> users;
 
     public String getTitle() {
