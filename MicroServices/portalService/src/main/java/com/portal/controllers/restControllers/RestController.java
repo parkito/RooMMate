@@ -313,7 +313,8 @@ public class RestController {
                              @RequestParam(value = "title") String title) {
 //        http://localhost:8099/deleteRoom?title=title
         try {
-            roomService.deleteEntity(roomService.getRoomByTitle(title));
+            RoomService roomService = this.roomService;
+            roomService.deleteEntity(this.roomService.getRoomByTitle(title));
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
@@ -337,6 +338,23 @@ public class RestController {
             System.out.println("111" + (UserDTO)user);
 //        System.out.println("!!!!!!!"+userDTO.getGroups());
         return "hello";
+    }
+
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    @ResponseBody
+    public String getCurrentUser(HttpServletRequest req,
+                        @RequestParam(value = "eMail") String eMail) {
+        RestTemplate restTemplate = new RestTemplate();
+        UserDTO userDTO = restTemplate.getForObject("http://localhost8080/rest/getUser",UserDTO.class);
+        return "hello";
+    }
+
+    public void funk() {
+        int b = 0;
+        int a = 0;
+        int superLongVariableTitle;
+
+
     }
 
 }
