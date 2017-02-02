@@ -1,5 +1,6 @@
 package com.portal.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.portal.exceptions.DAOException;
 
 import javax.persistence.Basic;
@@ -50,6 +51,7 @@ public class User implements Serializable {
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "User_idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
+    @JsonManagedReference
     private List<Group> groups;
 
     public User() {

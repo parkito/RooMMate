@@ -20,7 +20,6 @@ public class UserDTO implements Serializable {
     private String name;
     private String secondName;
     private String email;
-//    @JsonBackReference
     private List<Group> groups;
 
     public List<Group> getGroups() {

@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class GroupDTO {
     private String title;
-//    @JsonManagedReference("groups")
     private List<User> users;
 
     public String getTitle() {

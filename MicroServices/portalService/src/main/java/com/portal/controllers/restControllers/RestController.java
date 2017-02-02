@@ -340,21 +340,21 @@ public class RestController {
         return "hello";
     }
 
-    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    @ResponseBody
-    public String getCurrentUser(HttpServletRequest req,
-                        @RequestParam(value = "eMail") String eMail) {
-        RestTemplate restTemplate = new RestTemplate();
-        UserDTO userDTO = restTemplate.getForObject("http://localhost8080/rest/getUser",UserDTO.class);
-        return "hello";
-    }
-
-    public void funk() {
-        int b = 0;
-        int a = 0;
-        int superLongVariableTitle;
-
-
-    }
+//    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+//    @ResponseBody
+//    public String getCurrentUser(HttpServletRequest req,
+//                        @RequestParam(value = "eMail") String eMail) {
+//        RestTemplate restTemplate = new RestTemplate();
+//        UserDTO userDTO = restTemplate.getForObject("http://localhost8080/rest/getUser",UserDTO.class);
+//        return "hello";
+//    }
+//
+//    public void funk() {
+//        int b = 0;
+//        int a = 0;
+//        int superLongVariableTitle;
+//
+//
+//    }
 
 }

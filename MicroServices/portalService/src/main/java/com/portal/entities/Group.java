@@ -1,5 +1,6 @@
 package com.portal.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.portal.exceptions.DAOException;
 
@@ -25,6 +26,7 @@ public class Group implements Serializable {
     private String title;
 
     @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
+    @JsonBackReference
     private List<User> users;
 
 
