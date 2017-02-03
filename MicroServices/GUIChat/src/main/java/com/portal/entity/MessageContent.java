@@ -1,7 +1,5 @@
 package com.portal.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -10,8 +8,8 @@ import java.io.Serializable;
  */
 
 public class MessageContent implements Serializable {
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
     private Long id;
     private String text;
 

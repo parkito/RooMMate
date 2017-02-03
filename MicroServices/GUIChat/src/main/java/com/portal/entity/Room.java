@@ -1,8 +1,5 @@
 package com.portal.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +10,16 @@ import java.util.List;
  */
 
 public class Room implements Serializable {
-    @Id
-    @GeneratedValue
-    private Long id;
-    @Column
+//    @Id
+//    @GeneratedValue
+//    private Long id;
+//    @Column
     private String title;
-    @Column
+//    @Column
     private int maxMembers;
     // TODO: 01.02.2017 many to many
-    @Column
-    private List<Group> groups = new ArrayList<>();
+//    @Column
+    private List<Group> groups = new ArrayList();
 
     public String getTitle() {
         return title;

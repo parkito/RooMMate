@@ -1,9 +1,5 @@
 package com.portal.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 /**
@@ -12,14 +8,14 @@ import java.io.Serializable;
  */
 
 public class Message implements Serializable {
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
     private Long id;
-    @Column
+//    @Column
     User userFrom;
-    @Column
+//    @Column
     User userTo;
-    @OneToOne
+//    @OneToOne
     MessageContent messageContent;
 
     public User getUserFrom() {

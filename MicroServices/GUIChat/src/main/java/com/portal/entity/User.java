@@ -1,9 +1,5 @@
 package com.portal.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,21 +7,21 @@ import java.util.List;
  * @author Artem Karnov @date 01.02.2017.
  *         artem.karnov@t-systems.com
  */
-@Entity
+//@Entity
 public class User  implements Serializable{
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
     private Long id;
-    @Column
+//    @Column
     private String name;
-    @Column
+//    @Column
     private String secondName;
-    @Column
+//    @Column
     private String email;
 
     // TODO: 01.02.2017 many to many
-    @Column
+//    @Column
     private List<Group> groups;
 
     public List<Group> getGroups() {

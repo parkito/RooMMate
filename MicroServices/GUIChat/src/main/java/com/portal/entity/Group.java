@@ -1,8 +1,5 @@
 package com.portal.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,13 +9,13 @@ import java.util.List;
  */
 
 public class Group implements Serializable {
-    @Id
-    @GeneratedValue
+    //    @Id
+//    @GeneratedValue
     private Long id;
-    @Column
+    //    @Column
     private String title;
     // TODO: 01.02.2017 Many to many
-    @Column
+//    @Column
     private List<User> users;
 
     public String getTitle() {
