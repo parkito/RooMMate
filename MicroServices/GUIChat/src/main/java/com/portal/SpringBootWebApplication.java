@@ -8,16 +8,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan(basePackages = "com.portal")
 @EnableAutoConfiguration
-@ComponentScan
-public class Application extends SpringBootServletInitializer {
-
-	public static void main(final String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+public class SpringBootWebApplication extends SpringBootServletInitializer {
 
 	@Override
-	protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
-		return application.sources(Application.class);
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(SpringBootWebApplication.class);
 	}
+
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(SpringBootWebApplication.class, args);
+	}
+
 }

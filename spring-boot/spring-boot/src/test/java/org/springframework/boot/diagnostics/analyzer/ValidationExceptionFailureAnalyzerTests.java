@@ -18,7 +18,6 @@ package org.springframework.boot.diagnostics.analyzer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.diagnostics.FailureAnalysis;
@@ -38,31 +37,30 @@ import static org.junit.Assert.fail;
 @ClassPathExclusions("hibernate-validator-*.jar")
 public class ValidationExceptionFailureAnalyzerTests {
 
-	@Test
-	public void test() throws Exception {
-		try {
-			new AnnotationConfigApplicationContext(TestConfiguration.class).close();
-			fail("Expected failure did not occur");
-		}
-		catch (Exception ex) {
-			FailureAnalysis analysis = new ValidationExceptionFailureAnalyzer()
-					.analyze(ex);
-			assertThat(analysis).isNotNull();
-		}
-	}
+    @Test
+    public void test() throws Exception {
+        try {
+            new AnnotationConfigApplicationContext(TestConfiguration.class).close();
+            fail("Expected failure did not occur");
+        } catch (Exception ex) {
+            FailureAnalysis analysis = new ValidationExceptionFailureAnalyzer()
+                    .analyze(ex);
+            assertThat(analysis).isNotNull();
+        }
+    }
 
-	@EnableConfigurationProperties(TestProperties.class)
-	static class TestConfiguration {
+    @EnableConfigurationProperties(TestProperties.class)
+    static class TestConfiguration {
 
-		TestConfiguration(TestProperties testProperties) {
+        TestConfiguration(TestProperties testProperties) {
 
-		}
+        }
 
-	}
+    }
 
-	@ConfigurationProperties("test")
-	private static class TestProperties {
+    @ConfigurationProperties("test")
+    private static class TestProperties {
 
-	}
+    }
 
 }

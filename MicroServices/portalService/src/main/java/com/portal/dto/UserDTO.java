@@ -1,9 +1,5 @@
 package com.portal.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.portal.entities.Group;
 
 import java.io.Serializable;
@@ -13,7 +9,6 @@ import java.util.List;
  * @author Artem Karnov @date 07.01.17.
  *         artem.karnov@t-systems.com
  **/
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = -7788619177798333712L;
 

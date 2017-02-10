@@ -329,7 +329,7 @@ public class RestController {
         return userEntityToUserDTO.convertList(userService.getAll());
     }
 
-    @RequestMapping(value = "/getAllUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/getDAOUser", method = RequestMethod.POST)
     public String savePerson() {
         RestTemplate restTemplate = new RestTemplate();
         UserDTO[] emps = restTemplate.getForObject("http://localhost:8081/rest/getAllUsers", UserDTO[].class);
