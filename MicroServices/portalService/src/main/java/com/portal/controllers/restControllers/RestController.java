@@ -197,8 +197,8 @@ public class RestController {
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ResponseBody
-    public User getUser(HttpServletRequest req,
-                        @RequestParam(value = "eMail") String eMail) {
+    public UserDTO getUser(HttpServletRequest req,
+                           @RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/getUser?eMail=eMail22
         User user = null;
         try {
@@ -209,7 +209,7 @@ public class RestController {
             req.setAttribute("Ex", ex);
             return null;
         }
-        return user;
+        return userEntityToUserDTO.convert(user);
     }
 
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
@@ -335,7 +335,7 @@ public class RestController {
         UserDTO[] emps = restTemplate.getForObject("http://localhost:8081/rest/getAllUsers", UserDTO[].class);
         System.out.println("!!!!!!!!!!!!!" + emps);
         for (UserDTO user : emps)
-            System.out.println("111" + (UserDTO)user);
+            System.out.println("111" + (UserDTO) user);
 //        System.out.println("!!!!!!!"+userDTO.getGroups());
         return "hello";
     }
