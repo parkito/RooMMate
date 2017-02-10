@@ -19,13 +19,9 @@ public class WelcomeController {
 
     @RequestMapping("/")
     public String welcome() {
-        return "welcome";
+        return "welcome.jsp";
     }
 
-    @RequestMapping("/hi")
-    public String hi() {
-        return "welcome";
-    }
 
     @RequestMapping("/foo")
     public String foo(Map<String, Object> model) {
