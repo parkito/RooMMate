@@ -1,10 +1,21 @@
 package com.portal.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.portal.exceptions.DAOException;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,12 +47,13 @@ public class User implements Serializable {
     @Column(name = "Password", length = 45)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "User_has_Grup", joinColumns = {
             @JoinColumn(name = "User_idUsers")},
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-    private List<Group> groups = new ArrayList();
 
+    @JsonManagedReference
+    private List<Group> groups;
 
 
     public User() {
@@ -61,7 +73,8 @@ public class User implements Serializable {
         else throw new DAOException(grup.getTitle() + " already in " + email);
     }
 
-    public List<Group> getGrups() {
+
+    public List<Group> getGroups() {
         return groups;
     }
 
@@ -136,6 +149,7 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", email='" + email + '\'' +
+                groups +
                 '}';
     }
 }

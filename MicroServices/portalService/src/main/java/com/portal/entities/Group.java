@@ -1,8 +1,11 @@
 package com.portal.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.portal.exceptions.DAOException;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,18 +25,10 @@ public class Group implements Serializable {
     @Column(name = "title", length = 45)
     private String title;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "User_has_Grup", joinColumns = {
-            @JoinColumn(name = "Grup_idGroups")},
-            inverseJoinColumns = {@JoinColumn(name = "User_idUsers")})
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
+    @JsonBackReference
     private List<User> users;
 
-
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "Room_has_Grup", joinColumns = {
-//            @JoinColumn(name = "Grup_idGroups")},
-//            inverseJoinColumns = {@JoinColumn(name = "Room_idRooms")})
-//    private List<Room> rooms = new ArrayList<>();
 
     public Group() {
     }
@@ -42,23 +37,20 @@ public class Group implements Serializable {
         this.title = title;
     }
 
-//    public void addUser(User user) {
-//        if (!users.contains(user)) {
-//            users.add(user);
-//        } else throw new DAOException(user.getEmail() + " already in " + title);
-//    }
-//
-//    public List<User> getUsers() {
-//        return users;
-//    }
+    public List<User> getUsers() {
+        return users;
+    }
 
-//    public List<Room> getRooms() {
-//        return rooms;
-//    }
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
-//    public void addRoom(Room room) {
-//        rooms.add(room);
-//    }
+    public void addUser(User user) {
+        if (!users.contains(user)) {
+            users.add(user);
+        } else throw new DAOException(user.getEmail() + " already in " + title);
+    }
+
 
     public int getIdGroups() {
         return idGroups;

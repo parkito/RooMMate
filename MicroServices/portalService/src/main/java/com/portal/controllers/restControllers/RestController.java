@@ -1,5 +1,8 @@
 package com.portal.controllers.restControllers;
 
+import com.portal.controllers.convertors.implementation.UserEntityToUserDTO;
+import com.portal.controllers.enums.DAOExceptionEnum;
+import com.portal.dto.UserDTO;
 import com.portal.entities.Group;
 import com.portal.entities.Room;
 import com.portal.entities.User;
@@ -10,11 +13,14 @@ import com.portal.services.api.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -36,6 +42,9 @@ public class RestController {
 
     @Autowired
     private RoomService roomService;
+
+    @Autowired
+    private UserEntityToUserDTO userEntityToUserDTO;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage() {
@@ -204,25 +213,23 @@ public class RestController {
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ResponseBody
-    public User getUser(HttpServletRequest req,
-                        @RequestParam(value = "eMail") String eMail) {
+    public ResponseEntity<UserDTO> getUser(@RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/getUser?eMail=eMail22
+        ResponseEntity<UserDTO> response;
         User user = null;
         try {
             user = userService.getUserByEMAil(eMail);
-            System.out.println(user);
         } catch (DAOException ex) {
-            req.setAttribute("Message", ex.getStackTrace());
-            req.setAttribute("Ex", ex);
-            return null;
+            return new ResponseEntity(HttpStatus.valueOf
+                    (String.valueOf(DAOExceptionEnum.USER_NOT_FOUND_ENUM)));
         }
-        return user;
+        response = ResponseEntity.ok(userEntityToUserDTO.convert(user));
+        return response;
     }
 
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
     @ResponseBody
     public Group getGroup(HttpServletRequest req,
-
                           @RequestParam(value = "title") String title) {
 //        http://localhost:8099/getGroup?title=title
         Group group = null;
@@ -323,7 +330,8 @@ public class RestController {
                              @RequestParam(value = "title") String title) {
 //        http://localhost:8099/deleteRoom?title=title
         try {
-            roomService.deleteEntity(roomService.getRoomByTitle(title));
+            RoomService roomService = this.roomService;
+            roomService.deleteEntity(this.roomService.getRoomByTitle(title));
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
@@ -334,8 +342,20 @@ public class RestController {
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> getAllUsers(HttpServletRequest req) {
-        return userService.getAll();
+    public List<UserDTO> getAllUsers(HttpServletRequest req) {
+        return userEntityToUserDTO.convertList(userService.getAll());
     }
+
+    @RequestMapping(value = "/getDAOUser", method = RequestMethod.POST)
+    public String savePerson() {
+        RestTemplate restTemplate = new RestTemplate();
+        UserDTO[] emps = restTemplate.getForObject("http://localhost:8081/rest/getAllUsers", UserDTO[].class);
+        System.out.println("!!!!!!!!!!!!!" + emps);
+        for (UserDTO user : emps)
+            System.out.println("111" + (UserDTO) user);
+//        System.out.println("!!!!!!!"+userDTO.getGroups());
+        return "hello";
+    }
+
 
 }

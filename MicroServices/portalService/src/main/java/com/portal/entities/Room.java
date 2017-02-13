@@ -1,5 +1,7 @@
 package com.portal.entities;
 
+import com.portal.exceptions.DAOException;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class Room implements Serializable {
 
     private List<Group> groups = new ArrayList<>();
 
+
     public List<Group> getGroups() {
         return groups;
     }
@@ -50,23 +53,14 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
-//    public Group getGrup() {
-//        return grup;
-//    }
-//
-//    public void setGrup(Group grup) {
-//        this.grup = grup;
-//    }
 
-    //    public List<Group> getGrup() {
-//        return grup;
-//    }
-//
-//    public void addGroup(Group grup) {
-//        if (!grup.contains(grup)) {
-//            grup.add(grup);
-//        } else throw new DAOException(grup.getTitle() + " already in " + title);
-//    }
+
+    public void addGroup(Group group) {
+        if (!groups.contains(group)) {
+            groups.add(group);
+        } else throw new DAOException(group.getTitle() + " already in " + title);
+    }
+
 
     public int getIdRooms() {
         return idRooms;
@@ -114,5 +108,14 @@ public class Room implements Serializable {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + maxMembers;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "idRooms=" + idRooms +
+                ", title='" + title + '\'' +
+                ", maxMembers=" + maxMembers +
+                '}';
     }
 }
