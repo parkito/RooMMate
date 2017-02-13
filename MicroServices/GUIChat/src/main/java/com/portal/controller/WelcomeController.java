@@ -1,6 +1,7 @@
 package com.portal.controller;
 
 import com.portal.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class WelcomeController {
+    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8083/rest/";
+
+    @Autowired
+    RestTemplate restTemplate;
 
     @RequestMapping("/")
     public String welcome() {
@@ -22,8 +27,8 @@ public class WelcomeController {
     }
 
     public User getUser(String eMail) {
-        RestTemplate restTemplate = new RestTemplate();
-        User user = restTemplate.getForObject("http://localhost:8083/rest/getUser?eMail=" + eMail, User.class);
+        User user = restTemplate.getForObject(REST_ADDRESS_OF_PI_SERVER + "getUser?eMail="
+                + eMail, User.class);
         return user;
     }
 
@@ -35,6 +40,15 @@ public class WelcomeController {
         req.getSession().setAttribute("secondName", user.getSecondName());
         req.getSession().setAttribute("groups", user.getGroups());
         return "welcome";
+    }
+
+    public String addUser(String name, String secondName, String eMail, String password) {
+        User user = restTemplate.getForObject(REST_ADDRESS_OF_PI_SERVER + "addUser?name="
+                + name + "&" + "secondName="
+                + secondName + "&" + "eMail="
+                + eMail + "&" + "password="
+                + password, User.class);
+        return "hello";
     }
 
 }
