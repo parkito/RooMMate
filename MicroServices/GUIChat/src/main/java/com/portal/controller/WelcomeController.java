@@ -65,15 +65,18 @@ public class WelcomeController {
     }
 
     public User getUser(String eMail) {
-        User user = null;
+        ResponseEntity<User> response = null;
         try {
-            user = restTemplate.getForObject(
+            response = restTemplate.getForObject(
                     REST_ADDRESS_OF_PI_SERVER + GET_USER + EMAIL_E
-                            + eMail, User.class);
+                            + eMail, ResponseEntity.class);
         } catch (Exception ex) {
             throw new ResponseEntityException("Error in getUsers while getting " + eMail, ex);
         }
-        return user;
+
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new DAOException("User " + eMail + " wasn't gotten because " + response.getStatusCode());
+        } else return response.getBody();
     }
 
 

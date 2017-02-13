@@ -1,6 +1,7 @@
 package com.portal.controllers.restControllers;
 
 import com.portal.controllers.convertors.implementation.UserEntityToUserDTO;
+import com.portal.controllers.enums.DAOExceptionEnum;
 import com.portal.dto.UserDTO;
 import com.portal.entities.Group;
 import com.portal.entities.Room;
@@ -12,6 +13,8 @@ import com.portal.services.api.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -197,19 +200,18 @@ public class RestController {
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ResponseBody
-    public UserDTO getUser(HttpServletRequest req,
-                           @RequestParam(value = "eMail") String eMail) {
+    public ResponseEntity<UserDTO> getUser(@RequestParam(value = "eMail") String eMail) {
 //        http://localhost:8099/getUser?eMail=eMail22
+        ResponseEntity<UserDTO> response;
         User user = null;
         try {
             user = userService.getUserByEMAil(eMail);
-            System.out.println(user);
         } catch (DAOException ex) {
-            req.setAttribute("Message", ex.getStackTrace());
-            req.setAttribute("Ex", ex);
-            return null;
+            return new ResponseEntity(HttpStatus.valueOf
+                    (String.valueOf(DAOExceptionEnum.USER_NOT_FOUND_ENUM)));
         }
-        return userEntityToUserDTO.convert(user);
+        response = ResponseEntity.ok(userEntityToUserDTO.convert(user));
+        return response;
     }
 
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
