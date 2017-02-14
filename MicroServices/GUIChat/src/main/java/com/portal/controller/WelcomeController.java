@@ -35,6 +35,16 @@ public class WelcomeController {
         return "pages/welcomePage";
     }
 
+    @RequestMapping(value = "/signIn", method = RequestMethod.GET)
+    public String signInPage() {
+        return "pages/sign-in";
+    }
+
+    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
+    public String signUpPage() {
+        return "pages/sign-up";
+    }
+
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public String getUserRequest(HttpServletRequest req) {
         User user = getUser("email1");

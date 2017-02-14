@@ -59,19 +59,23 @@
             <a href="javascript:void(0);" class="bars"></a>
             <a class="navbar-brand" href="../../../index.html">RooMMate</a>
         </div>
-            <ul class="nav navbar-nav navbar-header navbar-right">
-                <button type="button" class="btn btn-default waves-effect">
+        <ul class="nav navbar-nav navbar-header navbar-right">
+            <form method="GET" action="/signIn">
+                <button type="submit" class="btn btn-default waves-effect">
                     <i class="material-icons">lock</i>
                 </button>
-            </ul>
+            </form>
+        </ul>
 
-            <ul class="nav navbar-nav navbar-header navbar-right">
-                    <button type="button" class="btn btn-default waves-effect">
-                        <i class="material-icons">vpn_key</i>
-                    </button>
-            </ul>
+        <ul class="nav navbar-nav navbar-header navbar-right">
+            <form method="GET" action="/signUp">
+                <button type="submit" class="btn btn-default waves-effect">
+                    <i class="material-icons">vpn_key</i>
+                </button>
+            </form>
+        </ul>
 
-        </div>
+    </div>
 </nav>
 <section class="content">
     <div class="container-fluid">
