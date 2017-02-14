@@ -40,5 +40,6 @@ public class ConsoleUI {
     }
 
     public void successLogin() {
+        
     }
 }
