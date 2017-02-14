@@ -3,7 +3,6 @@ package com.portal.controller;
 import com.portal.entity.User;
 import com.portal.exceptions.DAOException;
 import com.portal.exceptions.ResponseEntityException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +27,12 @@ public class WelcomeController {
     private final static String PASSWORD_E = "password=";
     private final static String ADD_USER = "addUser?";
 
-    @Autowired
+    //    @Autowired
     RestTemplate restTemplate;
 
     @RequestMapping("/")
     public String welcome() {
-        return "welcome";
+        return "index";
     }
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
