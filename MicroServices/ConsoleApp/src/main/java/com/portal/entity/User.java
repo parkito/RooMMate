@@ -10,18 +10,11 @@ import java.util.List;
 //@Entity
 public class User  implements Serializable{
     private static final long serialVersionUID = 1L;
-//    @Id
-//    @GeneratedValue
     private Long id;
-//    @Column
     private String name;
-//    @Column
     private String secondName;
-//    @Column
     private String email;
-
     // TODO: 01.02.2017 many to many
-//    @Column
     private List<Group> groups;
 
     public List<Group> getGroups() {
@@ -54,5 +47,16 @@ public class User  implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", email='" + email + '\'' +
+                ", groups=" + groups +
+                '}';
     }
 }
