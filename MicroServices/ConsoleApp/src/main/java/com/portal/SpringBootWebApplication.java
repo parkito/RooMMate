@@ -1,5 +1,6 @@
 package com.portal;
 
+import com.portal.console.ConsoleUI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -11,14 +12,16 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "com.portal")
 @EnableAutoConfiguration
 public class SpringBootWebApplication extends SpringBootServletInitializer {
+    ConsoleUI consoleUI = new ConsoleUI();
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SpringBootWebApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringBootWebApplication.class);
+    }
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SpringBootWebApplication.class, args);
-		System.out.println("hello");
-	}
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(SpringBootWebApplication.class, args);
+        SpringBootWebApplication app = new SpringBootWebApplication();
+        app.consoleUI.firstScreen();
+    }
 }
