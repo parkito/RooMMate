@@ -36,7 +36,6 @@ public class Room implements Serializable {
 
     private List<Group> groups = new ArrayList<>();
 
-
     public List<Group> getGroups() {
         return groups;
     }
@@ -54,13 +53,11 @@ public class Room implements Serializable {
     }
 
 
-
     public void addGroup(Group group) {
         if (!groups.contains(group)) {
             groups.add(group);
         } else throw new DAOException(group.getTitle() + " already in " + title);
     }
-
 
     public int getIdRooms() {
         return idRooms;

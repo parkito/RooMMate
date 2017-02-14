@@ -9,7 +9,6 @@ import com.portal.exceptions.UserNotFoundException;
 import com.portal.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +33,6 @@ public class UserDTOtoUserEntity implements DTOtoEntityConverter<UserDTO, User> 
         return user;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public List<User> convertList(List<UserDTO> dtoList) {
         List<User> result = new ArrayList<>();
@@ -44,5 +41,4 @@ public class UserDTOtoUserEntity implements DTOtoEntityConverter<UserDTO, User> 
         }
         return result;
     }
->>>>>>> Sprint2
 }

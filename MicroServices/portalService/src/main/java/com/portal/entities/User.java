@@ -73,7 +73,6 @@ public class User implements Serializable {
         else throw new DAOException(grup.getTitle() + " already in " + email);
     }
 
-
     public List<Group> getGroups() {
         return groups;
     }
