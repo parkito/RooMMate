@@ -1,5 +1,8 @@
 package com.portal.console;
 
+import com.portal.controller.RestClient;
+import com.portal.exceptions.ResponseEntityException;
+import mainDomainModel.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -12,10 +15,20 @@ import java.util.Scanner;
 public class ConsoleUI {
     private String eMail;
     private String password;
+    private RestClient restClient = new RestClient();
 
     public boolean checkCredentials(String eMail, String password) {
-        // TODO: 14.02.2017 implementation
-        return true;
+        User user;
+        try {
+            user = restClient.getUser(eMail, password);
+        } catch (ResponseEntityException ex) {
+            return false;
+        }
+        if (user == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void firstScreen() {
@@ -40,5 +53,6 @@ public class ConsoleUI {
     }
 
     public void successLogin() {
+        System.out.println("YES");
     }
 }

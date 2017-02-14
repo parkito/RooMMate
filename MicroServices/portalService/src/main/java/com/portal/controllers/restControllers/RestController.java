@@ -227,6 +227,26 @@ public class RestController {
         return response;
     }
 
+    @RequestMapping(value = "/getUserWithCredentials", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<UserDTO> getUserWithCredentials(
+            @RequestParam(value = "eMail") String eMail,
+            @RequestParam(value = "password") String password) {
+        ResponseEntity<UserDTO> response;
+        User user = null;
+        try {
+            user = userService.getUserByEMAil(eMail);
+        } catch (DAOException ex) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        if (user.getPassword().equals(password)) {
+            response = ResponseEntity.ok(userEntityToUserDTO.convert(user));
+        } else {
+            response = new  ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return response;
+    }
+
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
     @ResponseBody
     public Group getGroup(HttpServletRequest req,
