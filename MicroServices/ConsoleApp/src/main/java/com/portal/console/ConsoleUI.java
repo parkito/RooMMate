@@ -1,8 +1,8 @@
 package com.portal.console;
 
 import com.portal.controller.RestClient;
-import com.portal.entity.User;
 import com.portal.exceptions.ResponseEntityException;
+import mainDomainModel.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;

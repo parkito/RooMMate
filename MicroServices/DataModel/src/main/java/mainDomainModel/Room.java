@@ -1,4 +1,4 @@
-package com.portal.entity;
+package mainDomainModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,17 +8,9 @@ import java.util.List;
  * @author Artem Karnov @date 01.02.2017.
  *         artem.karnov@t-systems.com
  */
-
 public class Room implements Serializable {
-//    @Id
-//    @GeneratedValue
-//    private Long id;
-//    @Column
     private String title;
-//    @Column
     private int maxMembers;
-    // TODO: 01.02.2017 many to many
-//    @Column
     private List<Group> groups = new ArrayList();
 
     public String getTitle() {

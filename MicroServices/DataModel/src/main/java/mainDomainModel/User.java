@@ -1,4 +1,4 @@
-package com.portal.entity;
+package mainDomainModel;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,21 +7,12 @@ import java.util.List;
  * @author Artem Karnov @date 01.02.2017.
  *         artem.karnov@t-systems.com
  */
-//@Entity
 public class User  implements Serializable{
     private static final long serialVersionUID = 1L;
-//    @Id
-//    @GeneratedValue
     private Long id;
-//    @Column
     private String name;
-//    @Column
     private String secondName;
-//    @Column
     private String email;
-
-    // TODO: 01.02.2017 many to many
-//    @Column
     private List<Group> groups;
 
     public List<Group> getGroups() {

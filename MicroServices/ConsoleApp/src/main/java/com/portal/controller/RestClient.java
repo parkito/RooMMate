@@ -1,8 +1,9 @@
 package com.portal.controller;
 
-import com.portal.entity.User;
+
 import com.portal.exceptions.DAOException;
 import com.portal.exceptions.ResponseEntityException;
+import mainDomainModel.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 

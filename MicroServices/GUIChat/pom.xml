@@ -60,7 +60,16 @@
             <artifactId>jstl-api</artifactId>
             <version>1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.DataModel</groupId>
+            <artifactId>DataModel</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
+
+
 
     <build>
         <plugins>

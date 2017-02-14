@@ -1,4 +1,4 @@
-package com.portal.entity;
+package mainDomainModel;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,15 +7,9 @@ import java.util.List;
  * @author Artem Karnov @date 01.02.2017.
  *         artem.karnov@t-systems.com
  */
-
 public class Group implements Serializable {
-    //    @Id
-//    @GeneratedValue
     private Long id;
-    //    @Column
     private String title;
-    // TODO: 01.02.2017 Many to many
-//    @Column
     private List<User> users;
 
     public String getTitle() {
