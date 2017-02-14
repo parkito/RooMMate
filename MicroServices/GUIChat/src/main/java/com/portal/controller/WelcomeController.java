@@ -32,7 +32,7 @@ public class WelcomeController {
 
     @RequestMapping("/")
     public String welcome() {
-        return "index";
+        return "pages/welcomePage";
     }
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
