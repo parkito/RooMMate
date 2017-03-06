@@ -18,21 +18,41 @@ import java.util.Arrays;
  **/
 @Component
 @Aspect
-public class GetAllLoggingAspectHandler {
-    private static Logger logger = LogManager.getLogger(GetAllLoggingAspectHandler.class);
+public class GetLoggingAspectHandler {
+    private static Logger logger = LogManager.getLogger(GetLoggingAspectHandler.class);
 
     @Pointcut("execution(* com.portal.services.api.*.getAll())")
-    public void getEntityPointcut() {
+    public void getAllEntitiesPointcut() {
+    }
+
+    @Pointcut("execution(* com.portal.services.api.*.createEntity())")
+    public void getCreateEntityPointcut() {
+    }
+
+    @Pointcut("execution(* com.portal.services.api.*.getEntityById())")
+    public void getEntityByIdPointcut() {
+    }
+
+    @Pointcut("execution(* com.portal.services.api.*.updateEntity())")
+    public void getUpdateEntityPointcut() {
+    }
+
+    @Pointcut("execution(* com.portal.services.api.*.deleteEntity())")
+    public void getDeleteEntityPointcut() {
+    }
+
+    @Pointcut("execution(* com.portal.services.api.*.get*By*())")
+    public void getEntityByPointcut() {
     }
 
 
-    @Before("getEntityPointcut()")
+    @Before("getAllEntitiesPointcut()")
     public void loggingBeforeGettingAllEntities(JoinPoint joinPoint) {
         logger.info(String.format("A method: {%s} is invoking, arguments: {%s}",
                 joinPoint.toString(), Arrays.toString(joinPoint.getArgs())));
     }
 
-    @Around("getEntityPointcut()")
+    @Around("getAllEntitiesPointcut()")
     public Object loggingAroundGettingAllEntities(ProceedingJoinPoint proceedingJoinPoint) {
         Object value = null;
         try {

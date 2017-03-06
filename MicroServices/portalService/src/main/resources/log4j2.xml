@@ -10,7 +10,7 @@
         <RollingFile name="GlobalLog" append="true" fileName="../logs/all.log"
                      filePattern="logs/file %i.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-            <SizeBasedTriggeringPolicy size="2 KB"/>
+            <SizeBasedTriggeringPolicy size="2 GB"/>
         </RollingFile>
 
         <RollingFile name="DebugLog" append="true" fileName="../logs/debug.log"
@@ -23,7 +23,7 @@
                 <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
-            <SizeBasedTriggeringPolicy size="2 KB"/>
+            <SizeBasedTriggeringPolicy size="2 GB"/>
         </RollingFile>
 
         <RollingFile name="InfoLog" append="true" fileName="../logs/info.log"
@@ -36,7 +36,7 @@
                 <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
-            <SizeBasedTriggeringPolicy size="2 KB"/>
+            <SizeBasedTriggeringPolicy size="2 GB"/>
         </RollingFile>
 
         <RollingFile name="WarnLog" append="true" fileName="../logs/warn.log"
@@ -49,7 +49,7 @@
                 <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
-            <SizeBasedTriggeringPolicy size="2 KB"/>
+            <SizeBasedTriggeringPolicy size="2 GB"/>
         </RollingFile>
 
         <RollingFile name="ErrorLog" append="true" fileName="../logs/error.log"
@@ -62,7 +62,7 @@
                 <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
-            <SizeBasedTriggeringPolicy size="2 KB"/>
+            <SizeBasedTriggeringPolicy size="2 GB"/>
         </RollingFile>
 
         <RollingFile name="FatalLog" append="true" fileName="../logs/fatal.log"
@@ -75,7 +75,7 @@
                 <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
                 <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
             </Filters>
-            <SizeBasedTriggeringPolicy size="2 KB"/>
+            <SizeBasedTriggeringPolicy size="2 GB"/>
         </RollingFile>
 
     </Appenders>
