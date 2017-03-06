@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -39,8 +40,21 @@ public class JpaConfiguration {
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        logNewStart();
         logger.info("Configuring data source");
         return dataSource;
+    }
+
+    /**
+     * First start log record
+     */
+    private void logNewStart() {
+        Date nowDate = new Date();
+        logger.debug("\n \n \n NEW SERVER START " + nowDate);
+        logger.info("\n \n \n NEW SERVER START " + nowDate);
+        logger.warn("\n \n \n NEW SERVER START " + nowDate);
+        logger.error("\n \n \n NEW SERVER START " + nowDate);
+        logger.fatal("\n \n \n NEW SERVER START " + nowDate);
     }
 
     @Bean
