@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @Component
 public class RestClient {
-    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8083/rest/";
+    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8080/rest/";
     private final static String GET_USER = "getUser?";
     private final static String GET_USER_WITH_CREDENTIALS = "getUserWithCredentials?";
     private final static String AND = "&";

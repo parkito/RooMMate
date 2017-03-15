@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = "com.portal")
 @EnableAutoConfiguration
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(classes = DemoApplication.class)
 public class SpringBootWebApplication extends SpringBootServletInitializer {
     ConsoleUI consoleUI = new ConsoleUI();
 
