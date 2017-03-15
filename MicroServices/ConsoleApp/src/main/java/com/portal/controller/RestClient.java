@@ -3,17 +3,19 @@ package com.portal.controller;
 
 import com.portal.exceptions.DAOException;
 import com.portal.exceptions.ResponseEntityException;
-import mainDomainModel.User;
+import mainDomainModel.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Artem Karnov @date 03.02.2017.
  *         artem.karnov@t-systems.com
  */
-
+@Component
 public class RestClient {
-    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8083/rest/";
+    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8080/rest/";
     private final static String GET_USER = "getUser?";
     private final static String GET_USER_WITH_CREDENTIALS = "getUserWithCredentials?";
     private final static String AND = "&";
@@ -23,7 +25,8 @@ public class RestClient {
     private final static String PASSWORD_E = "password=";
     private final static String ADD_USER = "addUser?";
 
-    RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    RestTemplate restTemplate;
 
     public void addUser(String name, String secondName, String eMail, String password) {
         ResponseEntity response;
