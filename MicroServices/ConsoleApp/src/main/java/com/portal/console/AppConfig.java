@@ -1,6 +1,5 @@
 package com.portal.console;
 
-import com.portal.controller.BasicAuthInterceptor;
 import com.portal.controller.LoggingInterceptor;
 import com.portal.controller.TransactionInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +19,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoggingInterceptor());
-        registry.addInterceptor(new TransactionInterceptor()).addPathPatterns("/person/save/*");
+        registry.addInterceptor(new TransactionInterceptor());
         }
 }
