@@ -27,12 +27,11 @@ public class WelcomeController {
     private final static String PASSWORD_E = "password=";
     private final static String ADD_USER = "addUser?";
 
-
+    //    @Autowired
     RestTemplate restTemplate;
 
     @RequestMapping("/")
     public String welcome() {
-
         return "pages/welcomePage";
     }
 
@@ -44,7 +43,6 @@ public class WelcomeController {
     @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public String signUpPage() {
         return "pages/sign-up";
-
     }
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
