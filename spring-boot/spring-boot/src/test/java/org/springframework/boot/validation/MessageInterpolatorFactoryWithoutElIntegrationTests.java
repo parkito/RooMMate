@@ -16,18 +16,17 @@
 
 package org.springframework.boot.validation;
 
-import javax.validation.MessageInterpolator;
-import javax.validation.Validation;
-import javax.validation.ValidationException;
-
 import org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-
 import org.springframework.boot.junit.runner.classpath.ClassPathExclusions;
 import org.springframework.boot.junit.runner.classpath.ModifiedClassPathRunner;
+
+import javax.validation.MessageInterpolator;
+import javax.validation.Validation;
+import javax.validation.ValidationException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
