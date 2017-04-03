@@ -1,5 +1,7 @@
 package com.portal.controller;
 
+import mainDomainModel.entities.User;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +15,27 @@ import org.springframework.web.client.RestTemplate;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {RestClient.class,RestTemplate.class})
+@SpringBootTest(classes = {RestClient.class, RestTemplate.class})
 public class RestClientTest {
 
     @Autowired
     RestClient restClient;
 
+    private User user;
+
+    @Before
+    public void setUp() {
+    }
+
     @Test
     public void firstTest() {
-        restClient.getUser("email1", "password1");
+        user = restClient.getUser("email1", "password1");
+
+    }
+
+    @Test
+    public void secondTest() {
+        user = restClient.getUser("email11", "password1");
     }
 
 }

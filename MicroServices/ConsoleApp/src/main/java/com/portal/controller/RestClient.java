@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
  *         artem.karnov@t-systems.com
  */
 @Component
+@Rest( interceptors = { HttpBasicAuthenticatorInterceptor.class })
 public class RestClient {
     private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8080/rest/";
     private final static String GET_USER = "getUser?";

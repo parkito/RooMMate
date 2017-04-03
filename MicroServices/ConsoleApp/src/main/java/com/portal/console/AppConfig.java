@@ -2,9 +2,7 @@ package com.portal.console;
 
 import com.portal.controller.LoggingInterceptor;
 import com.portal.controller.TransactionInterceptor;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -14,8 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 
 @Configuration
-@ComponentScan("com.portal")
-@EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
 //    @Autowired
 //    private InterceptDelegator interceptDelegator
@@ -23,6 +19,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoggingInterceptor());
-        registry.addInterceptor(new TransactionInterceptor()).addPathPatterns("/person/save/*");
-    }
+        registry.addInterceptor(new TransactionInterceptor());
+        }
 }
