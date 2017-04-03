@@ -69,6 +69,14 @@ public class RestController {
             userService.createEntity(user5);
 
             //add grups
+            Group group = new Group("title");
+            Group group1 = new Group("title1");
+            Group group2 = new Group("title2");
+            Group group3 = new Group("title3");
+            groupService.createEntity(group);
+            groupService.createEntity(group1);
+            groupService.createEntity(group2);
+            groupService.createEntity(group3);
             Group grup = new Group("title");
             Group grup1 = new Group("title1");
             Group grup2 = new Group("title2");
@@ -94,24 +102,27 @@ public class RestController {
 
             //getting data from bd
             Room chRoom1 = roomService.getRoomByTitle(room.getTitle());
-            Room chRoom2 = roomService.getRoomByTitle(room1.getTitle());
+            Group chGroup1 = groupService.getGroupByTitle(group.getTitle());
+            Group chGroup2 = groupService.getGroupByTitle(group2.getTitle());
+
             Group chGrup1 = groupService.getGroupByTitle(grup.getTitle());
             Group chGrup2 = groupService.getGroupByTitle(grup2.getTitle());
+
             User chUser1 = userService.getUserByEMAil(user.getEmail());
             User chUser2 = userService.getUserByEMAil(user2.getEmail());
 
             //user to group
-            chUser1.addGroup(chGrup2);
-            chUser1.addGroup(chGrup1);
-            chUser2.addGroup(chGrup1);
+            chUser1.addGroup(chGroup2);
+            chUser1.addGroup(chGroup1);
+            chUser2.addGroup(chGroup1);
             userService.updateEntity(chUser1);
             userService.updateEntity(chUser2);
 
             //group to room
-//            chGrup1.addRoom(chRoom1);
-//            chGrup2.addRoom(chRoom2);
-            groupService.updateEntity(chGrup1);
-            groupService.updateEntity(chGrup2);
+//            chGroup1.addRoom(chRoom1);
+//            chGroup2.addRoom(chRoom2);
+            groupService.updateEntity(chGroup1);
+            groupService.updateEntity(chGroup2);
 
 
         } catch (DAOException ex) {
@@ -130,6 +141,7 @@ public class RestController {
             for (User usr : users) {
                 userService.deleteEntity(usr);
             }
+
             List<Group> grups = groupService.getAll();
             for (Group grps : grups) {
                 groupService.deleteEntity(grps);
@@ -172,6 +184,7 @@ public class RestController {
                            @RequestParam(value = "title") String title) {
 //        http://localhost:8099/addGroup?title=title
         try {
+
             Group grup = new Group(title);
             groupService.createEntity(grup);
         } catch (DAOException ex) {
@@ -214,20 +227,40 @@ public class RestController {
         return response;
     }
 
+    @RequestMapping(value = "/getUserWithCredentials", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<UserDTO> getUserWithCredentials(
+            @RequestParam(value = "eMail") String eMail,
+            @RequestParam(value = "password") String password) {
+        ResponseEntity<UserDTO> response;
+        User user = null;
+        try {
+            user = userService.getUserByEMAil(eMail);
+        } catch (DAOException ex) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        if (user.getPassword().equals(password)) {
+            response = ResponseEntity.ok(userEntityToUserDTO.convert(user));
+        } else {
+            response = new  ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return response;
+    }
+
     @RequestMapping(value = "/getGroup", method = RequestMethod.GET)
     @ResponseBody
     public Group getGroup(HttpServletRequest req,
                           @RequestParam(value = "title") String title) {
 //        http://localhost:8099/getGroup?title=title
-        Group grup = null;
+        Group group = null;
         try {
-            grup = groupService.getGroupByTitle(title);
+            group = groupService.getGroupByTitle(title);
         } catch (DAOException ex) {
             req.setAttribute("Message", ex.getStackTrace());
             req.setAttribute("Ex", ex);
             return null;
         }
-        return grup;
+        return group;
     }
 
     @RequestMapping(value = "/getRoom", method = RequestMethod.GET)
@@ -253,6 +286,7 @@ public class RestController {
 //        http://localhost:8099/addUserToGroup?eMail=email&groupTitle=title
         try {
             User user = userService.getUserByEMAil(eMail);
+
             Group grup = groupService.getGroupByTitle(groupTitle);
             user.addGroup(grup);
             userService.updateEntity(user);
@@ -271,6 +305,7 @@ public class RestController {
 //        http://localhost:8099/addGroupToRoom?roomTitle=room&groupTitle=title
         try {
             Room room = roomService.getRoomByTitle(roomTitle);
+
             Group grup = groupService.getGroupByTitle(groupTitle);
 //            grup.addRoom(room);
             groupService.updateEntity(grup);

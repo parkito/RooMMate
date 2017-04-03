@@ -1,39 +1,20 @@
-package com.portal.entities;
+package mainDomainModel.entities;
 
-import com.portal.exceptions.DAOException;
 
-import javax.persistence.*;
+import mainDomainModel.exceptions.DAOException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Artem Karnov 11.11.2016.
+ * @author Artem Karnov 16.03.2017.
  *         artem.karnov@t-systems.com
  **/
-@Entity
-@Table(name = "Room")
-@NamedQuery(name = "Room.getAll", query = "SELECT r FROM Room r")
 public class Room implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idRooms")
     private int idRooms;
-
-    @Basic
-    @Column(name = "Title", length = 45)
     private String title;
-
-    @Basic
-    @Column(name = "MaxMembers")
     private int maxMembers;
-
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "Room_has_Grup", joinColumns = {
-            @JoinColumn(name = "Room_idRooms")},
-            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-
     private List<Group> groups = new ArrayList<>();
 
     public List<Group> getGroups() {

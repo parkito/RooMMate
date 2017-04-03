@@ -29,6 +29,7 @@ import java.util.List;
 public class WebController {
     static final Logger logger = LogManager.getLogger(WebController.class.getName());
 
+
     @Autowired
     private UserService userService;
 
@@ -40,10 +41,13 @@ public class WebController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homePage() {
-        logger.error("Message logged at ERROR level");
-        logger.warn("Message logged at WARN level");
-        logger.info("Message logged at INFO level");
-        logger.debug("Message logged at DEBUG level");
+
+        logger.debug("This is a debug message");
+        logger.info("This is an info message");
+        logger.warn("This is a warn message");
+        logger.error("This is an error message");
+        logger.fatal("This is a fatal message");
+
         return "hello";
     }
 

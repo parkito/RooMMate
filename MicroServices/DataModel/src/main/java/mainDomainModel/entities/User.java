@@ -1,76 +1,36 @@
-package com.portal.entities;
+package mainDomainModel.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.portal.exceptions.DAOException;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import mainDomainModel.exceptions.DAOException;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Artem Karnov 11.11.2016.
+ * @author Artem Karnov 16.03.2017.
  *         artem.karnov@t-systems.com
  **/
-@Entity
-@Table(name = "User")
-@NamedQuery(name = "User.getAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUsers")
     private int idUsers;
-
-    @Basic
-    @Column(name = "Name", length = 45)
     private String name;
-
-    @Basic
-    @Column(name = "SecondName", length = 45)
     private String secondName;
-
-    @Basic
-    @Column(name = "Email", length = 45)
     private String email;
-
-    @Basic
-    @Column(name = "Password", length = 45)
-    private String password;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "User_has_Grup", joinColumns = {
-            @JoinColumn(name = "User_idUsers")},
-            inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
-
-    @JsonManagedReference
     private List<Group> groups;
-
 
     public User() {
     }
 
-    public User(String name, String secondName, String email, String password) {
+    public User(String name, String secondName, String email) {
         this.name = name;
         this.secondName = secondName;
         this.email = email;
-        this.password = password;
     }
-
 
     public void addGroup(Group grup) {
         if (!groups.contains(grup))
             groups.add(grup);
-        else throw new DAOException(grup.getTitle() + " already in " + email);
+        else
+            throw new DAOException(grup.getTitle() + " already in " + email);
     }
 
     public List<Group> getGroups() {
@@ -105,13 +65,6 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -125,8 +78,7 @@ public class User implements Serializable {
         if (secondName != null ? !secondName.equals(user.secondName) : user.secondName != null)
             return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null)
-            return false;
+
 
         return true;
     }
@@ -137,7 +89,6 @@ public class User implements Serializable {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 

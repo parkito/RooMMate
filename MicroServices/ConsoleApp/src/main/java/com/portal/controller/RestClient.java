@@ -1,25 +1,23 @@
 package com.portal.controller;
 
+
 import com.portal.exceptions.DAOException;
 import com.portal.exceptions.ResponseEntityException;
-import mainDomainModel.User;
+import mainDomainModel.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Artem Karnov @date 03.02.2017.
  *         artem.karnov@t-systems.com
  */
-
-@Controller
-public class WelcomeController {
-    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8083/rest/";
+@Component
+public class RestClient {
+    private final static String REST_ADDRESS_OF_PI_SERVER = "http://localhost:8080/rest/";
     private final static String GET_USER = "getUser?";
+    private final static String GET_USER_WITH_CREDENTIALS = "getUserWithCredentials?";
     private final static String AND = "&";
     private final static String EMAIL_E = "eMail=";
     private final static String NAME_E = "name=";
@@ -27,35 +25,8 @@ public class WelcomeController {
     private final static String PASSWORD_E = "password=";
     private final static String ADD_USER = "addUser?";
 
-
+    @Autowired
     RestTemplate restTemplate;
-
-    @RequestMapping("/")
-    public String welcome() {
-
-        return "pages/welcomePage";
-    }
-
-    @RequestMapping(value = "/signIn", method = RequestMethod.GET)
-    public String signInPage() {
-        return "pages/sign-in";
-    }
-
-    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
-    public String signUpPage() {
-        return "pages/sign-up";
-
-    }
-
-    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    public String getUserRequest(HttpServletRequest req) {
-        User user = getUser("email1");
-        req.getSession().setAttribute("result", user);
-        req.getSession().setAttribute("name", user.getName());
-        req.getSession().setAttribute("secondName", user.getSecondName());
-        req.getSession().setAttribute("groups", user.getGroups());
-        return "welcome";
-    }
 
     public void addUser(String name, String secondName, String eMail, String password) {
         ResponseEntity response;
@@ -75,19 +46,16 @@ public class WelcomeController {
         }
     }
 
-    public User getUser(String eMail) {
-        ResponseEntity<User> response = null;
+    public User getUser(String eMail, String password) {
+        User user;
         try {
-            response = restTemplate.getForObject(
-                    REST_ADDRESS_OF_PI_SERVER + GET_USER + EMAIL_E
-                            + eMail, ResponseEntity.class);
+            user = restTemplate.getForObject(REST_ADDRESS_OF_PI_SERVER + GET_USER_WITH_CREDENTIALS +
+                    EMAIL_E + eMail + AND +
+                    PASSWORD_E + password, User.class);
         } catch (Exception ex) {
             throw new ResponseEntityException("Error in getUsers while getting " + eMail, ex);
         }
-
-        if (!response.getStatusCode().is2xxSuccessful()) {
-            throw new DAOException("User " + eMail + " wasn't gotten because " + response.getStatusCode());
-        } else return response.getBody();
+        return user;
     }
 
 

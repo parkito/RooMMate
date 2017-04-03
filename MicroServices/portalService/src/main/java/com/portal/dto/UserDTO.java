@@ -10,8 +10,6 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  **/
 public class UserDTO implements Serializable {
-    private static final long serialVersionUID = -7788619177798333712L;
-
     private String name;
     private String secondName;
     private String email;

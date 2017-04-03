@@ -1,5 +1,6 @@
 package com.portal.controllers.convertors.implementation;
 
+
 import com.portal.controllers.convertors.api.DTOtoEntityConverter;
 import com.portal.dto.UserDTO;
 import com.portal.entities.User;
@@ -15,6 +16,8 @@ import java.util.List;
  * @author Artem Karnov @date 25.01.2017.
  *         artem.karnov@t-systems.com
  **/
+
+public class UserDTOtoUserEntity {
 public class UserDTOtoUserEntity implements DTOtoEntityConverter<UserDTO, User> {
     @Autowired
     UserService userService;

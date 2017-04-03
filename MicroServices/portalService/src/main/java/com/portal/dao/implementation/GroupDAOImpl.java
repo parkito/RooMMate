@@ -35,7 +35,7 @@ public class GroupDAOImpl extends GenericDAOImpl<Group, Integer> implements Grou
             logger.info("Group " + title + " was successfully read");
             return (Group) query.getSingleResult();
         } catch (PersistenceException ex) {
-            throw new GroupNotFoundException("Grup " + title + " wasn't found!", ex);
+            throw new GroupNotFoundException("Group " + title + " wasn't found!", ex);
         }
     }
 }
