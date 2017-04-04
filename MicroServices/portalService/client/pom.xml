@@ -8,17 +8,6 @@
     <artifactId>client</artifactId>
     <version>1.0</version>
 
-    <build>
-        <finalName>database-controller</finalName>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <dependencies>
 
     </dependencies>
