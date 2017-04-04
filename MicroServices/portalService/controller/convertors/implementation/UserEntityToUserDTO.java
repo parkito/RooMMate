@@ -1,7 +1,7 @@
 package com.portal.controller.convertors.implementation;
 
 import com.portal.controller.convertors.api.EntityToDTOConverter;
-import com.portal.repository.dto.UserDTO;
+import com.portal.model.UserDTO;
 import com.portal.repository.entities.User;
 import org.springframework.stereotype.Component;
 

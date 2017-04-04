@@ -1,4 +1,4 @@
-package com.portal.repository.dto;
+package com.portal.model;
 
 import com.portal.repository.entities.User;
 

@@ -2,7 +2,7 @@ package com.portal.controller.restControllers;
 
 import com.portal.controller.convertors.implementation.UserEntityToUserDTO;
 import com.portal.controller.enums.DAOExceptionEnum;
-import com.portal.repository.dto.UserDTO;
+import com.portal.model.UserDTO;
 import com.portal.repository.entities.Group;
 import com.portal.repository.entities.Room;
 import com.portal.repository.entities.User;
