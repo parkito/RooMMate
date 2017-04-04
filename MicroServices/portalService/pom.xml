@@ -10,13 +10,20 @@
     <!--<version>1.0</version>-->
     <!--</parent>-->
 
-    <groupId>com.MVC</groupId>
-    <artifactId>MVC</artifactId>
+    <groupId>com.roommate.database.controller</groupId>
+    <artifactId>database-controller</artifactId>
     <version>1.0</version>
-    <packaging>war</packaging>
-    <name>MVC</name>
-    <description>MVC service</description>
+    <packaging>pom</packaging>
 
+    <modules>
+        <module>app</module>
+        <module>client</module>
+        <module>controller</module>
+        <module>model</module>
+        <module>repository</module>
+        <module>service</module>
+        <module>utils</module>
+    </modules>
     <dependencies>
 
         <dependency>

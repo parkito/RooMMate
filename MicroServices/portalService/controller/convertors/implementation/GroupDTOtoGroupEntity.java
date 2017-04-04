@@ -1,7 +1,7 @@
 package com.portal.controller.convertors.implementation;
 
 import com.portal.controller.convertors.api.DTOtoEntityConverter;
-import com.portal.repository.dto.GroupDTO;
+import com.portal.model.GroupDTO;
 import com.portal.repository.entities.Group;
 import com.portal.utils.exceptions.EntityToDTOConvertException;
 import com.portal.utils.exceptions.GroupNotFoundException;
