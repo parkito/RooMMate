@@ -4,12 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--<parent>-->
-    <!--<groupId>com.ChatRoom</groupId>-->
-    <!--<artifactId>ChatRoom</artifactId>-->
-    <!--<version>1.0</version>-->
-    <!--</parent>-->
-
     <groupId>com.roommate.database.controller</groupId>
     <artifactId>database-controller</artifactId>
     <version>1.0</version>
@@ -24,6 +18,7 @@
         <module>service</module>
         <module>utils</module>
     </modules>
+
     <dependencies>
 
         <dependency>
@@ -149,16 +144,16 @@
                         <target>1.8</target>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>Portal</warName>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
-                </plugin>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-war-plugin</artifactId>-->
+                    <!--<version>2.4</version>-->
+                    <!--<configuration>-->
+                        <!--<warSourceDirectory>src/main/webapp</warSourceDirectory>-->
+                        <!--<warName>Portal</warName>-->
+                        <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
             </plugins>
         </pluginManagement>
         <finalName>Portal</finalName>
