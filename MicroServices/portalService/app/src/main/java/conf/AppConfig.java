@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @Import(JpaConfiguration.class)
 @EnableWebMvc
-@ComponentScan(basePackages = "com.portal")
+@ComponentScan(basePackages = "conf")
 public class AppConfig extends WebMvcConfigurerAdapter {
     private static Logger logger = LogManager.getLogger(AppConfig.class);
 
