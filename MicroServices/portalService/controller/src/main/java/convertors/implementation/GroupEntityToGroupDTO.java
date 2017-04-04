@@ -1,6 +1,6 @@
-package com.portal.controller.convertors.implementation;
+package convertors.implementation;
 
-import com.portal.controller.convertors.api.EntityToDTOConverter;
+import convertors.api.EntityToDTOConverter;
 import com.portal.model.GroupDTO;
 import com.portal.repository.entities.Group;
 

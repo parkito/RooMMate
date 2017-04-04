@@ -1,5 +1,3 @@
-package com.portal.model;
-
 import com.portal.repository.entities.User;
 
 import java.util.List;

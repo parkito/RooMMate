@@ -1,4 +1,4 @@
-package com.portal.controller.convertors.api;
+package convertors.api;
 
 import java.util.List;
 

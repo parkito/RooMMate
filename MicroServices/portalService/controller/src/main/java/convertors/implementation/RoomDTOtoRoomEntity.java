@@ -1,6 +1,6 @@
-package com.portal.controller.convertors.implementation;
+package convertors.implementation;
 
-import com.portal.controller.convertors.api.DTOtoEntityConverter;
+import convertors.api.DTOtoEntityConverter;
 import com.portal.model.RoomDTO;
 import com.portal.repository.entities.Room;
 import com.portal.utils.exceptions.EntityToDTOConvertException;

@@ -1,5 +1,3 @@
-package com.portal.model;
-
 import com.portal.repository.entities.Group;
 
 import java.io.Serializable;
