@@ -1,15 +1,15 @@
-package restControllers;
+package com.roommate.basecontrol.controllers.restControllers;
 
 
-import api.GroupService;
-import api.RoomService;
-import api.UserService;
-import convertors.implementation.UserEntityToUserDTO;
-import dto.UserDTO;
-import entities.Group;
-import entities.Room;
-import entities.User;
-import exceptions.DAOException;
+import com.roommate.basecontrol.service.api.GroupService;
+import com.roommate.basecontrol.service.api.RoomService;
+import com.roommate.basecontrol.service.api.UserService;
+import com.roommate.basecontrol.controllers.convertors.implementation.UserEntityToUserDTO;
+import com.roommate.basecontrol.model.dto.UserDTO;
+import com.roommate.basecontrol.repository.entities.Group;
+import com.roommate.basecontrol.repository.entities.Room;
+import com.roommate.basecontrol.repository.entities.User;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

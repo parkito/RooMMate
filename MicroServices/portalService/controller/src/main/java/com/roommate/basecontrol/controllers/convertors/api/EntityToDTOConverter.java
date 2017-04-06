@@ -1,4 +1,4 @@
-package convertors.api;
+package com.roommate.basecontrol.controllers.convertors.api;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package dto;
+package com.roommate.basecontrol.model.dto;
 
-import entities.User;
+import com.roommate.basecontrol.repository.entities.User;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package dao.api;
+package com.roommate.basecontrol.repository.dao.api;
 
-import entities.Group;
+import com.roommate.basecontrol.repository.entities.Group;
 
 /**
  * @author Artem Karnov @date 16.11.2016.

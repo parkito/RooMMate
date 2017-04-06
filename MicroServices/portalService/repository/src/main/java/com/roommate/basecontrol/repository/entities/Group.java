@@ -1,7 +1,7 @@
-package entities;
+package com.roommate.basecontrol.repository.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import exceptions.DAOException;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

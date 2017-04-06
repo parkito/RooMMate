@@ -1,8 +1,8 @@
-package api;
+package com.roommate.basecontrol.service.api;
 
 
-import entities.User;
-import exceptions.UserNotFoundException;
+import com.roommate.basecontrol.repository.entities.User;
+import com.roommate.basecontrol.utils.exceptions.UserNotFoundException;
 
 /**
  * @author Artem Karnov @date 11.11.2016.

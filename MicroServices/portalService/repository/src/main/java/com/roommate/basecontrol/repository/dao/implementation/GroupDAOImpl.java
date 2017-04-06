@@ -1,8 +1,8 @@
-package dao.implementation;
+package com.roommate.basecontrol.repository.dao.implementation;
 
-import dao.api.GroupDAO;
-import entities.Group;
-import exceptions.GroupNotFoundException;
+import com.roommate.basecontrol.repository.dao.api.GroupDAO;
+import com.roommate.basecontrol.repository.entities.Group;
+import com.roommate.basecontrol.utils.exceptions.GroupNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package dto;
+package com.roommate.basecontrol.model.dto;
 
-import entities.Group;
+import com.roommate.basecontrol.repository.entities.Group;
 
 import java.io.Serializable;
 import java.util.ArrayList;

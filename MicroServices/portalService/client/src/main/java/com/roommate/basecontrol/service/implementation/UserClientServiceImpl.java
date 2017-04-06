@@ -1,7 +1,7 @@
-package implementation;
+package com.roommate.basecontrol.service.implementation;
 
 
-import api.UserClientService;
+import com.roommate.basecontrol.service.api.UserClientService;
 
 /**
  * @author Artem Karnov @date 04.04.17.

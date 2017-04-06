@@ -1,11 +1,11 @@
-package convertors.implementation;
+package com.roommate.basecontrol.controllers.convertors.implementation;
 
-import api.GroupService;
-import convertors.api.DTOtoEntityConverter;
-import dto.GroupDTO;
-import entities.Group;
-import exceptions.EntityToDTOConvertException;
-import exceptions.GroupNotFoundException;
+import com.roommate.basecontrol.service.api.GroupService;
+import com.roommate.basecontrol.controllers.convertors.api.DTOtoEntityConverter;
+import com.roommate.basecontrol.model.dto.GroupDTO;
+import com.roommate.basecontrol.repository.entities.Group;
+import com.roommate.basecontrol.utils.exceptions.EntityToDTOConvertException;
+import com.roommate.basecontrol.utils.exceptions.GroupNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

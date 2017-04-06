@@ -1,8 +1,8 @@
-package dao.implementation;
+package com.roommate.basecontrol.repository.dao.implementation;
 
-import dao.api.RoomDAO;
-import entities.Room;
-import exceptions.RoomNotFoundException;
+import com.roommate.basecontrol.repository.dao.api.RoomDAO;
+import com.roommate.basecontrol.repository.entities.Room;
+import com.roommate.basecontrol.utils.exceptions.RoomNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;

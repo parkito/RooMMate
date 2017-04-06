@@ -1,12 +1,12 @@
-package implementation;
+package com.roommate.basecontrol.service.implementation;
 
 
-import api.RoomService;
-import dao.api.RoomDAO;
-import entities.Room;
-import exceptions.DAOException;
-import exceptions.EntityAlreadyExistsException;
-import exceptions.RoomNotFoundException;
+import com.roommate.basecontrol.service.api.RoomService;
+import com.roommate.basecontrol.repository.dao.api.RoomDAO;
+import com.roommate.basecontrol.repository.entities.Room;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
+import com.roommate.basecontrol.utils.exceptions.EntityAlreadyExistsException;
+import com.roommate.basecontrol.utils.exceptions.RoomNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +76,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * Getting all room entities from base
+     * Getting all room com.roommate.basecontrol.repository.entities from base
      *
      * @return list of all rooms
      * @throws DAOException if connect with DAO goes wrong

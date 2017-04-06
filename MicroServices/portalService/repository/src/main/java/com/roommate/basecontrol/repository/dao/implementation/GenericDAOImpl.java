@@ -1,7 +1,7 @@
-package dao.implementation;
+package com.roommate.basecontrol.repository.dao.implementation;
 
-import dao.api.GenericDAO;
-import exceptions.DAOException;
+import com.roommate.basecontrol.repository.dao.api.GenericDAO;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -99,9 +99,9 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
     }
 
     /**
-     * Getting all same-type entities from base
+     * Getting all same-type com.roommate.basecontrol.repository.entities from base
      *
-     * @return list of all entities
+     * @return list of all com.roommate.basecontrol.repository.entities
      * @throws DAOException if connect with base goes wrong
      */
     @Override
@@ -109,7 +109,7 @@ public abstract class GenericDAOImpl<E, K> implements GenericDAO<E, K> {
         try {
             return entityManager.createNamedQuery(daoType.getSimpleName() + ".getAll", daoType).getResultList();
         } catch (PersistenceException ex) {
-            throw new DAOException("Unable to get all entities of class " + daoType.getSimpleName(), ex);
+            throw new DAOException("Unable to get all com.roommate.basecontrol.repository.entities of class " + daoType.getSimpleName(), ex);
         }
     }
 }

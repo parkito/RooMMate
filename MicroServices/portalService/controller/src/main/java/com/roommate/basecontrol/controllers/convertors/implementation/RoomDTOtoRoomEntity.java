@@ -1,12 +1,12 @@
-package convertors.implementation;
+package com.roommate.basecontrol.controllers.convertors.implementation;
 
 
-import api.RoomService;
-import convertors.api.DTOtoEntityConverter;
-import dto.RoomDTO;
-import entities.Room;
-import exceptions.EntityToDTOConvertException;
-import exceptions.RoomNotFoundException;
+import com.roommate.basecontrol.service.api.RoomService;
+import com.roommate.basecontrol.controllers.convertors.api.DTOtoEntityConverter;
+import com.roommate.basecontrol.model.dto.RoomDTO;
+import com.roommate.basecontrol.repository.entities.Room;
+import com.roommate.basecontrol.utils.exceptions.EntityToDTOConvertException;
+import com.roommate.basecontrol.utils.exceptions.RoomNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

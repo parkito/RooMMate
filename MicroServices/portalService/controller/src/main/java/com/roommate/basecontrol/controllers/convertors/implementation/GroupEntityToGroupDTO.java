@@ -1,9 +1,9 @@
-package convertors.implementation;
+package com.roommate.basecontrol.controllers.convertors.implementation;
 
 
-import convertors.api.EntityToDTOConverter;
-import dto.GroupDTO;
-import entities.Group;
+import com.roommate.basecontrol.controllers.convertors.api.EntityToDTOConverter;
+import com.roommate.basecontrol.model.dto.GroupDTO;
+import com.roommate.basecontrol.repository.entities.Group;
 
 import java.util.ArrayList;
 import java.util.List;

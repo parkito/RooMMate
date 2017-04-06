@@ -1,9 +1,9 @@
-package convertors.implementation;
+package com.roommate.basecontrol.controllers.convertors.implementation;
 
 
-import convertors.api.EntityToDTOConverter;
-import dto.UserDTO;
-import entities.User;
+import com.roommate.basecontrol.controllers.convertors.api.EntityToDTOConverter;
+import com.roommate.basecontrol.model.dto.UserDTO;
+import com.roommate.basecontrol.repository.entities.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

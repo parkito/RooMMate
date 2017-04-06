@@ -1,4 +1,4 @@
-package aop;
+package com.roommate.basecontrol.utils.aop;
 
 /**
  * @author Artem Karnov @date 25.01.2017.

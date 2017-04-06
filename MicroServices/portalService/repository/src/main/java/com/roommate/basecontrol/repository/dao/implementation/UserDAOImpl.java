@@ -1,8 +1,8 @@
-package dao.implementation;
+package com.roommate.basecontrol.repository.dao.implementation;
 
-import dao.api.UserDAO;
-import entities.User;
-import exceptions.UserNotFoundException;
+import com.roommate.basecontrol.repository.dao.api.UserDAO;
+import com.roommate.basecontrol.repository.entities.User;
+import com.roommate.basecontrol.utils.exceptions.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package api;
+package com.roommate.basecontrol.service.api;
 
-import exceptions.DAOException;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
 
 import java.util.List;
 

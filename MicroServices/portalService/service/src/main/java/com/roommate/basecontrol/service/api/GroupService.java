@@ -1,8 +1,8 @@
-package api;
+package com.roommate.basecontrol.service.api;
 
 
-import entities.Group;
-import exceptions.GroupNotFoundException;
+import com.roommate.basecontrol.repository.entities.Group;
+import com.roommate.basecontrol.utils.exceptions.GroupNotFoundException;
 
 /**
  * @author Artem Karnov @date 16.11.2016.

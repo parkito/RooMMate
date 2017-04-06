@@ -1,12 +1,12 @@
-package implementation;
+package com.roommate.basecontrol.service.implementation;
 
 
-import api.UserService;
-import dao.api.UserDAO;
-import entities.User;
-import exceptions.DAOException;
-import exceptions.EntityAlreadyExistsException;
-import exceptions.UserNotFoundException;
+import com.roommate.basecontrol.service.api.UserService;
+import com.roommate.basecontrol.repository.dao.api.UserDAO;
+import com.roommate.basecontrol.repository.entities.User;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
+import com.roommate.basecontrol.utils.exceptions.EntityAlreadyExistsException;
+import com.roommate.basecontrol.utils.exceptions.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * Getting all user entities from base
+     * Getting all user com.roommate.basecontrol.repository.entities from base
      *
      * @return list of all users
      * @throws DAOException if connect with DAO goes wrong

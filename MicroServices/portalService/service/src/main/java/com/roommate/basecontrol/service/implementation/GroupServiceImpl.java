@@ -1,12 +1,12 @@
-package implementation;
+package com.roommate.basecontrol.service.implementation;
 
 
-import api.GroupService;
-import dao.api.GroupDAO;
-import entities.Group;
-import exceptions.DAOException;
-import exceptions.EntityAlreadyExistsException;
-import exceptions.GroupNotFoundException;
+import com.roommate.basecontrol.service.api.GroupService;
+import com.roommate.basecontrol.repository.dao.api.GroupDAO;
+import com.roommate.basecontrol.repository.entities.Group;
+import com.roommate.basecontrol.utils.exceptions.DAOException;
+import com.roommate.basecontrol.utils.exceptions.EntityAlreadyExistsException;
+import com.roommate.basecontrol.utils.exceptions.GroupNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +75,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     /**
-     * Getting all group entities from base
+     * Getting all group com.roommate.basecontrol.repository.entities from base
      *
      * @return list of all groups
      * @throws DAOException if connect with DAO goes wrong
