@@ -1,7 +1,7 @@
 package dao.api;
 
 
-import com.portal.repository.entities.Room;
+import entities.Room;
 
 /**
  * @author Artem Karnov @date 17.11.2016.

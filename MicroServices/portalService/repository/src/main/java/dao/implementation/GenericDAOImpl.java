@@ -1,7 +1,7 @@
 package dao.implementation;
 
 import dao.api.GenericDAO;
-import com.portal.utils.exceptions.DAOException;
+import exceptions.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

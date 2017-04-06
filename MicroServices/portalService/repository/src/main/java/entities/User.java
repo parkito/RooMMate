@@ -1,7 +1,7 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.portal.utils.exceptions.DAOException;
+import exceptions.DAOException;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

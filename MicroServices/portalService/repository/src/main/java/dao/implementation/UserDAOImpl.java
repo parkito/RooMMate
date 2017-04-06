@@ -1,8 +1,8 @@
 package dao.implementation;
 
 import dao.api.UserDAO;
-import com.portal.repository.entities.User;
-import com.portal.utils.exceptions.UserNotFoundException;
+import entities.User;
+import exceptions.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
