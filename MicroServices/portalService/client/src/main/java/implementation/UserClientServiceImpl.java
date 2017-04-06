@@ -1,6 +1,7 @@
-package com.portal.client.implementation;
+package implementation;
 
-import com.portal.client.api.UserClientService;
+
+import api.UserClientService;
 
 /**
  * @author Artem Karnov @date 04.04.17.

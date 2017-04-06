@@ -1,15 +1,15 @@
 package restControllers;
 
-import com.portal.controller.enums.DAOExceptionEnum;
-import com.portal.model.UserDTO;
-import com.portal.repository.entities.Group;
-import com.portal.repository.entities.Room;
-import com.portal.repository.entities.User;
-import com.portal.service.api.GroupService;
-import com.portal.service.api.RoomService;
-import com.portal.service.api.UserService;
-import com.portal.utils.exceptions.DAOException;
+
+import api.GroupService;
+import api.RoomService;
+import api.UserService;
 import convertors.implementation.UserEntityToUserDTO;
+import dto.UserDTO;
+import entities.Group;
+import entities.Room;
+import entities.User;
+import exceptions.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -208,7 +208,7 @@ public class RestController {
             user = userService.getUserByEMAil(eMail);
         } catch (DAOException ex) {
             return new ResponseEntity(HttpStatus.valueOf
-                    (String.valueOf(DAOExceptionEnum.USER_NOT_FOUND_ENUM)));
+                    (String.valueOf("")));
         }
         response = ResponseEntity.ok(userEntityToUserDTO.convert(user));
         return response;
