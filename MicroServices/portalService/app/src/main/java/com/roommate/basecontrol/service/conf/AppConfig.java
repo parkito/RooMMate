@@ -1,4 +1,4 @@
-package conf;
+package com.roommate.basecontrol.client.conf;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @Import(JpaConfiguration.class)
 @EnableWebMvc
-@ComponentScan(basePackages = "conf")
+@ComponentScan(basePackages = "com.roommate.basecontrol.client.conf")
 public class AppConfig extends WebMvcConfigurerAdapter {
     private static Logger logger = LogManager.getLogger(AppConfig.class);
 

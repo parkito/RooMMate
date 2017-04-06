@@ -1,4 +1,4 @@
-package conf;
+package com.roommate.basecontrol.client.conf;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
