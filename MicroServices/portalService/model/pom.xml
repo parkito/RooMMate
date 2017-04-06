@@ -7,6 +7,13 @@
     <groupId>com.roommate.database.controller</groupId>
     <artifactId>model</artifactId>
     <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.roommate.database.controller</groupId>
+            <artifactId>repository</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
-    
+
 </project>
