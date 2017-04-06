@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.roommate.basecontrol.service")
+@ComponentScan("com.roommate.basecontrol")
 public class BaseControlServiceConfig {
 }

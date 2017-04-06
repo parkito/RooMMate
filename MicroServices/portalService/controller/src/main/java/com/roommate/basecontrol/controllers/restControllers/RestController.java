@@ -1,18 +1,19 @@
 package com.roommate.basecontrol.controllers.restControllers;
 
 
-import com.roommate.basecontrol.service.api.GroupService;
-import com.roommate.basecontrol.service.api.RoomService;
-import com.roommate.basecontrol.service.api.UserService;
 import com.roommate.basecontrol.controllers.convertors.implementation.UserEntityToUserDTO;
 import com.roommate.basecontrol.model.dto.UserDTO;
 import com.roommate.basecontrol.repository.entities.Group;
 import com.roommate.basecontrol.repository.entities.Room;
 import com.roommate.basecontrol.repository.entities.User;
+import com.roommate.basecontrol.service.api.GroupService;
+import com.roommate.basecontrol.service.api.RoomService;
+import com.roommate.basecontrol.service.api.UserService;
 import com.roommate.basecontrol.utils.exceptions.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,7 @@ public class RestController {
     static final Logger log = LogManager.getLogger(RestController.class);
 
     @Autowired
+    @Qualifier("userService")
     private UserService userService;
 
     @Autowired
