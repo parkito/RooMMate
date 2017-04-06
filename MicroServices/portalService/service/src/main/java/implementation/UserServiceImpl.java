@@ -1,11 +1,12 @@
 package implementation;
 
-import com.portal.repository.dao.api.UserDAO;
-import com.portal.repository.entities.User;
-import com.portal.service.api.UserService;
-import com.portal.utils.exceptions.DAOException;
-import com.portal.utils.exceptions.EntityAlreadyExistsException;
-import com.portal.utils.exceptions.UserNotFoundException;
+
+import api.UserService;
+import dao.api.UserDAO;
+import entities.User;
+import exceptions.DAOException;
+import exceptions.EntityAlreadyExistsException;
+import exceptions.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
