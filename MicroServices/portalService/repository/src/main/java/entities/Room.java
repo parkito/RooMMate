@@ -1,8 +1,21 @@
 package entities;
 
-import com.portal.utils.exceptions.DAOException;
 
-import javax.persistence.*;
+import exceptions.DAOException;
+
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +48,6 @@ public class Room implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
     private List<Group> groups = new ArrayList<>();
 
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
     public Room() {
     }
 
@@ -51,6 +56,13 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
 
     public void addGroup(Group group) {
         if (!groups.contains(group)) {

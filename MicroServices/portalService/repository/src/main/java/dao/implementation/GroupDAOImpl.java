@@ -1,8 +1,8 @@
 package dao.implementation;
 
 import dao.api.GroupDAO;
-import com.portal.repository.entities.Group;
-import com.portal.utils.exceptions.GroupNotFoundException;
+import entities.Group;
+import exceptions.GroupNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;

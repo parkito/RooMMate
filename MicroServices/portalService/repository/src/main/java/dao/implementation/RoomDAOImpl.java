@@ -1,8 +1,8 @@
 package dao.implementation;
 
 import dao.api.RoomDAO;
-import com.portal.repository.entities.Room;
-import com.portal.utils.exceptions.RoomNotFoundException;
+import entities.Room;
+import exceptions.RoomNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;

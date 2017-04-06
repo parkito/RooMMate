@@ -1,4 +1,6 @@
-import com.portal.repository.entities.Group;
+package dto;
+
+import entities.Group;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,20 +21,20 @@ public class RoomDTO implements Serializable {
         return title;
     }
 
-    public int getMaxMembers() {
-        return maxMembers;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
 
+    public int getMaxMembers() {
+        return maxMembers;
+    }
+
     public void setMaxMembers(int maxMembers) {
         this.maxMembers = maxMembers;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
     }
 
     public void setGroups(List<Group> groups) {

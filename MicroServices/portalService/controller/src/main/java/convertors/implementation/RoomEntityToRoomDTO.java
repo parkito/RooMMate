@@ -1,8 +1,8 @@
 package convertors.implementation;
 
 import convertors.api.EntityToDTOConverter;
-import com.portal.model.RoomDTO;
-import com.portal.repository.entities.Room;
+import dto.RoomDTO;
+import entities.Room;
 
 import java.util.ArrayList;
 import java.util.List;

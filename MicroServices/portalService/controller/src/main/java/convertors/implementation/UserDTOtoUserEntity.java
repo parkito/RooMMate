@@ -1,11 +1,11 @@
 package convertors.implementation;
 
+import api.UserService;
 import convertors.api.DTOtoEntityConverter;
-import com.portal.model.UserDTO;
-import com.portal.repository.entities.User;
-import com.portal.utils.exceptions.EntityToDTOConvertException;
-import com.portal.utils.exceptions.UserNotFoundException;
-import com.portal.service.api.UserService;
+import dto.UserDTO;
+import entities.User;
+import exceptions.EntityToDTOConvertException;
+import exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

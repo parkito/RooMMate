@@ -1,6 +1,6 @@
 package dao.api;
 
-import com.portal.repository.entities.User;
+import entities.User;
 
 /**
  * @author Artem Karnov 11.11.2016.

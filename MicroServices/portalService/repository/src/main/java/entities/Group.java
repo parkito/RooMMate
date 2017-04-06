@@ -1,9 +1,18 @@
 package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.portal.utils.exceptions.DAOException;
+import exceptions.DAOException;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 

@@ -1,12 +1,12 @@
 package implementation;
 
-import com.portal.repository.dao.api.GroupDAO;
-import com.portal.repository.entities.Group;
-import com.portal.utils.exceptions.DAOException;
-import com.portal.utils.exceptions.EntityAlreadyExistsException;
-import com.portal.utils.exceptions.GroupNotFoundException;
-import com.portal.utils.exceptions.UserNotFoundException;
-import com.portal.service.api.GroupService;
+
+import api.GroupService;
+import dao.api.GroupDAO;
+import entities.Group;
+import exceptions.DAOException;
+import exceptions.EntityAlreadyExistsException;
+import exceptions.GroupNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

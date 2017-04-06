@@ -1,4 +1,4 @@
-package com.portal.client.api;
+package api;
 
 /**
  * @author Artem Karnov @date 04.04.17.
