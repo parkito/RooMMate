@@ -1,15 +1,15 @@
 package restControllers;
 
-import convertors.implementation.UserEntityToUserDTO;
 import com.portal.controller.enums.DAOExceptionEnum;
 import com.portal.model.UserDTO;
 import com.portal.repository.entities.Group;
 import com.portal.repository.entities.Room;
 import com.portal.repository.entities.User;
-import com.portal.utils.exceptions.DAOException;
 import com.portal.service.api.GroupService;
 import com.portal.service.api.RoomService;
 import com.portal.service.api.UserService;
+import com.portal.utils.exceptions.DAOException;
+import convertors.implementation.UserEntityToUserDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -229,7 +229,7 @@ public class RestController {
         if (user.getPassword().equals(password)) {
             response = ResponseEntity.ok(userEntityToUserDTO.convert(user));
         } else {
-            response = new  ResponseEntity(HttpStatus.NO_CONTENT);
+            response = new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return response;
     }

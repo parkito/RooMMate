@@ -1,6 +1,6 @@
 package api;
 
-import com.portal.utils.exceptions.DAOException;
+import exceptions.DAOException;
 
 import java.util.List;
 

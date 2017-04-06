@@ -2,10 +2,10 @@ package implementation;
 
 import com.portal.repository.dao.api.RoomDAO;
 import com.portal.repository.entities.Room;
+import com.portal.service.api.RoomService;
 import com.portal.utils.exceptions.DAOException;
 import com.portal.utils.exceptions.EntityAlreadyExistsException;
 import com.portal.utils.exceptions.RoomNotFoundException;
-import com.portal.service.api.RoomService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

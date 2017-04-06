@@ -1,11 +1,12 @@
 package convertors.implementation;
 
+
+import api.RoomService;
 import convertors.api.DTOtoEntityConverter;
-import com.portal.model.RoomDTO;
-import com.portal.repository.entities.Room;
-import com.portal.utils.exceptions.EntityToDTOConvertException;
-import com.portal.utils.exceptions.RoomNotFoundException;
-import com.portal.service.api.RoomService;
+import dto.RoomDTO;
+import entities.Room;
+import exceptions.EntityToDTOConvertException;
+import exceptions.RoomNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

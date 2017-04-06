@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--@author Artem Karnov @date 03.03.2017.-->
- <!--artem.karnov@t-systems.com-->
+<!--artem.karnov@t-systems.com-->
 <Configuration>
     <Appenders>
         <Console name="Console">

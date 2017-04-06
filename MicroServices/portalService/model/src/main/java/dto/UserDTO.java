@@ -1,4 +1,6 @@
-import com.portal.repository.entities.Group;
+package dto;
+
+import entities.Group;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,20 +29,20 @@ public class UserDTO implements Serializable {
         return name;
     }
 
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getSecondName() {
+        return secondName;
+    }
+
     public void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {

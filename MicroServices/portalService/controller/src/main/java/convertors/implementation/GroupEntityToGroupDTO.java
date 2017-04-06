@@ -1,8 +1,9 @@
 package convertors.implementation;
 
+
 import convertors.api.EntityToDTOConverter;
-import com.portal.model.GroupDTO;
-import com.portal.repository.entities.Group;
+import dto.GroupDTO;
+import entities.Group;
 
 import java.util.ArrayList;
 import java.util.List;

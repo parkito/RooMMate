@@ -1,8 +1,9 @@
 package convertors.implementation;
 
-import com.portal.model.UserDTO;
-import com.portal.repository.entities.User;
+
 import convertors.api.EntityToDTOConverter;
+import dto.UserDTO;
+import entities.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

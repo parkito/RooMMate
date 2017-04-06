@@ -1,11 +1,11 @@
 package convertors.implementation;
 
+import api.GroupService;
 import convertors.api.DTOtoEntityConverter;
-import com.portal.model.GroupDTO;
-import com.portal.repository.entities.Group;
-import com.portal.utils.exceptions.EntityToDTOConvertException;
-import com.portal.utils.exceptions.GroupNotFoundException;
-import com.portal.service.api.GroupService;
+import dto.GroupDTO;
+import entities.Group;
+import exceptions.EntityToDTOConvertException;
+import exceptions.GroupNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

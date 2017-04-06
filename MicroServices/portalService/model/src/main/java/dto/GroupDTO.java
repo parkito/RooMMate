@@ -1,4 +1,6 @@
-import com.portal.repository.entities.User;
+package dto;
+
+import entities.User;
 
 import java.util.List;
 
@@ -14,12 +16,12 @@ public class GroupDTO {
         return title;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
 
     public void setUsers(List<User> users) {

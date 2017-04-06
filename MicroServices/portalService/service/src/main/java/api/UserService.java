@@ -1,7 +1,8 @@
 package api;
 
-import com.portal.repository.entities.User;
-import com.portal.utils.exceptions.UserNotFoundException;
+
+import entities.User;
+import exceptions.UserNotFoundException;
 
 /**
  * @author Artem Karnov @date 11.11.2016.

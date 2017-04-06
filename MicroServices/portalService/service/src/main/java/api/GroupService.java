@@ -1,7 +1,8 @@
 package api;
 
-import com.portal.repository.entities.Group;
-import com.portal.utils.exceptions.GroupNotFoundException;
+
+import entities.Group;
+import exceptions.GroupNotFoundException;
 
 /**
  * @author Artem Karnov @date 16.11.2016.

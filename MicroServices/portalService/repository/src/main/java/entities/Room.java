@@ -48,14 +48,6 @@ public class Room implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "Grup_idGroups")})
     private List<Group> groups = new ArrayList<>();
 
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
     public Room() {
     }
 
@@ -64,6 +56,13 @@ public class Room implements Serializable {
         this.maxMembers = maxMembers;
     }
 
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
 
     public void addGroup(Group group) {
         if (!groups.contains(group)) {
