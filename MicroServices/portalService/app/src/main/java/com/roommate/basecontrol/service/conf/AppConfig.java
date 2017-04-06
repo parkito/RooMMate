@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.JstlView;
  *         artem.karnov@t-systems.com
  **/
 @Configuration
-@Import(JpaConfiguration.class)
+@Import(JpaConfig.class)
 @EnableWebMvc
 @ComponentScan(basePackages = "com.roommate.basecontrol.service.conf")
 public class AppConfig extends WebMvcConfigurerAdapter {

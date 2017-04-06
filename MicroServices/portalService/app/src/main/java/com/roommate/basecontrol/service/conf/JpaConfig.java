@@ -28,8 +28,10 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:application.properties"})
-public class JpaConfiguration {
-    private static Logger logger = LogManager.getLogger(JpaConfiguration.class);
+//@EntityScan(basePackages = {"com.tsystems.concar.rods.model",
+//        "com.tsystems.concar.rods.tap.repository.entity"})
+public class JpaConfig {
+    private static Logger logger = LogManager.getLogger(JpaConfig.class);
     @Autowired
     private Environment environment;
 
