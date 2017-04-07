@@ -28,8 +28,6 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:application.properties"})
-//@EntityScan(basePackages = {"com.tsystems.concar.rods.model",
-//        "com.tsystems.concar.rods.tap.repository.entity"})
 public class JpaConfig {
     private static Logger logger = LogManager.getLogger(JpaConfig.class);
     @Autowired
@@ -63,7 +61,7 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
-        factoryBean.setPackagesToScan(new String[]{"com.portal"});
+        factoryBean.setPackagesToScan(new String[]{"com.roommate.basecontrol.repository.entities"});
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
         factoryBean.setJpaProperties(jpaProperties());
         logger.info("Configuring entity manager");
