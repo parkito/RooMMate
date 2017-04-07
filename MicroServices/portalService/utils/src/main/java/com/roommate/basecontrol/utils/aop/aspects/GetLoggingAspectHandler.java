@@ -21,38 +21,48 @@ import java.util.Arrays;
 public class GetLoggingAspectHandler {
     private static Logger logger = LogManager.getLogger(GetLoggingAspectHandler.class);
 
-    @Pointcut("execution(* com.portal.service.api.*.getAll())")
+    @Pointcut("execution(* com.roommate.basecontrol.service.api.*.getAll())")
     public void getAllEntitiesPointcut() {
     }
 
-    @Pointcut("execution(* com.portal.service.api.*.createEntity())")
+    @Pointcut("execution(* com.roommate.basecontrol.service.api.*.createEntity())")
     public void getCreateEntityPointcut() {
     }
 
-    @Pointcut("execution(* com.portal.service.api.*.getEntityById())")
+    @Pointcut("execution(* com.roommate.basecontrol.service.api.*.getEntityById())")
     public void getEntityByIdPointcut() {
     }
 
-    @Pointcut("execution(* com.portal.service.api.*.updateEntity())")
+    @Pointcut("execution(* com.roommate.basecontrol.service.api.*.updateEntity())")
     public void getUpdateEntityPointcut() {
     }
 
-    @Pointcut("execution(* com.portal.service.api.*.deleteEntity())")
+    @Pointcut("execution(* com.roommate.basecontrol.service.api.*.deleteEntity())")
     public void getDeleteEntityPointcut() {
     }
 
-    @Pointcut("execution(* com.portal.service.api.*.get*By*())")
+    @Pointcut("execution(* com.roommate.basecontrol.service.api.*.get*By*())")
     public void getEntityByPointcut() {
     }
 
 
-    @Before("getAllEntitiesPointcut()")
+    @Before("getAllEntitiesPointcut()," +
+            "getCreateEntityPointcut()," +
+            "getEntityByIdPointcut()," +
+            "getUpdateEntityPointcut()," +
+            "getDeleteEntityPointcut()," +
+            "getEntityByPointcut()")
     public void loggingBeforeGettingAllEntities(JoinPoint joinPoint) {
         logger.info(String.format("A method: {%s} is invoking, arguments: {%s}",
                 joinPoint.toString(), Arrays.toString(joinPoint.getArgs())));
     }
 
-    @Around("getAllEntitiesPointcut()")
+    @Around("getAllEntitiesPointcut()," +
+            "getCreateEntityPointcut()," +
+            "getEntityByIdPointcut()," +
+            "getUpdateEntityPointcut()," +
+            "getDeleteEntityPointcut()," +
+            "getEntityByPointcut()")
     public Object loggingAroundGettingAllEntities(ProceedingJoinPoint proceedingJoinPoint) {
         Object value = null;
         try {
@@ -64,5 +74,6 @@ public class GetLoggingAspectHandler {
                 proceedingJoinPoint.getSignature()));
         return value;
     }
+
 
 }

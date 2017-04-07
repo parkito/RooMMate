@@ -11,6 +11,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = "com")
+@ComponentScan(basePackages = "com.roommate.basecontrol")
 public class AspectConfig {
 }
