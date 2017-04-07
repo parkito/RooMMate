@@ -1,4 +1,4 @@
-package com.roommate.basecontrol.controllers.convertors.api;
+package com.roommate.basecontrol.model.convertors.api;
 
 import java.util.List;
 

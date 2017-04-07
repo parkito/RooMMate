@@ -1,7 +1,7 @@
 package com.roommate.basecontrol.controllers.restControllers;
 
 
-import com.roommate.basecontrol.controllers.convertors.implementation.UserEntityToUserDTO;
+import com.roommate.basecontrol.model.convertors.implementation.UserEntityToUserDTO;
 import com.roommate.basecontrol.model.dto.UserDTO;
 import com.roommate.basecontrol.repository.entities.Group;
 import com.roommate.basecontrol.repository.entities.Room;

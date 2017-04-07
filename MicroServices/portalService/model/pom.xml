@@ -20,6 +20,11 @@
             <artifactId>repository</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.roommate.database.controller</groupId>
+            <artifactId>service</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
 

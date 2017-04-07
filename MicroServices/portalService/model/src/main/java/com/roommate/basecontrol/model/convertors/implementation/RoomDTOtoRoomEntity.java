@@ -1,8 +1,8 @@
-package com.roommate.basecontrol.controllers.convertors.implementation;
+package com.roommate.basecontrol.model.convertors.implementation;
 
 
 import com.roommate.basecontrol.service.api.RoomService;
-import com.roommate.basecontrol.controllers.convertors.api.DTOtoEntityConverter;
+import com.roommate.basecontrol.model.convertors.api.DTOtoEntityConverter;
 import com.roommate.basecontrol.model.dto.RoomDTO;
 import com.roommate.basecontrol.repository.entities.Room;
 import com.roommate.basecontrol.utils.exceptions.EntityToDTOConvertException;
