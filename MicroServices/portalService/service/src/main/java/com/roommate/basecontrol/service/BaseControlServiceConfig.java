@@ -1,7 +1,9 @@
 package com.roommate.basecontrol.service;
 
+import com.roommate.basecontrol.repository.BaseControlRepositoryConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -10,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.roommate.basecontrol")
+@Import({BaseControlRepositoryConfig.class})
+@ComponentScan("com.roommate.basecontrol.service")
 public class BaseControlServiceConfig {
 }

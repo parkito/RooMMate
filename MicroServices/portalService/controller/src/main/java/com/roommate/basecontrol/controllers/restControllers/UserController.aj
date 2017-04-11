@@ -3,7 +3,9 @@ package com.roommate.basecontrol.controllers.restControllers;
 import com.roommate.basecontrol.model.convertors.implementation.UserDTOtoUserEntity;
 import com.roommate.basecontrol.model.convertors.implementation.UserEntityToUserDTO;
 import com.roommate.basecontrol.model.dto.UserDTO;
+import com.roommate.basecontrol.repository.entities.Group;
 import com.roommate.basecontrol.repository.entities.User;
+import com.roommate.basecontrol.service.api.GroupService;
 import com.roommate.basecontrol.service.api.UserService;
 import com.roommate.basecontrol.utils.exceptions.DAOException;
 import com.roommate.basecontrol.utils.exceptions.UserNotFoundException;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -27,9 +30,8 @@ import java.util.Map;
  * @author Artem Karnov @date 07.04.17.
  *         artem.karnov@t-systems.com
  */
-@Controller("UserController")
-@RequestMapping(value = "/user")
-public aspect UserController {
+@RestController
+public class UserController {
     private static Logger logger = LogManager.getLogger(UserController.class);
 
     @Autowired
@@ -41,6 +43,9 @@ public aspect UserController {
     @Autowired
     UserDTOtoUserEntity userDTOtoUser;
 
+    @Autowired
+    GroupService groupService;
+
     @RequestMapping(value = "/getUserByCredentials", method = RequestMethod.GET)
     public ResponseEntity<UserDTO> getUserByCredentials(HttpServletRequest req,
                                                         @RequestParam(value = "email") String email,
@@ -49,15 +54,15 @@ public aspect UserController {
         try {
             user = userService.getUserByEMAil(email);
         } catch (UserNotFoundException ex) {
-            logger.warn("User" + email + " required by " + req.getHeader("service") + " wasn't found.");
-            return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
+            logger.warn("User " + email + " required by " + req.getHeader("service") + " wasn't found.");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
 
         if (PasswordChecker.check(user.getPassword(), password)) {
             UserDTO result = userToUserDTO.convert(user);
-            return new ResponseEntity<UserDTO>(result, HttpStatus.OK);
+            return new ResponseEntity(result, HttpStatus.OK);
         } else {
-            return new ResponseEntity<UserDTO>(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
     }
 
@@ -72,9 +77,10 @@ public aspect UserController {
             try {
                 user = userService.getUserByEMAil(currentEmail);
             } catch (UserNotFoundException ex) {
-                logger.warn("User" + currentEmail + " required by " + req.getHeader("service") + " wasn't found.");
+                logger.warn("User " + currentEmail + " required by " + req.getHeader("service") + " wasn't found.");
             }
 
+            // TODO: 10.04.2017 check this theory
             if (user != null) {
                 users.add(user);
             }
@@ -91,11 +97,11 @@ public aspect UserController {
         try {
             user = userService.getUserByEMAil(email);
         } catch (UserNotFoundException ex) {
-            logger.warn("User" + email + " required by " + req.getHeader("service") + " wasn't found.");
-            return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
+            logger.warn("User " + email + " required by " + req.getHeader("service") + " wasn't found.");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         UserDTO result = userToUserDTO.convert(user);
-        return new ResponseEntity<UserDTO>(result, HttpStatus.OK);
+        return new ResponseEntity(result, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/persistUser", method = RequestMethod.GET)
@@ -108,7 +114,7 @@ public aspect UserController {
         try {
             userService.createEntity(user);
         } catch (DAOException ex) {
-            logger.warn("User" + userDTO.getEmail() + " required by " + req.getHeader("service") + " already exists.");
+            logger.warn("User " + userDTO.getEmail() + " required by " + req.getHeader("service") + " already exists.");
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
         return new ResponseEntity(HttpStatus.OK);
@@ -125,9 +131,34 @@ public aspect UserController {
             try {
                 userService.createEntity(user);
             } catch (DAOException ex) {
-                logger.warn("User" + currentUser.getEmail() + " required by " + req.getHeader("service") + " already exists.");
+                logger.warn("User " + currentUser.getEmail() + " required by " + req.getHeader("service") + " already exists.");
             }
         }
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/addToGroup", method = RequestMethod.GET)
+    public ResponseEntity userToGroup(HttpServletRequest req,
+                                      @RequestParam(value = "email") String userEmail,
+                                      @RequestParam(value = "groupTitle") String groupTitle) {
+        User user = null;
+        try {
+            user = userService.getUserByEMAil(userEmail);
+        } catch (UserNotFoundException ex) {
+            logger.warn("User " + userEmail + " required by " + req.getHeader("service") + " wasn't found.");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+
+        Group group = null;
+        try {
+            group = groupService.getGroupByTitle(groupTitle);
+        } catch (UserNotFoundException ex) {
+            logger.warn("Group " + groupTitle + " required by " + req.getHeader("service") + " wasn't found.");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+
+        user.addGroup(group);
+        userService.updateEntity(user);
         return new ResponseEntity(HttpStatus.OK);
     }
 

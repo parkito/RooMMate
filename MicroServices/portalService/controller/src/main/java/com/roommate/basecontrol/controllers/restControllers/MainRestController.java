@@ -13,15 +13,14 @@ import com.roommate.basecontrol.utils.exceptions.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -30,13 +29,11 @@ import java.util.List;
  * @author Artem Karnov @date 24.01.2017.
  *         artem.karnov@t-systems.com
  **/
-@Controller("RestController")
-@RequestMapping(value = "/rest")
-public class RestController {
-    static final Logger log = LogManager.getLogger(RestController.class);
+@RestController
+public class MainRestController {
+    static final Logger log = LogManager.getLogger(MainRestController.class);
 
     @Autowired
-    @Qualifier("userService")
     private UserService userService;
 
     @Autowired
@@ -349,7 +346,7 @@ public class RestController {
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
     @ResponseBody
-        public List<UserDTO> getAllUsers(HttpServletRequest req) {
+    public List<UserDTO> getAllUsers(HttpServletRequest req) {
         return userEntityToUserDTO.convertList(userService.getAll());
     }
 
