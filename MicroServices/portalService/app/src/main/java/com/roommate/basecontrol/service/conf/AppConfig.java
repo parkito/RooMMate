@@ -2,20 +2,24 @@ package com.roommate.basecontrol.service.conf;
 
 import com.roommate.basecontrol.controllers.BaseControlRestConfig;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * @author Artem Karnov @date 24.01.17.
  *         artem.karnov@t-systems.com
  **/
-@Configuration
-@Import({JpaConfig.class,
-        BaseControlRestConfig.class})
-@ComponentScan(basePackages = "com.roommate.basecontrol")
+
+@Import({BaseControlRestConfig.class,
+        JpaConfig.class})
 @EnableWebMvc
-public class AppConfig  {
+@ComponentScan(basePackages = "com.roommate.basecontrol")
+public class AppConfig extends WebMvcConfigurerAdapter {
 
-
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 }

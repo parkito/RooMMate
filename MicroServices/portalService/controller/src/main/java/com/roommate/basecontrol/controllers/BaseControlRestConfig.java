@@ -7,14 +7,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.context.request.RequestContextListener;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * @author Artem Karnov @date 07.04.17.
  *         artem.karnov@t-systems.com
  */
 @Configuration
-@ComponentScan(value = "com.roommate.basecontrol.controllers.restControllers")
+@ComponentScan(basePackages = {"com.roommate.basecontrol.controllers.restControllers"})
 @Import({BaseControlServiceConfig.class,
         BaseControlModelConfig.class})
 public class BaseControlRestConfig {
@@ -22,4 +21,5 @@ public class BaseControlRestConfig {
     public RequestContextListener requestContextListener() {
         return new RequestContextListener();
     }
+
 }
