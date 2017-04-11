@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(value = "com.roommate.basecontrol.controllers.restControllers")
 @Import({BaseControlServiceConfig.class,
         BaseControlModelConfig.class})
-@EnableWebMvc
 public class BaseControlRestConfig {
     @Bean
     public RequestContextListener requestContextListener() {

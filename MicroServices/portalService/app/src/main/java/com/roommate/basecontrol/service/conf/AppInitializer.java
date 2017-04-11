@@ -1,11 +1,13 @@
 package com.roommate.basecontrol.service.conf;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * @author Artem Karnov @date 24.01.17.
  *         artem.karnov@t-systems.com
  **/
+@Configuration
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -14,7 +16,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[]{AppConfig.class};
     }
 
     @Override

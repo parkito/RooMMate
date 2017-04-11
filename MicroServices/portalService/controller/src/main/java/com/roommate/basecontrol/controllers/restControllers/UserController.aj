@@ -15,10 +15,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import java.util.Map;
  * @author Artem Karnov @date 07.04.17.
  *         artem.karnov@t-systems.com
  */
-@Controller("UserController")
+@RestController
 @RequestMapping(value = "/user")
 public aspect UserController {
     private static Logger logger = LogManager.getLogger(UserController.class);
