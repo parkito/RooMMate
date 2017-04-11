@@ -12,8 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  **/
 @Configuration
 @Import({JpaConfig.class,
-        BaseControlRestConfig.class,
-        AppInitializer.class})
+        BaseControlRestConfig.class})
 @ComponentScan(basePackages = "com.roommate.basecontrol")
 @EnableWebMvc
 public class AppConfig  {
