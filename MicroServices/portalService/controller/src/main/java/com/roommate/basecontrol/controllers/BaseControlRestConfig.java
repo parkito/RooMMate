@@ -13,7 +13,7 @@ import org.springframework.web.context.request.RequestContextListener;
  *         artem.karnov@t-systems.com
  */
 @Configuration
-@ComponentScan(basePackages = {"com.roommate.basecontrol.controllers.restControllers"})
+@ComponentScan(basePackages = {"com.roommate.basecontrol.controllers"})
 @Import({BaseControlServiceConfig.class,
         BaseControlModelConfig.class})
 public class BaseControlRestConfig {
