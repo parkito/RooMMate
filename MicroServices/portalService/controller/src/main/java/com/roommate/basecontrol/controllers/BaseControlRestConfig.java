@@ -1,5 +1,6 @@
 package com.roommate.basecontrol.controllers;
 
+import com.roommate.basecontrol.model.BaseControlModelConfig;
 import com.roommate.basecontrol.service.BaseControlServiceConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,8 +14,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  *         artem.karnov@t-systems.com
  */
 @Configuration
-@ComponentScan(value = "com.roommate.basecontrol.controllers")
-@Import(BaseControlServiceConfig.class)
+@ComponentScan(value = "com.roommate.basecontrol.controllers.restControllers")
+@Import({BaseControlServiceConfig.class,
+        BaseControlModelConfig.class})
 @EnableWebMvc
 public class BaseControlRestConfig {
     @Bean
