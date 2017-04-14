@@ -15,10 +15,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +31,7 @@ import java.util.Map;
  *         artem.karnov@t-systems.com
  */
 @RestController
+@RequestMapping(value = "/user")
 public class UserController {
     private static Logger logger = LogManager.getLogger(UserController.class);
 
@@ -45,6 +46,11 @@ public class UserController {
 
     @Autowired
     GroupService groupService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homePage() {
+        return "index";
+    }
 
     @RequestMapping(value = "/getUserByCredentials", method = RequestMethod.GET)
     public ResponseEntity<UserDTO> getUserByCredentials(HttpServletRequest req,
@@ -67,6 +73,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/getUserList", method = RequestMethod.GET)
+    @ResponseBody
     public ResponseEntity<List<UserDTO>> getUserList(HttpServletRequest req,
                                                      @RequestParam(value = "emails") List<String> emails) {
         // TODO: 08.04.17 to optimize with named query
@@ -91,6 +98,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/getUserByEmail", method = RequestMethod.GET)
+    @ResponseBody
     public ResponseEntity<UserDTO> getUserByEmail(HttpServletRequest req,
                                                   @RequestParam(value = "email") String email) {
         User user;
@@ -105,6 +113,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/persistUser", method = RequestMethod.GET)
+    @ResponseBody
     public ResponseEntity persisUser(HttpServletRequest req,
                                      @RequestParam(value = "user") UserDTO userDTO,
                                      @RequestParam(value = "password") String password) {
@@ -121,6 +130,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/persistUsers", method = RequestMethod.GET)
+    @ResponseBody
     public ResponseEntity persistUsers(HttpServletRequest req,
                                        @RequestParam(value = "users") Map<UserDTO, String> usersMap) {
         // TODO: 08.04.17 make feature that allow recognize not fully persistence
@@ -138,6 +148,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/addToGroup", method = RequestMethod.GET)
+    @ResponseBody
     public ResponseEntity userToGroup(HttpServletRequest req,
                                       @RequestParam(value = "email") String userEmail,
                                       @RequestParam(value = "groupTitle") String groupTitle) {
