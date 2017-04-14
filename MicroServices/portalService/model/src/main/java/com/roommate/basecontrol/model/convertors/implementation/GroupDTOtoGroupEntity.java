@@ -7,6 +7,7 @@ import com.roommate.basecontrol.service.api.GroupService;
 import com.roommate.basecontrol.utils.exceptions.EntityToDTOConvertException;
 import com.roommate.basecontrol.utils.exceptions.GroupNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author Artem Karnov @date 25.01.2017.
  *         artem.karnov@t-systems.com
  **/
+@Component
 public class GroupDTOtoGroupEntity implements DTOtoEntityConverter<GroupDTO, Group> {
     @Autowired
     GroupService groupService;
