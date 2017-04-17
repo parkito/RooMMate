@@ -1,4 +1,4 @@
-package com.roommate.basecontrol.utils.aop;
+package com.roommate.basecontrol.utils.testSetup;
 
 /**
  * @author Artem Karnov @date 25.01.2017.

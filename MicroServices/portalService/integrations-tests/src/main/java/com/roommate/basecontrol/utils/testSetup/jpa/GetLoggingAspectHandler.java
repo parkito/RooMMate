@@ -1,4 +1,4 @@
-package com.roommate.basecontrol.utils.aop.aspects;
+package com.roommate.basecontrol.utils.testSetup.jpa;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
