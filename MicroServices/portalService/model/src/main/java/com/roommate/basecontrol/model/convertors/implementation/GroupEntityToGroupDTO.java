@@ -4,6 +4,7 @@ package com.roommate.basecontrol.model.convertors.implementation;
 import com.roommate.basecontrol.model.convertors.api.EntityToDTOConverter;
 import com.roommate.basecontrol.model.dto.GroupDTO;
 import com.roommate.basecontrol.repository.entities.Group;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @author Artem Karnov @date 25.01.2017.
  *         artem.karnov@t-systems.com
  **/
+@Component
 public class GroupEntityToGroupDTO implements EntityToDTOConverter<Group, GroupDTO> {
     @Override
     public GroupDTO convert(Group entity) {

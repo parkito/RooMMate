@@ -18,7 +18,7 @@ public class DAOException extends RuntimeException {
      */
     public DAOException(String message) {
         super(message);
-        logger.error(message);
+        logger.warn(message);
     }
 
     /**
@@ -29,6 +29,6 @@ public class DAOException extends RuntimeException {
      */
     public DAOException(String message, Throwable throwable) {
         super(message, throwable);
-        logger.error(message, throwable);
+        logger.warn(message, throwable);
     }
 }

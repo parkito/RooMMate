@@ -1,5 +1,6 @@
 package com.roommate.basecontrol.service.conf;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,21 +41,9 @@ public class JpaConfig {
         dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
-        logNewStart();
+        logger.log(Level.ALL,"\n \n \n NEW SERVER START " + new Date());
         logger.info("Configuring data source");
         return dataSource;
-    }
-
-    /**
-     * First start log record
-     */
-    private void logNewStart() {
-        Date nowDate = new Date();
-        logger.debug("\n \n \n NEW SERVER START " + nowDate);
-        logger.info("\n \n \n NEW SERVER START " + nowDate);
-        logger.warn("\n \n \n NEW SERVER START " + nowDate);
-        logger.error("\n \n \n NEW SERVER START " + nowDate);
-        logger.fatal("\n \n \n NEW SERVER START " + nowDate);
     }
 
     @Bean

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
@@ -32,7 +33,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
             logger.info("User with email = " + eMail + " was successfully read");
             return user;
         } catch (PersistenceException ex) {
-            throw new UserNotFoundException("User with email " + eMail + " wasn't found!", ex);
+            throw new UserNotFoundException("User with email {" + eMail + "} wasn't found!", ex);
         }
     }
 
