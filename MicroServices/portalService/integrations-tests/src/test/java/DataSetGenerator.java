@@ -6,8 +6,11 @@ import org.dbunit.database.QueryDataSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Class.forName;
@@ -19,7 +22,7 @@ import static org.dbunit.dataset.xml.XmlDataSet.write;
  *         artem.karnov@t-systems.com
  */
 
-public abstract class DataSetGenerator {
+public class DataSetGenerator {
     private static Logger logger = LogManager.getLogger(DataSetGenerator.class);
 
     @Autowired
@@ -34,7 +37,7 @@ public abstract class DataSetGenerator {
     }
 
     public DataSetGenerator() {
-        setUpConnection();
+//        setUpConnection();
     }
 
     private void setUpConnection() {
@@ -58,6 +61,16 @@ public abstract class DataSetGenerator {
 
 
     public void createDefaultTablesDataSet() {
+        try {
+            List<String> tables = new ArrayList<>();
+            String numberOfTablesInProperties = environment.getRequiredProperty("dbunit.dataset.tables");
+            int numberOfTables = Integer.valueOf(numberOfTablesInProperties);
+            // TODO: 20.04.2017 finish it
+
+        } catch (Exception ex) {
+            logger.error("Can't create dataset ", ex);
+        }
+        createCustomTablesDataSet();
 
     }
 
@@ -74,6 +87,23 @@ public abstract class DataSetGenerator {
             write(queryDataSet, new FileOutputStream("dataSets/" + table + ".xml"));
         } catch (Exception e) {
             logger.error("Create Xml Fail, message: %s", e.getMessage());
+        }
+    }
+
+    public void createFile() throws FileNotFoundException {
+        System.out.println(System.class.getResource("/").getPath());
+        String dir = getClass().getResource("/").getPath();
+        System.out.println(dir);
+        OutputStream os;
+        os = new FileOutputStream(dir + "/file.txt");
+    }
+
+    public static void main(String[] args) {
+        DataSetGenerator da = new DataSetGenerator();
+        try {
+            da.createFile();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
