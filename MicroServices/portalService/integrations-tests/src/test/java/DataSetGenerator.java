@@ -1,6 +1,5 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.database.QueryDataSet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,20 +7,20 @@ import org.springframework.core.env.Environment;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.stream.Collectors;
 
 import static java.lang.Class.forName;
-import static java.sql.DriverManager.getConnection;
 import static org.dbunit.dataset.xml.XmlDataSet.write;
 
 /**
  * @author Artem Karnov @date 20.04.2017.
  *         artem.karnov@t-systems.com
  */
-
 public class DataSetGenerator {
     private static Logger logger = LogManager.getLogger(DataSetGenerator.class);
 
@@ -29,68 +28,80 @@ public class DataSetGenerator {
     private Environment environment;
 
     private List<String> tables;
-    private static IDatabaseConnection connection;
+    private  IDatabaseConnection connection;
+    Properties props;
 
-    public DataSetGenerator(List<String> tables) {
-        this.tables = tables;
-        setUpConnection();
+    public DataSetGenerator() throws IOException {
+        props = new Properties();
+        props.load(DataSetGenerator.class.getClassLoader().getResourceAsStream("application.properties"));
     }
 
-    public DataSetGenerator() {
-//        setUpConnection();
+    public void createDataSet(List<String> tables) {
+        this.tables = tables;
+        setUpConnection();
+        generate();
+    }
+
+    private void createDataSet() {
+        setUpConnection();
+        generate();
     }
 
     private void setUpConnection() {
         Connection jdbcConnection;
         try {
-            forName(environment.getRequiredProperty("jdbc.driverClassName"));
-            jdbcConnection = getConnection(environment.getRequiredProperty("jdbc.url"));
-            connection = new DatabaseConnection(jdbcConnection);
+            forName(props.getProperty("jdbc.driverClassName"));
+            String dbURL = props.getProperty("jdbc.url");
+            String dbUser = props.getProperty("jdbc.url");
+            String dbPass = props.getProperty("jdbc.url");
+            // TODO: 27.04.2017 finish it
+//            connection = DriverManager.getConnection(dbURL, dbUser, dbPass);
         } catch (Exception e) {
-            logger.error("Create connection fail, message: %s", e.getMessage());
+            logger.error("Create connection fail, message: %s", e);
         }
     }
 
-    public void generate() {
-        if (tables.isEmpty()) {
+    private void generate() {
+        if (tables == null) {
             createDefaultTablesDataSet();
         } else {
-            createCustomTablesDataSet();
+            createTablesDataSet();
         }
     }
 
 
-    public void createDefaultTablesDataSet() {
+    private void createDefaultTablesDataSet() {
         try {
-            List<String> tables = new ArrayList<>();
-            String numberOfTablesInProperties = environment.getRequiredProperty("dbunit.dataset.tables");
-            int numberOfTables = Integer.valueOf(numberOfTablesInProperties);
-            // TODO: 20.04.2017 finish it
-
+            tables = props
+                    .stringPropertyNames()
+                    .stream()
+                    .filter(key -> key.startsWith("dbunit.dataset."))
+                    .map(props::getProperty)
+                    .collect(Collectors.toList());
         } catch (Exception ex) {
             logger.error("Can't create dataset ", ex);
         }
-        createCustomTablesDataSet();
 
+        createTablesDataSet();
     }
 
-    public void createCustomTablesDataSet() {
+    private void createTablesDataSet() {
         for (String table : tables) {
             createTableDataSet(table);
         }
     }
 
-    public static void createTableDataSet(String table) {
+    private void createTableDataSet(String table) {
         try {
             QueryDataSet queryDataSet = new QueryDataSet(connection);
             queryDataSet.addTable(table, "select * from " + table);
             write(queryDataSet, new FileOutputStream("dataSets/" + table + ".xml"));
         } catch (Exception e) {
-            logger.error("Create Xml Fail, message: %s", e.getMessage());
+            logger.error("Create Xml Fail, message: ", e.getMessage());
         }
     }
 
-    public void createFile() throws FileNotFoundException {
+    private void createFile() throws FileNotFoundException {
         System.out.println(System.class.getResource("/").getPath());
         String dir = getClass().getResource("/").getPath();
         System.out.println(dir);
@@ -98,12 +109,8 @@ public class DataSetGenerator {
         os = new FileOutputStream(dir + "/file.txt");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         DataSetGenerator da = new DataSetGenerator();
-        try {
-            da.createFile();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        da.createDataSet();
     }
 }
