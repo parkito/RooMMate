@@ -1,5 +1,6 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.database.QueryDataSet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 
 import static java.lang.Class.forName;
+import static java.sql.DriverManager.getConnection;
 import static org.dbunit.dataset.xml.XmlDataSet.write;
 
 /**
@@ -28,7 +30,7 @@ public class DataSetGenerator {
     private Environment environment;
 
     private List<String> tables;
-    private  IDatabaseConnection connection;
+    private IDatabaseConnection connection;
     Properties props;
 
     public DataSetGenerator() throws IOException {
@@ -50,10 +52,13 @@ public class DataSetGenerator {
     private void setUpConnection() {
         Connection jdbcConnection;
         try {
-            forName(props.getProperty("jdbc.driverClassName"));
             String dbURL = props.getProperty("jdbc.url");
-            String dbUser = props.getProperty("jdbc.url");
-            String dbPass = props.getProperty("jdbc.url");
+            forName(dbURL);
+            jdbcConnection = getConnection(environment.getRequiredProperty("jdbc.url"));
+            connection = new DatabaseConnection(jdbcConnection);
+//            forName(props.getProperty("jdbc.driverClassName"));
+//            String dbUser = props.getProperty("jdbc.url");
+//            String dbPass = props.getProperty("jdbc.url");
             // TODO: 27.04.2017 finish it
 //            connection = DriverManager.getConnection(dbURL, dbUser, dbPass);
         } catch (Exception e) {
