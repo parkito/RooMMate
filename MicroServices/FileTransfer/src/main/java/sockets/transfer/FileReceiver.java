@@ -2,13 +2,13 @@ package sockets.transfer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sockets.tcp.Server;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -41,22 +41,28 @@ public class FileReceiver {
         }
 
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        File file = new File("C:\\Users\\akarnov\\Downloads\\result.pdf");
+        File file = new File("/home/parkito/Downloads/result.pdf");
         file.createNewFile();
-        PrintWriter outputWriter = new PrintWriter(file);
+        DataInputStream dis = new DataInputStream(client.getInputStream());
+        FileOutputStream fos = new FileOutputStream(file);
+        byte[] buffer = new byte[4096];
 
-
-        int data;
-
-        while ((data = inputReader.read()) != -1) {
-            logger.info(data);
-            outputWriter.write(data);
+        int filesize = 151230000; // Send file size in separate msg
+        int read = 0;
+        int totalRead = 0;
+        int remaining = filesize;
+        while ((read = dis.read(buffer, 0, Math.min(buffer.length, remaining))) > 0) {
+            totalRead += read;
+            remaining -= read;
+            System.out.println("read " + totalRead + " bytes.");
+            fos.write(buffer, 0, read);
         }
 
-        outputWriter.close();
-        inputReader.close();
+        fos.close();
+        dis.close();
         client.close();
         server.close();
-
     }
+
+
 }

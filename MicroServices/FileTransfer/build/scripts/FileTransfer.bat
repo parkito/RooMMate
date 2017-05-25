@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\FileTransfer.jar
+set CLASSPATH=%APP_HOME%\lib\FileTransfer.jar;%APP_HOME%\lib\log4j-api-2.8.2.jar;%APP_HOME%\lib\log4j-core-2.8.2.jar
 
 @rem Execute FileTransfer
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %FILE_TRANSFER_OPTS%  -classpath "%CLASSPATH%" App %CMD_LINE_ARGS%

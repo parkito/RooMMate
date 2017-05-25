@@ -3,10 +3,10 @@ package sockets.transfer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -26,24 +26,23 @@ public class FileSender {
     }
 
     public boolean sentFile() throws IOException {
-        byte[] fileForSent = fileReader.read("C:\\Users\\akarnov\\Downloads\\File.pdf");
+        File file = new File("/home/parkito/Downloads/source.pdf");
 
         logger.info("Welcome to Client side");
         logger.info("Connecting to " + ADDRESS + ":" + PORT);
 
         Socket socket = new Socket(ADDRESS, PORT);
-        BufferedReader inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        PrintWriter outputWriter = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader lineReader = new BufferedReader(new InputStreamReader(System.in));
+        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+        FileInputStream fis = new FileInputStream(file);
+        byte[] buffer = new byte[4096];
 
-        logger.info(fileForSent.length);
-        outputWriter.println(fileForSent);
-//        String output = inputReader.readLine();
-        logger.info("done");
+        while (fis.read(buffer) > 0) {
+            dos.write(buffer);
+        }
 
-        outputWriter.close();
-        inputReader.close();
-        lineReader.close();
+        fis.close();
+        dos.close();
+
         socket.close();
 
         return true;
