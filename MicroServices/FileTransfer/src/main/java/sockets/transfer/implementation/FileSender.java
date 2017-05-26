@@ -19,7 +19,7 @@ import java.net.Socket;
 public class FileSender implements ClientApi {
     private static final Logger logger = LogManager.getLogger(FileSender.class);
 
-    public void sentFile(String absoluteFilePath) throws IOException {
+    public void sentFile(String absoluteFilePath, String server, int port) throws IOException {
         Socket socket = null;
         DataOutputStream outputData = null;
         FileInputStream inputStream = null;
@@ -28,7 +28,7 @@ public class FileSender implements ClientApi {
             logger.info("Starting transferring of file " + absoluteFilePath);
 
             File file = new File(absoluteFilePath);
-            socket = SocketFactory.getNewSocketInstance();
+            socket = SocketFactory.getNewSocketInstance(server, port);
 
             logger.info("Connecting to " + socket.getInetAddress() + ":" + socket.getPort());
 

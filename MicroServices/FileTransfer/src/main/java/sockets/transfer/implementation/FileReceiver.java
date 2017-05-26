@@ -18,22 +18,20 @@ import java.util.List;
  *         artem.karnov@t-systems.com
  */
 
-public class FileReceiver implements ServerApi {
+public class FileReceiver implements ServerApi, Runnable {
     private static final Logger logger = LogManager.getLogger(FileReceiver.class);
 
-    private List<Socket> clientSocketsPool;
-    private ServerSocket serverSocket;
     private int port;
+    private static List<Socket> clientSocketsPool;
+    private static ServerSocket serverSocket;
+    private static volatile int fileNumber;
+    private static boolean jobStatus;
 
     public void start(int port) throws IOException {
         logger.info("Server is starting");
-
+        jobStatus = true;
         clientSocketsPool = new ArrayList<>();
         this.port = port;
-        serverSocket = null;
-        Socket client = null;
-        DataInputStream dataInputStream = null;
-        FileOutputStream fileOutputStream = null;
 
         try {
             serverSocket = new ServerSocket(port);
@@ -43,15 +41,42 @@ public class FileReceiver implements ServerApi {
             logger.error("Couldn't listen to port " + port);
         }
 
-        try {
-            client = serverSocket.accept();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            logger.error("Can't accept client");
+        while (rationalWaiter()) {
+            try {
+                Socket client = serverSocket.accept();
+                clientSocketsPool.add(client);
+                fileNumber++;
+                Thread thread = new Thread(new FileReceiver());
+                thread.start();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                logger.error("Can't accept client");
+            }
         }
 
+
+    }
+
+    @Override
+    public void stop() throws IOException {
         try {
-            File file = new File("/home/parkito/Downloads/result.pdf");
+            logger.info("Trying stop server on " + port + " port");
+            serverSocket.close();
+            jobStatus = false;
+        } catch (IOException ex) {
+            logger.error("Trying of stopping is unsuccessful");
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
+        DataInputStream dataInputStream = null;
+        FileOutputStream fileOutputStream = null;
+        Socket client = clientSocketsPool.get(fileNumber - 1);
+
+        try {
+            File file = new File("C:\\Users\\akarnov\\Downloads\\result" + fileNumber + ".pdf");
             dataInputStream = new DataInputStream(client.getInputStream());
             fileOutputStream = new FileOutputStream(file);
             byte[] buffer = new byte[4096];
@@ -61,29 +86,30 @@ public class FileReceiver implements ServerApi {
                 totalRead += currentData;
                 fileOutputStream.write(buffer, 0, currentData);
             }
+
             logger.info("Received data " + totalRead);
             logger.info("File " + file.getAbsolutePath() + " successfully received");
         } catch (IOException ex) {
             logger.error("File transfer was corrupted");
             ex.printStackTrace();
         } finally {
-            fileOutputStream.close();
-            dataInputStream.close();
-            client.close();
-            serverSocket.close();
+            try {
+                fileOutputStream.close();
+                dataInputStream.close();
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
-
-    @Override
-    public void stop() throws IOException {
+    private boolean rationalWaiter() {
         try {
-            logger.info("Trying stop server on " + port + "port");
-            serverSocket.close();
-        } catch (IOException ex) {
-            logger.error("Trying of stopping is unsuccessful");
-            ex.printStackTrace();
+            Thread.currentThread().sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        return jobStatus;
     }
+
 }

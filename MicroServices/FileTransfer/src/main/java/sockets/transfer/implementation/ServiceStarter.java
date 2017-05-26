@@ -13,17 +13,20 @@ import java.io.IOException;
 public class ServiceStarter implements Runnable {
     private ClientApi client;
     private ServerApi server;
+    private String serverAddress;
     private int port;
     private String absoluteFileName;
 
     public ServiceStarter(ServerApi client, int port) {
-        this.server = client ;
+        this.server = client;
         this.port = port;
     }
 
-    public ServiceStarter(ClientApi client, String absoluteFileName) {
+    public ServiceStarter(ClientApi client, String absoluteFileName, String serverAddress, int port) {
         this.client = client;
         this.absoluteFileName = absoluteFileName;
+        this.serverAddress = serverAddress;
+        this.port = port;
     }
 
     @Override
@@ -34,10 +37,12 @@ public class ServiceStarter implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else try {
-            client.sentFile(absoluteFileName);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            try {
+                client.sentFile(absoluteFileName, serverAddress, port);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -8,5 +8,5 @@ import java.io.IOException;
  */
 
 public interface ClientApi {
-    void sentFile(String absoluteFilePath) throws IOException;
+    void sentFile(String absoluteFilePath, String server, int port) throws IOException;
 }
