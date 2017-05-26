@@ -14,6 +14,7 @@ import java.util.concurrent.Executors;
  */
 
 public class Main {
+    // TODO: 26.05.2017 exit from app - finish it
     public static void main(String[] args) throws IOException, InterruptedException {
         ExecutorService exec = Executors.newCachedThreadPool();
         FileReceiver fileReceiver = new FileReceiver();

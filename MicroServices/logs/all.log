@@ -1,0 +1,154 @@
+ERROR 21:40:20.713 DataSetGenerator 
+ [Create connection fail, message: %s]
+ERROR 21:19:46.527 DataSetGenerator 
+ [Can't create dataset ]
+java.lang.NullPointerException: null
+	at DataSetGenerator.createDefaultTablesDataSet(DataSetGenerator.java:69) [test-classes/:?]
+	at DataSetGenerator.<init>(DataSetGenerator.java:43) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:113) [test-classes/:?]
+ERROR 21:23:18.127 DataSetGenerator 
+ [Can't create dataset ]
+java.lang.NullPointerException: null
+	at DataSetGenerator.createDefaultTablesDataSet(DataSetGenerator.java:69) [test-classes/:?]
+	at DataSetGenerator.<init>(DataSetGenerator.java:42) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:114) [test-classes/:?]
+ERROR 21:23:42.210 DataSetGenerator 
+ [Can't create dataset ]
+java.lang.IllegalStateException: required key [dbunit.dataset.tables] not found
+	at org.springframework.core.env.AbstractPropertyResolver.getRequiredProperty(AbstractPropertyResolver.java:183) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.core.env.AbstractEnvironment.getRequiredProperty(AbstractEnvironment.java:556) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at DataSetGenerator.createDefaultTablesDataSet(DataSetGenerator.java:71) [test-classes/:?]
+	at DataSetGenerator.<init>(DataSetGenerator.java:43) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:116) [test-classes/:?]
+ERROR 21:24:01.827 DataSetGenerator 
+ [Can't create dataset ]
+java.lang.IllegalStateException: required key [dbunit.dataset.tables] not found
+	at org.springframework.core.env.AbstractPropertyResolver.getRequiredProperty(AbstractPropertyResolver.java:183) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.core.env.AbstractEnvironment.getRequiredProperty(AbstractEnvironment.java:556) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at DataSetGenerator.createDefaultTablesDataSet(DataSetGenerator.java:71) [test-classes/:?]
+	at DataSetGenerator.<init>(DataSetGenerator.java:43) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:116) [test-classes/:?]
+ERROR 21:24:31.877 DataSetGenerator 
+ [Can't create dataset ]
+java.lang.IllegalStateException: required key [dbunit.dataset.table] not found
+	at org.springframework.core.env.AbstractPropertyResolver.getRequiredProperty(AbstractPropertyResolver.java:183) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.core.env.AbstractEnvironment.getRequiredProperty(AbstractEnvironment.java:556) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at DataSetGenerator.createDefaultTablesDataSet(DataSetGenerator.java:71) [test-classes/:?]
+	at DataSetGenerator.<init>(DataSetGenerator.java:43) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:116) [test-classes/:?]
+ERROR 21:26:09.194 DataSetGenerator 
+ [Can't create dataset ]
+java.lang.IllegalStateException: required key [dbunit.dataset.table] not found
+	at org.springframework.core.env.AbstractPropertyResolver.getRequiredProperty(AbstractPropertyResolver.java:183) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.core.env.AbstractEnvironment.getRequiredProperty(AbstractEnvironment.java:556) ~[spring-core-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at DataSetGenerator.createDefaultTablesDataSet(DataSetGenerator.java:71) [test-classes/:?]
+	at DataSetGenerator.<init>(DataSetGenerator.java:43) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:116) [test-classes/:?]
+ERROR 21:44:57.662 DataSetGenerator 
+ [Create connection fail, message: %s]
+ERROR 21:45:38.374 DataSetGenerator 
+ [Create connection fail, message: %s]
+ERROR 21:45:38.446 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:45:38.446 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:45:38.446 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:46:36.462 DataSetGenerator 
+ [Create connection fail, message: %s]
+ERROR 21:46:36.527 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:46:36.528 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:46:36.528 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:47:29.933 DataSetGenerator 
+ [Create connection fail, message: %s]
+ERROR 21:47:29.993 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:47:29.993 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:47:29.993 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:48:15.914 DataSetGenerator 
+ [Create connection fail, message: %s]
+java.lang.NullPointerException: null
+	at DataSetGenerator.setUpConnection(DataSetGenerator.java:49) [test-classes/:?]
+	at DataSetGenerator.createDataSet(DataSetGenerator.java:42) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:109) [test-classes/:?]
+ERROR 21:48:15.979 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:48:15.979 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:48:15.979 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:50:37.034 DataSetGenerator 
+ [Create connection fail, message: %s]
+java.lang.NullPointerException: null
+	at DataSetGenerator.setUpConnection(DataSetGenerator.java:55) [test-classes/:?]
+	at DataSetGenerator.createDataSet(DataSetGenerator.java:48) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:113) [test-classes/:?]
+ERROR 21:50:37.096 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:50:37.096 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:50:37.096 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:51:56.665 DataSetGenerator 
+ [Create connection fail, message: %s]
+java.sql.SQLException: Access denied for user ''@'reserv-02-vpn-fw.net.detemobil.de' (using password: NO)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3970) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:873) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1710) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1226) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2253) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2284) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2083) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:806) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_121]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_121]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_121]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_121]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:410) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:328) ~[mysql-connector-java-5.1.40.jar:5.1.40]
+	at java.sql.DriverManager.getConnection(DriverManager.java:664) ~[?:1.8.0_121]
+	at java.sql.DriverManager.getConnection(DriverManager.java:270) ~[?:1.8.0_121]
+	at DataSetGenerator.setUpConnection(DataSetGenerator.java:56) [test-classes/:?]
+	at DataSetGenerator.createDataSet(DataSetGenerator.java:48) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:113) [test-classes/:?]
+ERROR 21:51:56.803 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:51:56.804 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 21:51:56.804 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 16:50:52.997 DataSetGenerator 
+ [Create connection fail, message: %s]
+java.lang.NullPointerException: null
+	at DataSetGenerator.setUpConnection(DataSetGenerator.java:56) [test-classes/:?]
+	at DataSetGenerator.createDataSet(DataSetGenerator.java:48) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:119) [test-classes/:?]
+ERROR 16:50:53.114 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 16:50:53.114 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 16:50:53.114 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 16:54:22.424 DataSetGenerator 
+ [Create connection fail, message: %s]
+java.lang.ClassNotFoundException: jdbc:mysql://127.0.0.1:3306/mydb
+	at java.lang.Class.forName0(Native Method) ~[?:1.8.0_121]
+	at java.lang.Class.forName(Class.java:264) ~[?:1.8.0_121]
+	at DataSetGenerator.setUpConnection(DataSetGenerator.java:56) [test-classes/:?]
+	at DataSetGenerator.createDataSet(DataSetGenerator.java:48) [test-classes/:?]
+	at DataSetGenerator.main(DataSetGenerator.java:119) [test-classes/:?]
+ERROR 16:54:22.495 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 16:54:22.496 DataSetGenerator 
+ [Create Xml Fail, message: ]
+ERROR 16:54:22.496 DataSetGenerator 
+ [Create Xml Fail, message: ]
