@@ -20,6 +20,7 @@ java {
 dependencies {
     compile(kotlin("stdlib"))
     compile("org.springframework:spring-context:5.1.6.RELEASE")
+    compile("javax.annotation:javax.annotation-api:1.3.2")
     testCompile("org.junit.jupiter:junit-jupiter-engine:5.4.1")
 }
 
