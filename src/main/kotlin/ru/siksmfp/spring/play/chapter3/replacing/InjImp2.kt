@@ -1,11 +1,10 @@
 package ru.siksmfp.spring.play.chapter3.replacing
 
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
 
-@Component("bean2")
-@Scope(scopeName = "singleton")
+@Component
+@Scope(scopeName = "prototype")
 class InjImp2 : InjBeanApi {
 
     override fun doSomething() {

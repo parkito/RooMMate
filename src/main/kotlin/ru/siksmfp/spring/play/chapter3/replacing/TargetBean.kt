@@ -9,25 +9,17 @@ import org.springframework.stereotype.Component
 open class TargetBean(
         @Autowired
         @Qualifier("bean1")
-        private val injBeanApi1: InjBeanApi) {
+        private val injBeanApi1: InjBeanApi
+) {
 
-
-    fun setBeanApi1(injBeanApi: InjBeanApi): InjBeanApi? {
-        return null
-    }
-
-    @Lookup("bean2")//todo why it doesn't work
-    fun getBeanApi2(): InjBeanApi? {
-        return null
+    @Lookup
+    fun getInjImp2(): InjBeanApi {
+        print("Shouldn't print")
+        return null!!
     }
 
     fun targetMethod() {
         injBeanApi1.doSomething()
-        println(injBeanApi1)
-        println(injBeanApi1)
-
-        getBeanApi2()?.doSomething()
-        println(getBeanApi2())
-        println(getBeanApi2())
+        getInjImp2().doSomething()
     }
 }
